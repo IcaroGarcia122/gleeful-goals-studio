@@ -32,9 +32,6 @@ function AdminCalendar() {
   const { data: blockedDates, isLoading: loadingBlocks } = useQuery({
     queryKey: ['blocked-dates'],
     queryFn: async () => {
-      const { data, error } = await supabase.from('guests').select('*').eq('status', 'cancelled').order('check_in')
-      // Note: In a real app, I'd use a dedicated 'blocked_dates' table. 
-      // For now, I'll filter for status 'cancelled' or just show the ones we add as 'blocked'
       const { data, error } = await supabase
         .from('guests')
         .select('*')
