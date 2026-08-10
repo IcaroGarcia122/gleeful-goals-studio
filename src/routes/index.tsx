@@ -7,6 +7,9 @@ import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
 import cozinhaAsset from "@/assets/cozinha.png.asset.json";
 import interiorAsset from "@/assets/chalet-view-interior.png.asset.json";
+import img12Asset from "@/assets/image-12.png.asset.json";
+import img13Asset from "@/assets/image-13.png.asset.json";
+import img14Asset from "@/assets/image-14.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -66,7 +69,7 @@ function Index() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.8 }}
-              style={{ fontFamily: 'var(--font-script)' }}
+              style={{ fontFamily: "'Alex Brush', cursive" }}
               className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
             >
               importa.
@@ -101,23 +104,15 @@ function Index() {
       </section>
 
       {/* Sobre o Chalé */}
-      <section id="sobre" className="relative min-h-[80vh] flex items-center bg-background overflow-hidden">
-        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
-          <img 
-            src={interiorAsset.url} 
-            alt="Interior do Chalé" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-        </div>
-        
-        <div className="max-w-6xl mx-auto w-full px-4 relative z-10 py-24">
-          <div className="md:w-1/2">
+      <section id="sobre" className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="order-2 md:order-1"
             >
               <h2 className="text-4xl md:text-6xl font-serif text-dark-brown mb-8 leading-tight">
                 {content.about_title.split("\n").map((line, i) => (
@@ -139,6 +134,24 @@ function Index() {
                     Ver disponibilidade <span className="text-xl">→</span>
                   </a>
                 </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="order-1 md:order-2 grid grid-cols-2 gap-4"
+            >
+              <div className="col-span-2 aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
+                <img src={img14Asset.url} alt="Vista principal" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
+                <img src={img12Asset.url} alt="Sala de estar" className="w-full h-full object-cover" />
+              </div>
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
+                <img src={img13Asset.url} alt="Cozinha e escada" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
