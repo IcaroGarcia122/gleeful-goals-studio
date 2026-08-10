@@ -14,6 +14,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [videoEnded, setVideoEnded] = useState(false);
+
   const { data: content } = useQuery({
     queryKey: ["site-content"],
     queryFn: () => getSiteContent(),
