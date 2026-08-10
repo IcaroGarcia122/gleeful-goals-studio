@@ -6,6 +6,7 @@ import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
 import cozinhaAsset from "@/assets/cozinha.png.asset.json";
+import interiorAsset from "@/assets/chalet-view-interior.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -21,20 +22,8 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* Header Discreto */}
-      <header className="absolute top-0 left-0 right-0 z-20 p-6 flex justify-between items-center text-warm-white">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 0.8, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="flex gap-6 text-xs uppercase tracking-widest font-sans hidden md:flex"
-        >
-          <span>Vista para o mar</span>
-          <span>Banheira interna</span>
-          <span>Deck exclusivo</span>
-          <span>Natureza e privacidade</span>
-        </motion.div>
-      </header>
+      {/* Header Removido conforme solicitação */}
+
 
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden">
@@ -73,12 +62,12 @@ function Index() {
           >
             Conecte-se com<br />o que realmente<br />
             <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.8 }}
+              transition={{ duration: 1.2, delay: 0.8 }}
               style={{ fontFamily: 'var(--font-script)' }}
-              className="text-gold block mt-2 text-6xl md:text-9xl"
+              className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
             >
               importa.
             </motion.span>
@@ -93,12 +82,14 @@ function Index() {
             Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
           </motion.p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a
+            <motion.a
               href={content.airbnb_url}
-              className="bg-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-gold/90 transition-colors"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
             >
               RESERVE NO AIRBNB
-            </a>
+            </motion.a>
             <a
               href="#sobre"
               className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
@@ -110,36 +101,47 @@ function Index() {
       </section>
 
       {/* Sobre o Chalé */}
-      <section id="sobre" className="py-24 px-4 bg-background overflow-hidden">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-8">
-              {content.about_title.split("\n").map((line, i) => (
-                <span key={i} className="block">{line}</span>
-              ))}
-            </h2>
-            <p className="text-lg text-muted-foreground font-sans mb-6">
-              {content.about_text_1}
-            </p>
-            <p className="text-lg text-muted-foreground font-sans">
-              {content.about_text_2}
-            </p>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            <img src={banheiraAsset.url} alt="Banheira" className="aspect-square object-cover rounded-sm shadow-xl hover:scale-105 transition-transform duration-500" />
-            <img src={salaAsset.url} alt="Sala" className="aspect-square object-cover rounded-sm shadow-xl hover:scale-105 transition-transform duration-500" />
-          </motion.div>
+      <section id="sobre" className="relative min-h-[80vh] flex items-center bg-background overflow-hidden">
+        <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+          <img 
+            src={interiorAsset.url} 
+            alt="Interior do Chalé" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+        </div>
+        
+        <div className="max-w-6xl mx-auto w-full px-4 relative z-10 py-24">
+          <div className="md:w-1/2">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-6xl font-serif text-dark-brown mb-8 leading-tight">
+                {content.about_title.split("\n").map((line, i) => (
+                  <span key={i} className="block">{line}</span>
+                ))}
+              </h2>
+              <div className="space-y-6 max-w-md">
+                <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+                  {content.about_text_1}
+                </p>
+                <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+                  {content.about_text_2}
+                </p>
+                <div className="pt-8">
+                  <a
+                    href={content.airbnb_url}
+                    className="inline-flex items-center gap-2 text-gold font-sans font-bold uppercase tracking-widest hover:gap-4 transition-all"
+                  >
+                    Ver disponibilidade <span className="text-xl">→</span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
       {/* Galeria / Destaques (Estilo Polaroid) */}
@@ -174,16 +176,16 @@ function Index() {
                 zIndex: 10,
                 transition: { duration: 0.3 }
               }}
-              className="bg-white p-4 pb-12 shadow-2xl cursor-pointer group"
+              className="bg-white p-2 pb-8 shadow-2xl cursor-pointer group"
             >
-              <div className="aspect-[4/5] overflow-hidden mb-6">
+              <div className="aspect-[4/5] overflow-hidden">
                 <motion.img 
                   src={item.img.url} 
                   alt={item.title} 
-                  className="w-full h-full object-cover filter sepia-[0.1] grayscale-[0.1] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-500" 
+                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
                 />
               </div>
-              <p className="text-dark-brown font-script text-2xl text-center leading-none tracking-tight">
+              <p className="text-dark-brown font-script text-xl text-center mt-4 opacity-80 group-hover:opacity-100 transition-opacity">
                 {item.title}
               </p>
             </motion.div>
@@ -202,19 +204,38 @@ function Index() {
           <p className="text-sm uppercase tracking-widest text-muted-foreground">100% das avaliações são 5 estrelas</p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white p-8 md:p-12 rounded-sm shadow-sm border border-beige/30 relative">
-            <p className="text-xl md:text-2xl font-serif italic text-dark-brown text-center mb-8">
-              "Tudo simplesmente maravilhoso! O chalé é incrível, tudo muito limpo e bem feito. Estava nublado e mesmo assim o local é lindo demais. Super indico."
-            </p>
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-beige" />
-              <div>
-                <p className="font-sans font-bold text-dark-brown">Alice</p>
-                <div className="flex text-xs text-gold">★★★★★</div>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-7xl mx-auto overflow-hidden">
+          <motion.div 
+            animate={{ x: [0, -1000] }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 40, 
+              ease: "linear" 
+            }}
+            className="flex gap-8 whitespace-nowrap"
+          >
+            {[...Array(6)].map((_, idx) => (
+              [
+                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível." },
+                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita." },
+                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível." },
+                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa." }
+              ].map((rev, i) => (
+                <div key={`${idx}-${i}`} className="min-w-[300px] bg-white p-6 rounded-lg shadow-sm border border-beige/20 flex flex-col justify-between">
+                  <p className="text-sm font-serif italic text-dark-brown/80 mb-4 whitespace-normal">
+                    "{rev.text}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-beige/30" />
+                    <div>
+                      <p className="text-xs font-bold text-dark-brown">{rev.author}</p>
+                      <div className="flex text-[8px] text-gold">★★★★★</div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -236,32 +257,32 @@ function Index() {
       </section>
 
       {/* CTA Final */}
-      <section className="relative py-32 px-4 flex flex-col items-center justify-center text-center text-warm-white">
+      <section className="relative py-24 px-4 flex flex-col items-center justify-center text-center text-warm-white">
         <img
           src={heroAsset.url}
           alt="Chalé ao pôr do sol"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-soft-black/60" />
+        <div className="absolute inset-0 bg-soft-black/70" />
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative z-10 max-w-4xl px-4"
+          className="relative z-10 max-w-2xl px-4"
         >
-          <h2 className="text-4xl md:text-7xl font-serif mb-8 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
             Viva momentos únicos neste paraíso em <span className="italic text-gold">Florianópolis.</span>
           </h2>
-          <p className="text-lg md:text-xl font-sans mb-12 opacity-90 max-w-2xl mx-auto font-light">
+          <p className="text-base font-sans mb-8 opacity-80 max-w-lg mx-auto font-light leading-relaxed">
             Garanta sua data e aproveite uma experiência exclusiva em meio à natureza.
           </p>
           <motion.a
             href={content.airbnb_url}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gold text-white px-12 py-5 rounded-sm font-sans text-lg hover:bg-gold/90 transition-all shadow-2xl"
+            className="inline-block bg-gold text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm hover:bg-gold/90 transition-all shadow-xl"
           >
-            RESERVE AGORA NO AIRBNB
+            RESERVE AGORA
           </motion.a>
         </motion.div>
       </section>
