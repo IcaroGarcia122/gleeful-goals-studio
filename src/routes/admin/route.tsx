@@ -12,8 +12,5 @@ export const Route = createFileRoute('/admin')({
         },
       })
     }
-    
-    // Para facilitar o acesso conforme solicitado, permitimos o acesso se houver sessão.
-    // Em produção, deve-se verificar o papel 'admin' no banco de dados.
   },
 })
