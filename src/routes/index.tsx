@@ -40,7 +40,7 @@ function Index() {
   });
 
   const trackClick = useMutation({
-    mutationFn: (data: { source: string }) => trackAirbnbClick(data)
+    mutationFn: (data: { source: string }) => trackAirbnbClick({ data })
   });
 
   if (!content) return null;
