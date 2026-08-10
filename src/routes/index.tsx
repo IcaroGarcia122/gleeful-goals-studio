@@ -10,7 +10,7 @@ import interiorAsset from "@/assets/chalet-view-interior.png.asset.json";
 import img12Asset from "@/assets/image-12.png.asset.json";
 import img13Asset from "@/assets/image-13.png.asset.json";
 import img14Asset from "@/assets/image-14.png.asset.json";
-
+import quartoAsset from "@/assets/quarto.png.asset.json";
 import img15Asset from "@/assets/image-15.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -173,7 +173,7 @@ function Index() {
           
           <div className="relative h-[550px] w-full max-w-4xl mx-auto">
             {[
-              { img: salaAsset, title: "Pôr do sol incrível", x: "-30%", y: "-20%", rotate: -8 },
+              { img: quartoAsset, title: "Suíte Aconchegante", x: "-30%", y: "-20%", rotate: -8 },
               { img: cozinhaAsset, title: "Design Moderno", x: "35%", y: "25%", rotate: 12 },
               { img: banheiraAsset, title: "Relaxe na Hidro", x: "-25%", y: "30%", rotate: -5 },
               { img: heroAsset, title: "Vista Privilegiada", x: "30%", y: "-25%", rotate: 6 },
@@ -261,19 +261,78 @@ function Index() {
         </div>
       </section>
 
-      {/* Localização */}
+      {/* Detalhes do Imóvel (Airbnb Info) */}
       <section className="relative py-24 px-4 bg-background z-20">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-          <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-8 leading-tight">
-              Entre a natureza,<br />o mar e a tranquilidade.
-            </h2>
-            <p className="text-lg text-muted-foreground font-sans mb-8">
-              O chalé está localizado em Florianópolis, em uma região tranquila e cercada pela natureza, próximo ao Villa Casarão.
-            </p>
+        <div className="max-w-6xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-4">Tudo para você simplesmente aproveitar.</h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto opacity-60" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h3 className="text-2xl font-serif text-dark-brown border-b border-beige/30 pb-4">O Espaço</h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "Imóvel privativo",
+                  "2 Quartos (1 Suíte)",
+                  "Dois banheiros",
+                  "Vista para o mar",
+                  "Banheira interna",
+                  "Deck externo amplo",
+                  "Balanço suspenso",
+                  "Ambientes integrados",
+                  "Arquitetura em madeira",
+                  "Cercado por natureza",
+                  "Ideal para famílias"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground font-sans">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h3 className="text-2xl font-serif text-dark-brown border-b border-beige/30 pb-4">Comodidades</h3>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { label: "Vista para o mar", icon: "🌊" },
+                  { label: "Montanhas", icon: "⛰️" },
+                  { label: "Cozinha completa", icon: "🍳" },
+                  { label: "Wi-Fi rápido", icon: "🌐" },
+                  { label: "Estacionamento", icon: "🚗" },
+                  { label: "Hidromassagem", icon: "🛁" },
+                  { label: "Smart TV", icon: "📺" },
+                  { label: "Ar-condicionado", icon: "❄️" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 p-3 bg-white/50 rounded-lg border border-beige/10">
+                    <span className="text-xl">{item.icon}</span>
+                    <span className="text-sm font-sans text-muted-foreground">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
-          <div className="flex-1 w-full aspect-video rounded-sm overflow-hidden shadow-2xl">
-            <img src={img15Asset.url} alt="Vista do Chalé" className="w-full h-full object-cover" />
+          
+          <div className="mt-20 rounded-2xl overflow-hidden shadow-2xl aspect-[21/9] hidden md:block">
+            <img src={img15Asset.url} alt="Vista Panorâmica" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
@@ -311,15 +370,8 @@ function Index() {
         </motion.div>
       </section>
       
-      {/* Botão Fixo Mobile */}
-      <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
-        <a
-          href={content.airbnb_url}
-          className="block w-full bg-gold text-white text-center py-4 rounded-sm font-sans font-bold shadow-2xl"
-        >
-          RESERVAR NO AIRBNB
-        </a>
-      </div>
+      {/* Botão Fixo Mobile Removido */}
+
 
       {/* Footer */}
       <footer className="relative bg-dark-brown pt-20 pb-12 px-4 text-warm-white z-20">
