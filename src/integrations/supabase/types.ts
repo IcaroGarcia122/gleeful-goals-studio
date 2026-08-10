@@ -14,16 +14,165 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      airbnb_clicks: {
+        Row: {
+          created_at: string | null
+          device: string | null
+          id: string
+          source: string
+        }
+        Insert: {
+          created_at?: string | null
+          device?: string | null
+          id?: string
+          source: string
+        }
+        Update: {
+          created_at?: string | null
+          device?: string | null
+          id?: string
+          source?: string
+        }
+        Relationships: []
+      }
+      guests: {
+        Row: {
+          check_in: string | null
+          check_out: string | null
+          created_at: string | null
+          email: string | null
+          id: string
+          name: string
+          notes: string | null
+          num_guests: number | null
+          phone: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          check_in?: string | null
+          check_out?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          num_guests?: number | null
+          phone?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          check_in?: string | null
+          check_out?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          num_guests?: number | null
+          phone?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      site_content: {
+        Row: {
+          about_text_1: string
+          about_text_2: string
+          about_title: string
+          airbnb_url: string
+          chale_name: string
+          created_at: string | null
+          hero_description: string
+          hero_subtitle: string
+          hero_title: string
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          about_text_1?: string
+          about_text_2?: string
+          about_title?: string
+          airbnb_url?: string
+          chale_name?: string
+          created_at?: string | null
+          hero_description?: string
+          hero_subtitle?: string
+          hero_title?: string
+          id?: string
+          updated_at?: string | null
+        }
+        Update: {
+          about_text_1?: string
+          about_text_2?: string
+          about_title?: string
+          airbnb_url?: string
+          chale_name?: string
+          created_at?: string | null
+          hero_description?: string
+          hero_subtitle?: string
+          hero_title?: string
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          completed: boolean | null
+          created_at: string | null
+          id: string
+          title: string
+        }
+        Insert: {
+          completed?: boolean | null
+          created_at?: string | null
+          id?: string
+          title: string
+        }
+        Update: {
+          completed?: boolean | null
+          created_at?: string | null
+          id?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +299,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
