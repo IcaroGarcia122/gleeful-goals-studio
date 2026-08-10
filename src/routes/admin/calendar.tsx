@@ -47,8 +47,8 @@ function AdminCalendar() {
       const dateStr = selectedDate.toISOString().split('T')[0]
       const { error } = await supabase.from('guests').insert([{
         name: 'DATA BLOQUEADA',
-        check_in: dateStr,
-        check_out: dateStr,
+        check_in: dateStr || null,
+        check_out: dateStr || null,
         status: 'pending',
         notes: `[BLOQUEIO] ${blockReason}`
       }])
