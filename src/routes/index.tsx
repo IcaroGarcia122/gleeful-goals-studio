@@ -31,23 +31,15 @@ function Index() {
 
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden perspective-1000">
-        <motion.div 
-          style={{ 
-            scale: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.85]),
-            rotateX: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, 20]),
-            y: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, -150]),
-            opacity: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.4])
-          }}
-          className="absolute inset-0 z-0 origin-bottom"
-        >
+      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden sticky top-0 z-0">
+        <div className="absolute inset-0">
           <img
             src={heroAsset.url}
             alt="Chalé A-frame"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-soft-black/40" />
-        </motion.div>
+        </div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <motion.div 
@@ -109,7 +101,7 @@ function Index() {
       </section>
 
       {/* Sobre o Chalé */}
-      <section id="sobre" className="py-24 bg-background">
+      <section id="sobre" className="relative py-24 bg-background z-10 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -163,8 +155,18 @@ function Index() {
         </div>
       </section>
       {/* Galeria / Destaques (Estilo Polaroid) */}
-      <section className="py-32 px-4 bg-[#24170F] text-[#FFFDF8] overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-32 px-4 bg-[#24170F] text-[#FFFDF8] overflow-hidden z-10">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(197,154,85,0.08),transparent_70%)]" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
