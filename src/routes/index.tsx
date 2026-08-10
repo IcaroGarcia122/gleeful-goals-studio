@@ -4,6 +4,7 @@ import { getSiteContent } from "@/lib/cms.functions";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
+import cozinhaAsset from "@/assets/cozinha.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
