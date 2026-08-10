@@ -348,92 +348,101 @@ function Index() {
               transition={{ duration: 1 }}
               className="relative flex justify-center lg:justify-end"
             >
-              {/* Mockup Smartphone */}
-              <div className="relative w-[300px] h-[600px] bg-[#1a1a1a] rounded-[3rem] border-8 border-[#333] shadow-2xl overflow-hidden">
+              {/* Mockup Smartphone Premium */}
+              <div className="relative w-[310px] h-[630px] bg-[#121212] rounded-[3.5rem] border-[10px] border-[#222] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10">
+                {/* Speaker & Sensor */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#222] rounded-b-2xl z-30 flex items-center justify-center">
+                  <div className="w-8 h-1 bg-[#333] rounded-full" />
+                </div>
+                
                 {/* Status Bar */}
-                <div className="absolute top-0 w-full h-6 flex justify-between px-6 pt-1 text-[10px] text-white z-20">
+                <div className="absolute top-0 w-full h-8 flex justify-between px-8 pt-2 text-[10px] text-white z-20 font-sans font-medium">
                   <span>9:41</span>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5 items-center">
+                    <div className="flex gap-0.5">
+                      <div className="w-0.5 h-1.5 bg-white rounded-full opacity-40" />
+                      <div className="w-0.5 h-2 bg-white rounded-full opacity-60" />
+                      <div className="w-0.5 h-2.5 bg-white rounded-full" />
+                    </div>
                     <Wifi className="w-3 h-3" />
-                    <div className="w-4 h-2 bg-white/30 rounded-sm" />
+                    <div className="w-4 h-2 border border-white/40 rounded-[2px] relative">
+                      <div className="absolute top-0.5 left-0.5 bottom-0.5 right-1 bg-white rounded-[1px]" />
+                    </div>
                   </div>
                 </div>
 
-                {/* WhatsApp Header */}
-                <div className="bg-[#075e54] pt-8 pb-3 px-4 flex items-center gap-3 shadow-md">
-                  <div className="w-8 h-8 rounded-full bg-[#eee] overflow-hidden">
-                    <img src={heroAsset.url} className="w-full h-full object-cover" />
+                {/* WhatsApp Premium Header */}
+                <div className="bg-[#075e54] pt-9 pb-4 px-5 flex items-center gap-3 shadow-lg relative z-20">
+                  <div className="w-10 h-10 rounded-full bg-white/10 p-0.5 shadow-inner">
+                    <div className="w-full h-full rounded-full overflow-hidden">
+                      <img src={heroAsset.url} className="w-full h-full object-cover scale-150" />
+                    </div>
                   </div>
                   <div>
-                    <h5 className="text-white text-xs font-bold font-sans">Concierge Villa A-Frame</h5>
-                    <span className="text-[9px] text-white/70 font-sans">online</span>
+                    <h5 className="text-white text-[13px] font-bold font-sans tracking-wide">Concierge Villa A-Frame</h5>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 bg-[#4ade80] rounded-full animate-pulse" />
+                      <span className="text-[10px] text-white/80 font-medium">online</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Chat Background */}
-                <div className="absolute inset-0 top-[72px] bg-[#e5ddd5] z-0" />
+                {/* Chat Background with subtle pattern */}
+                <div className="absolute inset-0 top-[88px] bg-[#efe7de] z-0 opacity-90" />
+                <div className="absolute inset-0 top-[88px] bg-[url('https://i.pinimg.com/originals/97/e5/77/97e57723907727a858e38d4e9c7041c2.png')] opacity-[0.03] z-0" />
                 
-                {/* Messages */}
-                <div className="relative z-10 p-4 space-y-4 font-sans overflow-y-auto h-[480px]">
+                {/* Messages Area */}
+                <div className="relative z-10 p-5 space-y-5 font-sans overflow-hidden h-[480px]">
                   <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10, x: 20 }}
+                    whileInView={{ opacity: 1, y: 0, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
-                    className="self-end ml-auto bg-[#dcf8c6] p-2 rounded-lg rounded-tr-none text-xs shadow-sm max-w-[80%]"
+                    transition={{ delay: 0.8 }}
+                    className="self-end ml-auto bg-[#dcf8c6] p-3 rounded-2xl rounded-tr-none text-[11px] shadow-[0_2px_5px_rgba(0,0,0,0.05)] max-w-[85%] text-[#1a1a1a] leading-relaxed relative"
                   >
                     Oi! O que você recomenda para jantar hoje?
-                    <span className="block text-[8px] text-black/40 text-right mt-1">20:00</span>
+                    <span className="block text-[9px] text-black/40 text-right mt-1 font-medium">20:00</span>
+                    <div className="absolute top-0 -right-2 w-0 h-0 border-t-[8px] border-t-[#dcf8c6] border-r-[8px] border-r-transparent" />
                   </motion.div>
 
                   <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10, x: -20 }}
+                    whileInView={{ opacity: 1, y: 0, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 1.5 }}
-                    className="bg-white p-2 rounded-lg rounded-tl-none text-xs shadow-sm max-w-[85%]"
+                    transition={{ delay: 1.8 }}
+                    className="bg-white p-3 rounded-2xl rounded-tl-none text-[11px] shadow-[0_2px_5px_rgba(0,0,0,0.05)] max-w-[90%] text-[#1a1a1a] leading-relaxed relative"
                   >
                     Boa noite! 😊 Se vocês quiserem experimentar a gastronomia do Ribeirão da Ilha, posso indicar algumas opções de frutos do mar. Se preferirem algo mais romântico, também posso sugerir lugares especiais para um jantar a dois.
-                    <span className="block text-[8px] text-black/40 text-right mt-1">20:01</span>
+                    <span className="block text-[9px] text-black/40 text-right mt-1 font-medium">20:01</span>
+                    <div className="absolute top-0 -left-2 w-0 h-0 border-t-[8px] border-t-white border-l-[8px] border-l-transparent" />
                   </motion.div>
 
                   <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10, x: 20 }}
+                    whileInView={{ opacity: 1, y: 0, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 3 }}
-                    className="self-end ml-auto bg-[#dcf8c6] p-2 rounded-lg rounded-tr-none text-xs shadow-sm max-w-[80%]"
+                    transition={{ delay: 3.5 }}
+                    className="self-end ml-auto bg-[#dcf8c6] p-3 rounded-2xl rounded-tr-none text-[11px] shadow-[0_2px_5px_rgba(0,0,0,0.05)] max-w-[85%] text-[#1a1a1a] leading-relaxed relative"
                   >
                     E o que podemos fazer amanhã?
-                    <span className="block text-[8px] text-black/40 text-right mt-1">20:05</span>
-                  </motion.div>
-
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 4 }}
-                    className="bg-white p-2 rounded-lg rounded-tl-none text-xs shadow-sm max-w-[85%]"
-                  >
-                    Se vocês gostam de natureza, posso sugerir algumas praias e trilhas do Sul da Ilha. Se preferirem algo mais tranquilo, também posso montar um roteiro para vocês aproveitarem o dia sem pressa.
-                    <span className="block text-[8px] text-black/40 text-right mt-1">20:06</span>
+                    <span className="block text-[9px] text-black/40 text-right mt-1 font-medium">20:05</span>
+                    <div className="absolute top-0 -right-2 w-0 h-0 border-t-[8px] border-t-[#dcf8c6] border-r-[8px] border-r-transparent" />
                   </motion.div>
                 </div>
 
-                {/* Input Bar */}
-                <div className="absolute bottom-4 w-[90%] left-1/2 -translate-x-1/2 bg-white rounded-full py-2 px-4 flex items-center justify-between shadow-lg">
-                  <span className="text-black/30 text-[10px]">Digite uma mensagem...</span>
-                  <div className="w-6 h-6 bg-[#075e54] rounded-full flex items-center justify-center">
-                    <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-                      <MessageCircle className="w-3 h-3 text-white" />
-                    </motion.div>
+                {/* Glassmorphism Input Bar */}
+                <div className="absolute bottom-6 w-[90%] left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md rounded-full py-2.5 px-5 flex items-center justify-between shadow-xl ring-1 ring-black/5">
+                  <span className="text-black/40 text-[11px] font-medium">Digite uma mensagem...</span>
+                  <div className="w-8 h-8 bg-[#075e54] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <MessageCircle className="w-4 h-4 text-white" />
                   </div>
                 </div>
               </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-              <div className="absolute -z-10 -top-10 -left-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+              {/* Enhanced Decorative Elements */}
+              <div className="absolute -z-10 -bottom-20 -right-20 w-80 h-80 bg-gold/15 rounded-full blur-[100px] animate-pulse" />
+              <div className="absolute -z-10 -top-20 -left-20 w-80 h-80 bg-gold/5 rounded-full blur-[80px]" />
+
             </motion.div>
           </div>
         </div>
