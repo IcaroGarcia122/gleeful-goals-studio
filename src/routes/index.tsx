@@ -31,77 +31,76 @@ function Index() {
 
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden sticky top-0 z-0">
-        <div className="absolute inset-0">
+      <section className="relative h-[100vh] z-0">
+        <div className="fixed inset-0 w-full h-screen pointer-events-none">
           <img
             src={heroAsset.url}
             alt="Chalé A-frame"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-soft-black/40" />
-        </div>
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="inline-block border border-warm-white/30 px-4 py-1 mb-8"
-          >
-            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warm-white font-sans font-light">
-              CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
-            </span>
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight"
-          >
-            Conecte-se com<br />o que realmente<br />
-            <motion.span 
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+          
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto pointer-events-auto">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="inline-block border border-warm-white/30 px-4 py-1 mb-8"
+            >
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warm-white font-sans font-light">
+                CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
+              </span>
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.8 }}
-              style={{ fontFamily: "'Alex Brush', cursive" }}
-              className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
+              transition={{ duration: 1, delay: 0.2 }}
+              className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight text-white"
             >
-              importa.
-            </motion.span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed"
-          >
-            Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
-          </motion.p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <motion.a
-              href={content.airbnb_url}
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
+              Conecte-se com<br />o que realmente<br />
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8 }}
+                style={{ fontFamily: "'Alex Brush', cursive" }}
+                className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
+              >
+                importa.
+              </motion.span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed text-white"
             >
-              RESERVE NO AIRBNB
-            </motion.a>
-            <a
-              href="#sobre"
-              className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
-            >
-              CONHEÇA O CHALÉ ↓
-            </a>
+              Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
+            </motion.p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <motion.a
+                href={content.airbnb_url}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
+              >
+                RESERVE NO AIRBNB
+              </motion.a>
+              <a
+                href="#sobre"
+                className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
+              >
+                CONHEÇA O CHALÉ ↓
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Sobre o Chalé */}
-      <section id="sobre" className="relative py-24 bg-background z-10 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
+      <section id="sobre" className="relative py-24 bg-background z-20 shadow-[0_-20px_80px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -155,29 +154,24 @@ function Index() {
         </div>
       </section>
       {/* Galeria / Destaques (Estilo Polaroid) */}
-      <section className="relative py-32 px-4 bg-[#24170F] text-[#FFFDF8] overflow-hidden z-10">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
+      <section className="relative py-20 px-4 bg-[#24170F] text-[#FFFDF8] overflow-hidden z-20">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] filter contrast-150" />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(197,154,85,0.08),transparent_70%)]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/20 to-transparent" />
         
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-6xl font-serif mb-6 tracking-tight italic">Destaques do Chalé</h2>
-            <div className="w-20 h-0.5 bg-[#C59A55] mx-auto opacity-60" />
+            <h2 className="text-4xl md:text-5xl font-serif mb-4 tracking-tight italic">Destaques do Chalé</h2>
+            <div className="w-16 h-0.5 bg-[#C59A55] mx-auto opacity-60" />
           </motion.div>
           
-          <div className="relative h-[600px] flex items-center justify-center">
+          <div className="relative h-[450px] flex items-center justify-center">
             {[
               { img: salaAsset, title: "Pôr do sol incrível", x: -250, y: -50, rotate: -8 },
               { img: cozinhaAsset, title: "Design Moderno", x: 250, y: 50, rotate: 12 },
@@ -203,7 +197,7 @@ function Index() {
                   zIndex: 50,
                   transition: { duration: 0.3 }
                 }}
-                className="absolute bg-white p-2 pb-8 shadow-2xl cursor-pointer w-48 md:w-56 group"
+                className="absolute bg-white p-2 pb-8 shadow-2xl cursor-pointer w-44 md:w-52 group"
               >
                 <div className="aspect-[4/5] overflow-hidden mb-3">
                   <img 
