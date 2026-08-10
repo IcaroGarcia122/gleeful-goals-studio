@@ -41,8 +41,9 @@
   --color-soft-black: var(--soft-black);
   --color-dark-brown: var(--dark-brown);
 
-  --font-serif: "Cormorant Garamond", "Playfair Display", serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", serif;
   --font-sans: "Inter", "Manrope", sans-serif;
+  --font-script: "Alex Brush", "Dancing Script", cursive;
 }
 
 :root {

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { getSiteContent } from "@/lib/cms.functions";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
@@ -19,39 +20,78 @@ function Index() {
   if (!content) return null;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Header Discreto */}
       <header className="absolute top-0 left-0 right-0 z-20 p-6 flex justify-between items-center text-warm-white">
-        <div className="flex gap-6 text-xs uppercase tracking-widest opacity-80 font-sans hidden md:flex">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 0.8, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="flex gap-6 text-xs uppercase tracking-widest font-sans hidden md:flex"
+        >
           <span>Vista para o mar</span>
           <span>Banheira interna</span>
           <span>Deck exclusivo</span>
           <span>Natureza e privacidade</span>
-        </div>
+        </motion.div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white">
-        <img
-          src={heroAsset.url}
-          alt="Chalé A-frame"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-soft-black/40" />
+      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden">
+        <motion.div 
+          style={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <img
+            src={heroAsset.url}
+            alt="Chalé A-frame"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-soft-black/40" />
+        </motion.div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <div className="inline-block border border-warm-white/30 px-4 py-1 mb-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="inline-block border border-warm-white/30 px-4 py-1 mb-8"
+          >
             <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warm-white font-sans font-light">
               CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
             </span>
-          </div>
-          <h1 className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight">
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight"
+          >
             Conecte-se com<br />o que realmente<br />
-            <span className="italic text-gold font-serif block mt-2">importa.</span>
-          </h1>
-          <p className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.8 }}
+              style={{ fontFamily: 'var(--font-script)' }}
+              className="text-gold block mt-2 text-6xl md:text-9xl"
+            >
+              importa.
+            </motion.span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed"
+          >
             Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
-          </p>
+          </motion.p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <a
               href={content.airbnb_url}
@@ -91,30 +131,51 @@ function Index() {
           </div>
         </div>
       </section>
-      {/* Galeria / Destaques */}
-      <section className="py-24 px-4 bg-dark-brown text-warm-white">
-        <div className="max-w-6xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif mb-4">DESTAQUES DO CHALÉ</h2>
+      {/* Galeria / Destaques (Estilo Polaroid) */}
+      <section className="py-24 px-4 bg-dark-brown text-warm-white overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-serif mb-4 uppercase tracking-widest">DESTAQUES DO CHALÉ</h2>
           <div className="w-24 h-px bg-gold mx-auto opacity-50" />
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        </motion.div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 px-8">
           {[
-            { img: salaAsset, title: "Pôr do sol incrível" },
-            { img: cozinhaAsset, title: "Ambientes integrados" },
-            { img: banheiraAsset, title: "Banheira para relaxar" },
-            { img: heroAsset, title: "Conforto e privacidade" },
-            { img: salaAsset, title: "Deck com balanço" },
+            { img: salaAsset, title: "Pôr do sol incrível", rotate: -3 },
+            { img: cozinhaAsset, title: "Ambientes integrados", rotate: 2 },
+            { img: banheiraAsset, title: "Banheira para relaxar", rotate: -2 },
+            { img: heroAsset, title: "Conforto e privacidade", rotate: 3 },
+            { img: salaAsset, title: "Deck com balanço", rotate: -1 },
           ].map((item, i) => (
-            <div key={i} className="group cursor-pointer">
-              <div className="aspect-[3/4] overflow-hidden rounded-sm mb-4">
-                <img 
+            <motion.div 
+              key={i} 
+              initial={{ opacity: 0, y: 50, rotate: 0 }}
+              whileInView={{ opacity: 1, y: 0, rotate: item.rotate }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotate: 0, 
+                zIndex: 10,
+                transition: { duration: 0.3 }
+              }}
+              className="bg-white p-4 pb-12 shadow-2xl cursor-pointer group"
+            >
+              <div className="aspect-[4/5] overflow-hidden mb-6">
+                <motion.img 
                   src={item.img.url} 
                   alt={item.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  className="w-full h-full object-cover filter sepia-[0.1] grayscale-[0.1] group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-500" 
                 />
               </div>
-              <p className="text-sm text-center font-sans tracking-wide opacity-80 uppercase">{item.title}</p>
-            </div>
+              <p className="text-dark-brown font-script text-2xl text-center leading-none tracking-tight">
+                {item.title}
+              </p>
+            </motion.div>
           ))}
         </div>
       </section>
