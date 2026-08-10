@@ -20,6 +20,16 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header Discreto */}
+      <header className="absolute top-0 left-0 right-0 z-20 p-6 flex justify-between items-center text-warm-white">
+        <div className="flex gap-6 text-xs uppercase tracking-widest opacity-80 font-sans hidden md:flex">
+          <span>Vista para o mar</span>
+          <span>Banheira interna</span>
+          <span>Deck exclusivo</span>
+          <span>Natureza e privacidade</span>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-warm-white">
         <img
@@ -27,10 +37,10 @@ function Index() {
           alt="Chalé A-frame"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-soft-black/50" />
+        <div className="absolute inset-0 bg-soft-black/40" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <span className="text-sm uppercase tracking-widest text-gold mb-4 block font-serif italic">
+          <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-6 block font-sans font-medium">
             {content.hero_subtitle}
           </span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight mb-6">
