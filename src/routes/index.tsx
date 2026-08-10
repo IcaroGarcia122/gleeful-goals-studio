@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { getSiteContent } from "@/lib/cms.functions";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
+import heroVideoAsset from "@/assets/hero-video.mp4.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
 import cozinhaAsset from "@/assets/cozinha.png.asset.json";
