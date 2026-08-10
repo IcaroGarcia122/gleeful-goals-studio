@@ -416,10 +416,16 @@ function Index() {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-white/5 text-center">
+        <div className="pt-8 border-t border-white/5 flex flex-col items-center gap-4">
           <p className="text-[10px] uppercase tracking-widest opacity-30">
             &copy; {new Date().getFullYear()} Chalé A-Frame Florianópolis. Todos os direitos reservados.
           </p>
+          <a 
+            href="/admin" 
+            className="text-[9px] uppercase tracking-[0.2em] opacity-10 hover:opacity-40 transition-opacity"
+          >
+            Acesso Restrito
+          </a>
         </div>
       </footer>
     </div>
