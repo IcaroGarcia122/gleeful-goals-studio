@@ -72,8 +72,8 @@ function Index() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-square bg-beige rounded-sm" />
-            <div className="aspect-square bg-wood rounded-sm" />
+            <img src={banheiraAsset.url} alt="Banheira" className="aspect-square object-cover rounded-sm" />
+            <img src={salaAsset.url} alt="Sala" className="aspect-square object-cover rounded-sm" />
           </div>
         </div>
       </section>
