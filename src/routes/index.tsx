@@ -314,26 +314,24 @@ function Index() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 {[
-                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, checkout, comodidades, Wi-Fi e regras da Villa.", icon: Home },
-                  { title: "Onde comer", desc: "Receba recomendações de restaurantes e cafés próximos.", icon: UtensilsCrossed },
-                  { title: "O que fazer", desc: "Descubra praias, trilhas e passeios de acordo com o seu perfil.", icon: Waves },
+                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, comodidades, Wi-Fi e regras da Villa.", icon: Home },
                   { title: "Explore a região", desc: "Sugestões personalizadas para conhecer melhor o Sul da Ilha.", icon: Compass },
-                  { title: "Atendimento WhatsApp", desc: "Conversa direta, sem aplicativos novos ou telas complicadas.", icon: MessageCircle },
                   { title: "Experiência tranquila", desc: "Informações sempre à mão, sem precisar procurar em mensagens.", icon: Sparkles }
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5 }}
-                    className="p-4 bg-white rounded-2xl shadow-sm border border-beige/10 group cursor-default"
+                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.4)" }}
+                    className="p-6 bg-white rounded-2xl shadow-sm border border-beige/10 group cursor-default transition-all"
                   >
-                    <div className="w-8 h-8 rounded-full bg-[#F7F3EA] flex items-center justify-center mb-3 group-hover:bg-gold transition-colors">
-                      <item.icon className="w-4 h-4 text-gold group-hover:text-white transition-colors" />
+                    <div className="w-10 h-10 rounded-full bg-[#F7F3EA] flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
+                      <item.icon className="w-5 h-5 text-gold group-hover:text-white transition-colors" />
                     </div>
-                    <h4 className="font-serif text-dark-brown text-base mb-1">{item.title}</h4>
-                    <p className="text-xs text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
+                    <h4 className="font-serif text-dark-brown text-lg mb-2">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
+
 
               
               <p className="mt-8 text-sm italic text-dark-brown/60 font-serif">
