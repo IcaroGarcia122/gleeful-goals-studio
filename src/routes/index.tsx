@@ -51,49 +51,50 @@ function Index() {
                 CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
               </span>
             </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight"
-          >
-            Conecte-se com<br />o que realmente<br />
-            <motion.span 
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.8 }}
-              style={{ fontFamily: "'Alex Brush', cursive" }}
-              className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
+              transition={{ duration: 1, delay: 0.2 }}
+              className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight text-white"
             >
-              importa.
-            </motion.span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed"
-          >
-            Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
-          </motion.p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <motion.a
-              href={content.airbnb_url}
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
+              Conecte-se com<br />o que realmente<br />
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8 }}
+                style={{ fontFamily: "'Alex Brush', cursive" }}
+                className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
+              >
+                importa.
+              </motion.span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed text-white"
             >
-              RESERVE NO AIRBNB
-            </motion.a>
-            <a
-              href="#sobre"
-              className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
-            >
-              CONHEÇA O CHALÉ ↓
-            </a>
+              Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
+            </motion.p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <motion.a
+                href={content.airbnb_url}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
+              >
+                RESERVE NO AIRBNB
+              </motion.a>
+              <a
+                href="#sobre"
+                className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
+              >
+                CONHEÇA O CHALÉ ↓
+              </a>
+            </div>
           </div>
         </div>
       </section>
