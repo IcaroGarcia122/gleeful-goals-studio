@@ -110,9 +110,14 @@ function Index() {
       </section>
 
       {/* Sobre o Chalé */}
-      <section id="sobre" className="py-24 px-4 bg-background">
+      <section id="sobre" className="py-24 px-4 bg-background overflow-hidden">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-8">
               {content.about_title.split("\n").map((line, i) => (
                 <span key={i} className="block">{line}</span>
@@ -124,11 +129,17 @@ function Index() {
             <p className="text-lg text-muted-foreground font-sans">
               {content.about_text_2}
             </p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img src={banheiraAsset.url} alt="Banheira" className="aspect-square object-cover rounded-sm" />
-            <img src={salaAsset.url} alt="Sala" className="aspect-square object-cover rounded-sm" />
-          </div>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-2 gap-4"
+          >
+            <img src={banheiraAsset.url} alt="Banheira" className="aspect-square object-cover rounded-sm shadow-xl hover:scale-105 transition-transform duration-500" />
+            <img src={salaAsset.url} alt="Sala" className="aspect-square object-cover rounded-sm shadow-xl hover:scale-105 transition-transform duration-500" />
+          </motion.div>
         </div>
       </section>
       {/* Galeria / Destaques (Estilo Polaroid) */}
@@ -232,20 +243,27 @@ function Index() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-soft-black/60" />
-        <div className="relative z-10 max-w-3xl">
-          <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">
-            Viva momentos únicos neste paraíso em Florianópolis.
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="relative z-10 max-w-4xl px-4"
+        >
+          <h2 className="text-4xl md:text-7xl font-serif mb-8 leading-tight">
+            Viva momentos únicos neste paraíso em <span className="italic text-gold">Florianópolis.</span>
           </h2>
-          <p className="text-lg md:text-xl font-sans mb-10 opacity-90">
+          <p className="text-lg md:text-xl font-sans mb-12 opacity-90 max-w-2xl mx-auto font-light">
             Garanta sua data e aproveite uma experiência exclusiva em meio à natureza.
           </p>
-          <a
+          <motion.a
             href={content.airbnb_url}
-            className="bg-gold text-white px-10 py-5 rounded-sm font-sans text-lg hover:bg-gold/90 transition-all shadow-xl hover:-translate-y-1"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block bg-gold text-white px-12 py-5 rounded-sm font-sans text-lg hover:bg-gold/90 transition-all shadow-2xl"
           >
             RESERVE AGORA NO AIRBNB
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </section>
       
       {/* Botão Fixo Mobile */}
