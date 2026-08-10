@@ -194,6 +194,10 @@ function Index() {
           RESERVAR NO AIRBNB
         </a>
       </div>
+      {/* Footer minimalista */}
+      <footer className="bg-dark-brown py-12 px-4 text-warm-white/40 text-center text-xs uppercase tracking-widest font-sans">
+        <p>&copy; {new Date().getFullYear()} Chalé A-Frame Florianópolis. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 }
