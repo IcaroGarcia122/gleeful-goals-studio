@@ -148,6 +148,9 @@ function Index() {
                 <div className="pt-8">
                   <a
                     href={content.airbnb_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackClick.mutate({ source: 'about_section' })}
                     className="inline-flex items-center gap-2 text-gold font-sans font-bold uppercase tracking-widest hover:gap-4 transition-all"
                   >
                     Ver disponibilidade <span className="text-xl">→</span>
