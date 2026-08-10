@@ -387,11 +387,14 @@ function Index() {
           </p>
           <motion.a
             href={content.airbnb_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick.mutate({ source: 'cta_final' })}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-gold text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm hover:bg-gold/90 transition-all shadow-xl"
           >
-            RESERVE AGORA
+            RESERVE AGORA NO AIRBNB
           </motion.a>
         </motion.div>
       </section>
