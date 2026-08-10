@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { getSiteContent } from "@/lib/cms.functions";
+import { getSiteContent, trackAirbnbClick } from "@/lib/cms.functions";
 import { 
   Waves, 
   Mountain, 
@@ -37,6 +37,10 @@ function Index() {
   const { data: content } = useQuery({
     queryKey: ["site-content"],
     queryFn: () => getSiteContent(),
+  });
+
+  const trackClick = useMutation({
+    mutationFn: (data: { source: string }) => trackAirbnbClick({ data })
   });
 
   if (!content) return null;
@@ -98,9 +102,12 @@ function Index() {
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <motion.a
                 href={content.airbnb_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackClick.mutate({ source: 'hero_main' })}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
+                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20 text-center"
               >
                 RESERVE NO AIRBNB
               </motion.a>
@@ -141,6 +148,9 @@ function Index() {
                 <div className="pt-8">
                   <a
                     href={content.airbnb_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackClick.mutate({ source: 'about_section' })}
                     className="inline-flex items-center gap-2 text-gold font-sans font-bold uppercase tracking-widest hover:gap-4 transition-all"
                   >
                     Ver disponibilidade <span className="text-xl">→</span>
@@ -377,11 +387,14 @@ function Index() {
           </p>
           <motion.a
             href={content.airbnb_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackClick.mutate({ source: 'cta_final' })}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-gold text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm hover:bg-gold/90 transition-all shadow-xl"
           >
-            RESERVE AGORA
+            RESERVE AGORA NO AIRBNB
           </motion.a>
         </motion.div>
       </section>
@@ -420,12 +433,12 @@ function Index() {
           <p className="text-[10px] uppercase tracking-widest opacity-30">
             &copy; {new Date().getFullYear()} Chalé A-Frame Florianópolis. Todos os direitos reservados.
           </p>
-          <a 
-            href="/admin" 
+          <Link 
+            to="/admin" 
             className="text-[9px] uppercase tracking-[0.2em] opacity-10 hover:opacity-40 transition-opacity"
           >
             Acesso Restrito
-          </a>
+          </Link>
         </div>
       </footer>
     </div>

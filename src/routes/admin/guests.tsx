@@ -1,14 +1,22 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Card } from '@/components/ui/card'
-import { Users, Mail, Phone, Calendar as CalendarIcon, Tag } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useState } from 'react'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { supabase } from '@/integrations/supabase/client'
-import { useQuery } from '@tanstack/react-query'
+import { toast } from 'sonner'
+import { Users, Mail, Phone, Calendar as CalendarIcon, UserPlus } from 'lucide-react'
 
 export const Route = createFileRoute('/admin/guests')({
   component: GuestsManagement,
 })
 
 function GuestsManagement() {
+  const queryClient = useQueryClient()
+  const [isAdding, setIsAdding] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' })
+
   const { data: guests, isLoading } = useQuery({
     queryKey: ['admin-guests'],
     queryFn: async () => {
@@ -18,6 +26,20 @@ function GuestsManagement() {
     }
   })
 
+  const addGuestMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      const { error } = await supabase.from('guests').insert([data])
+      if (error) throw error
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-guests'] })
+      setIsAdding(false)
+      setFormData({ name: '', email: '', phone: '' })
+      toast.success('Hóspede adicionado com sucesso!')
+    },
+    onError: () => toast.error('Erro ao adicionar hóspede.')
+  })
+
   return (
     <div className="space-y-8">
       <div className="flex justify-between items-center">
@@ -25,7 +47,25 @@ function GuestsManagement() {
           <h2 className="text-3xl font-serif text-[#24170F]">Hóspedes</h2>
           <p className="text-muted-foreground font-sans">Gerenciamento e histórico de hóspedes</p>
         </div>
+        <Button onClick={() => setIsAdding(!isAdding)} className="bg-[#24170F] text-white">
+          <UserPlus className="w-4 h-4 mr-2" /> Novo Hóspede
+        </Button>
       </div>
+
+      {isAdding && (
+        <Card className="p-6 bg-[#F7F3EA]/30 border border-[#DCC9A5]/20">
+          <h3 className="font-serif text-lg mb-4">Cadastrar Novo Hóspede</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Input placeholder="Nome Completo" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+            <Input placeholder="E-mail" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+            <Input placeholder="Telefone" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+          </div>
+          <div className="mt-4 flex gap-2">
+            <Button onClick={() => addGuestMutation.mutate(formData)} disabled={addGuestMutation.isPending} className="bg-gold text-white">Salvar</Button>
+            <Button variant="ghost" onClick={() => setIsAdding(false)}>Cancelar</Button>
+          </div>
+        </Card>
+      )}
 
       <Card className="border-none shadow-sm bg-white overflow-hidden">
         <div className="overflow-x-auto">
@@ -34,45 +74,20 @@ function GuestsManagement() {
               <tr>
                 <th className="px-6 py-4">Hóspede</th>
                 <th className="px-6 py-4">Contato</th>
-                <th className="px-6 py-4">Estadia</th>
                 <th className="px-6 py-4">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-beige/10">
               {isLoading ? (
-                <tr><td colSpan={4} className="px-6 py-12 text-center text-muted-foreground italic font-sans">Carregando hóspedes...</td></tr>
-              ) : guests?.length === 0 ? (
-                <tr><td colSpan={4} className="px-6 py-12 text-center text-muted-foreground italic font-sans">Nenhum hóspede cadastrado.</td></tr>
+                <tr><td colSpan={3} className="px-6 py-12 text-center text-muted-foreground italic font-sans">Carregando hóspedes...</td></tr>
               ) : (
                 guests?.map((guest) => (
                   <tr key={guest.id} className="hover:bg-[#F7F3EA]/30 transition-colors">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
-                          <Users className="w-4 h-4 text-gold" />
-                        </div>
-                        <span className="font-medium text-[#24170F]">{guest.name}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-muted-foreground space-y-1">
-                      <div className="flex items-center gap-2"><Mail className="w-3 h-3" /> {guest.email || '-'}</div>
-                      <div className="flex items-center gap-2"><Phone className="w-3 h-3" /> {guest.phone || '-'}</div>
-                    </td>
+                    <td className="px-6 py-4 font-medium text-[#24170F]">{guest.name}</td>
                     <td className="px-6 py-4 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <CalendarIcon className="w-3 h-3" />
-                        {guest.check_in ? new Date(guest.check_in).toLocaleDateString() : '-'} a {guest.check_out ? new Date(guest.check_out).toLocaleDateString() : '-'}
-                      </div>
+                      {guest.email} • {guest.phone}
                     </td>
-                    <td className="px-6 py-4">
-                      <span className={`px-2 py-1 rounded-full text-[10px] uppercase font-bold tracking-tighter ${
-                        guest.status === 'confirmed' ? 'bg-green-100 text-green-700' : 
-                        guest.status === 'pending' ? 'bg-amber-100 text-amber-700' : 
-                        'bg-gray-100 text-gray-700'
-                      }`}>
-                        {guest.status}
-                      </span>
-                    </td>
+                    <td className="px-6 py-4 text-xs font-bold uppercase text-gold">{guest.status}</td>
                   </tr>
                 ))
               )}
