@@ -34,9 +34,8 @@ function Index() {
             {content.hero_subtitle}
           </span>
           <h1 className="text-5xl md:text-7xl font-serif leading-tight mb-6">
-            {content.hero_title.split("\n").map((line, i) => (
-              <span key={i} className="block">{line}</span>
-            ))}
+            Conecte-se com<br />o que realmente<br />
+            <span className="italic text-gold">importa.</span>
           </h1>
           <p className="text-lg md:text-xl font-sans mb-10 max-w-2xl mx-auto">
             {content.hero_description}
