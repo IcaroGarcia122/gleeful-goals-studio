@@ -2,6 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { getSiteContent } from "@/lib/cms.functions";
+import { 
+  Waves, 
+  Mountain, 
+  UtensilsCrossed, 
+  Wifi, 
+  Car, 
+  Bath, 
+  Tv, 
+  Snowflake,
+  Home,
+  BedDouble,
+  DoorOpen,
+  Maximize2,
+  Palmtree,
+  Users
+} from "lucide-react";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
@@ -284,21 +300,21 @@ function Index() {
               <h3 className="text-2xl font-serif text-dark-brown border-b border-beige/30 pb-4">O Espaço</h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  "Imóvel privativo",
-                  "2 Quartos (1 Suíte)",
-                  "Dois banheiros",
-                  "Vista para o mar",
-                  "Banheira interna",
-                  "Deck externo amplo",
-                  "Balanço suspenso",
-                  "Ambientes integrados",
-                  "Arquitetura em madeira",
-                  "Cercado por natureza",
-                  "Ideal para famílias"
+                  { label: "Imóvel privativo", icon: Home },
+                  { label: "2 Quartos (1 Suíte)", icon: BedDouble },
+                  { label: "Dois banheiros", icon: DoorOpen },
+                  { label: "Vista para o mar", icon: Waves },
+                  { label: "Banheira interna", icon: Bath },
+                  { label: "Deck externo amplo", icon: Maximize2 },
+                  { label: "Balanço suspenso", icon: Palmtree },
+                  { label: "Ambientes integrados", icon: Home },
+                  { label: "Arquitetura em madeira", icon: Home },
+                  { label: "Cercado por natureza", icon: Palmtree },
+                  { label: "Ideal para famílias", icon: Users }
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground font-sans">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    {item}
+                    <item.icon className="w-4 h-4 text-gold/70" />
+                    {item.label}
                   </li>
                 ))}
               </ul>
@@ -313,18 +329,18 @@ function Index() {
               <h3 className="text-2xl font-serif text-dark-brown border-b border-beige/30 pb-4">Comodidades</h3>
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { label: "Vista para o mar", icon: "🌊" },
-                  { label: "Montanhas", icon: "⛰️" },
-                  { label: "Cozinha completa", icon: "🍳" },
-                  { label: "Wi-Fi rápido", icon: "🌐" },
-                  { label: "Estacionamento", icon: "🚗" },
-                  { label: "Hidromassagem", icon: "🛁" },
-                  { label: "Smart TV", icon: "📺" },
-                  { label: "Ar-condicionado", icon: "❄️" }
+                  { label: "Vista para o mar", icon: Waves },
+                  { label: "Montanhas", icon: Mountain },
+                  { label: "Cozinha completa", icon: UtensilsCrossed },
+                  { label: "Wi-Fi rápido", icon: Wifi },
+                  { label: "Estacionamento", icon: Car },
+                  { label: "Hidromassagem", icon: Bath },
+                  { label: "Smart TV", icon: Tv },
+                  { label: "Ar-condicionado", icon: Snowflake }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 bg-white/50 rounded-lg border border-beige/10">
-                    <span className="text-xl">{item.icon}</span>
-                    <span className="text-sm font-sans text-muted-foreground">{item.label}</span>
+                  <div key={i} className="flex items-center gap-4 p-4 bg-white/50 rounded-xl border border-beige/10 hover:border-gold/30 transition-colors group">
+                    <item.icon className="w-6 h-6 text-gold group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-sans text-muted-foreground font-medium">{item.label}</span>
                   </div>
                 ))}
               </div>
