@@ -48,12 +48,35 @@ function Index() {
           transition={{ duration: 2.5, ease: "easeOut" }}
           className="absolute inset-0"
         >
+          {/* Imagem permanente — aparece quando o vídeo termina */}
           <img
             src={heroAsset.url}
             alt="Chalé A-frame"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-soft-black/40" />
+
+          {/* Vídeo de fundo — reproduz uma vez e depois some */}
+          <AnimatePresence>
+            {!videoEnded && (
+              <motion.video
+                key="hero-video"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                onEnded={() => setVideoEnded(true)}
+                className="absolute inset-0 w-full h-full object-cover z-[1]"
+              >
+                <source src={heroVideoAsset.url} type="video/mp4" />
+              </motion.video>
+            )}
+          </AnimatePresence>
+
+          <div className="absolute inset-0 bg-soft-black/40 z-[2]" />
         </motion.div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
