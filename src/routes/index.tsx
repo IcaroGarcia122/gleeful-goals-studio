@@ -11,6 +11,8 @@ import img12Asset from "@/assets/image-12.png.asset.json";
 import img13Asset from "@/assets/image-13.png.asset.json";
 import img14Asset from "@/assets/image-14.png.asset.json";
 
+import img15Asset from "@/assets/image-15.png.asset.json";
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -29,12 +31,15 @@ function Index() {
 
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden">
+      <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden perspective-1000">
         <motion.div 
-          style={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2.5, ease: "easeOut" }}
-          className="absolute inset-0"
+          style={{ 
+            scale: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.8]),
+            rotateX: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, 15]),
+            y: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, 100]),
+            opacity: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.5])
+          }}
+          className="absolute inset-0 z-0"
         >
           <img
             src={heroAsset.url}
@@ -158,51 +163,59 @@ function Index() {
         </div>
       </section>
       {/* Galeria / Destaques (Estilo Polaroid) */}
-      <section className="py-24 px-4 bg-dark-brown text-warm-white overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-6xl mx-auto text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-serif mb-4 uppercase tracking-widest">DESTAQUES DO CHALÉ</h2>
-          <div className="w-24 h-px bg-gold mx-auto opacity-50" />
-        </motion.div>
-        
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 px-8">
-          {[
-            { img: salaAsset, title: "Pôr do sol incrível", rotate: -3 },
-            { img: cozinhaAsset, title: "Ambientes integrados", rotate: 2 },
-            { img: banheiraAsset, title: "Banheira para relaxar", rotate: -2 },
-            { img: heroAsset, title: "Conforto e privacidade", rotate: 3 },
-            { img: salaAsset, title: "Deck com balanço", rotate: -1 },
-          ].map((item, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, y: 50, rotate: 0 }}
-              whileInView={{ opacity: 1, y: 0, rotate: item.rotate }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              whileHover={{ 
-                scale: 1.05, 
-                rotate: 0, 
-                zIndex: 10,
-                transition: { duration: 0.3 }
-              }}
-              className="bg-white p-2 pb-8 shadow-2xl cursor-pointer group"
-            >
-              <div className="aspect-[4/5] overflow-hidden">
-                <motion.img 
-                  src={item.img.url} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
-                />
-              </div>
-              <p className="text-dark-brown font-script text-xl text-center mt-4 opacity-80 group-hover:opacity-100 transition-opacity">
-                {item.title}
-              </p>
-            </motion.div>
-          ))}
+      <section className="py-32 px-4 bg-[#24170F] text-[#FFFDF8] overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl md:text-6xl font-serif mb-6 tracking-tight italic">Destaques do Chalé</h2>
+            <div className="w-20 h-0.5 bg-[#C59A55] mx-auto opacity-60" />
+          </motion.div>
+          
+          <div className="relative h-[600px] flex items-center justify-center">
+            {[
+              { img: salaAsset, title: "Pôr do sol incrível", x: -250, y: -50, rotate: -8 },
+              { img: cozinhaAsset, title: "Design Moderno", x: 250, y: 50, rotate: 12 },
+              { img: banheiraAsset, title: "Relaxe na Hidro", x: -180, y: 180, rotate: -5 },
+              { img: heroAsset, title: "Vista Privilegiada", x: 180, y: -180, rotate: 6 },
+              { img: img14Asset, title: "Paz & Natureza", x: 0, y: 0, rotate: 0, priority: true },
+            ].map((item, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, scale: 0.5, x: 0, y: 0 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  scale: item.priority ? 1.1 : 0.9, 
+                  x: item.x, 
+                  y: item.y, 
+                  rotate: item.rotate 
+                }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, type: "spring", stiffness: 50 }}
+                whileHover={{ 
+                  scale: 1.15, 
+                  rotate: 0, 
+                  zIndex: 50,
+                  transition: { duration: 0.3 }
+                }}
+                className="absolute bg-white p-3 pb-12 shadow-2xl cursor-pointer w-64 md:w-80 group"
+              >
+                <div className="aspect-[4/5] overflow-hidden mb-4">
+                  <img 
+                    src={item.img.url} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" 
+                  />
+                </div>
+                <p className="text-dark-brown font-script text-2xl text-center">
+                  {item.title}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -229,17 +242,17 @@ function Index() {
           >
             {[...Array(6)].map((_, idx) => (
               [
-                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível." },
-                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita." },
-                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível." },
-                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa." }
+                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
+                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
+                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
+                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
               ].map((rev, i) => (
                 <div key={`${idx}-${i}`} className="min-w-[300px] bg-white p-6 rounded-lg shadow-sm border border-beige/20 flex flex-col justify-between">
                   <p className="text-sm font-serif italic text-dark-brown/80 mb-4 whitespace-normal">
                     "{rev.text}"
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-beige/30" />
+                    <img src={rev.avatar} alt={rev.author} className="w-8 h-8 rounded-full object-cover" />
                     <div>
                       <p className="text-xs font-bold text-dark-brown">{rev.author}</p>
                       <div className="flex text-[8px] text-gold">★★★★★</div>
@@ -264,7 +277,7 @@ function Index() {
             </p>
           </div>
           <div className="flex-1 w-full aspect-video rounded-sm overflow-hidden shadow-2xl">
-            <img src={heroAsset.url} alt="Vista do Chalé" className="w-full h-full object-cover" />
+            <img src={img15Asset.url} alt="Vista do Chalé" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
