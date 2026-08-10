@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import { getSiteContent } from "@/lib/cms.functions";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
-import heroVideoAsset from "@/assets/hero-video.mp4.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
 import cozinhaAsset from "@/assets/cozinha.png.asset.json";
@@ -14,8 +12,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [videoEnded, setVideoEnded] = useState(false);
-
   const { data: content } = useQuery({
     queryKey: ["site-content"],
     queryFn: () => getSiteContent(),
@@ -48,35 +44,12 @@ function Index() {
           transition={{ duration: 2.5, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          {/* Imagem permanente — aparece quando o vídeo termina */}
           <img
             src={heroAsset.url}
             alt="Chalé A-frame"
             className="w-full h-full object-cover"
           />
-
-          {/* Vídeo de fundo — reproduz uma vez e depois some */}
-          <AnimatePresence>
-            {!videoEnded && (
-              <motion.video
-                key="hero-video"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                autoPlay
-                muted
-                playsInline
-                preload="auto"
-                onEnded={() => setVideoEnded(true)}
-                className="absolute inset-0 w-full h-full object-cover z-[1]"
-              >
-                <source src={heroVideoAsset.url} type="video/mp4" />
-              </motion.video>
-            )}
-          </AnimatePresence>
-
-          <div className="absolute inset-0 bg-soft-black/40 z-[2]" />
+          <div className="absolute inset-0 bg-soft-black/40" />
         </motion.div>
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
