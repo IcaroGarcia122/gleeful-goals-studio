@@ -171,22 +171,22 @@ function Index() {
             <div className="w-16 h-0.5 bg-[#C59A55] mx-auto opacity-60" />
           </motion.div>
           
-          <div className="relative h-[450px] flex items-center justify-center">
+          <div className="relative h-[550px] w-full max-w-4xl mx-auto">
             {[
-              { img: salaAsset, title: "Pôr do sol incrível", x: -250, y: -50, rotate: -8 },
-              { img: cozinhaAsset, title: "Design Moderno", x: 250, y: 50, rotate: 12 },
-              { img: banheiraAsset, title: "Relaxe na Hidro", x: -180, y: 180, rotate: -5 },
-              { img: heroAsset, title: "Vista Privilegiada", x: 180, y: -180, rotate: 6 },
-              { img: img14Asset, title: "Paz & Natureza", x: 0, y: 0, rotate: 0, priority: true },
+              { img: salaAsset, title: "Pôr do sol incrível", x: "-30%", y: "-20%", rotate: -8 },
+              { img: cozinhaAsset, title: "Design Moderno", x: "35%", y: "25%", rotate: 12 },
+              { img: banheiraAsset, title: "Relaxe na Hidro", x: "-25%", y: "30%", rotate: -5 },
+              { img: heroAsset, title: "Vista Privilegiada", x: "30%", y: "-25%", rotate: 6 },
+              { img: img14Asset, title: "Paz & Natureza", x: "0%", y: "0%", rotate: 0, priority: true },
             ].map((item, i) => (
               <motion.div 
                 key={i} 
-                initial={{ opacity: 0, scale: 0.5, x: 0, y: 0 }}
+                initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ 
                   opacity: 1, 
-                  scale: item.priority ? 1.1 : 0.9, 
-                  x: item.x, 
-                  y: item.y, 
+                  scale: item.priority ? 1.05 : 0.85, 
+                  left: `calc(50% + ${item.x})`,
+                  top: `calc(50% + ${item.y})`,
                   rotate: item.rotate 
                 }}
                 viewport={{ once: true }}
@@ -197,16 +197,16 @@ function Index() {
                   zIndex: 50,
                   transition: { duration: 0.3 }
                 }}
-                className="absolute bg-white p-2 pb-8 shadow-2xl cursor-pointer w-44 md:w-52 group"
+                className="absolute -translate-x-1/2 -translate-y-1/2 bg-white p-1.5 pb-6 shadow-2xl cursor-pointer w-40 md:w-48 group border-[0.5px] border-black/5"
               >
-                <div className="aspect-[4/5] overflow-hidden mb-3">
+                <div className="aspect-[4/5] overflow-hidden mb-2">
                   <img 
                     src={item.img.url} 
                     alt={item.title} 
-                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-500" 
+                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500" 
                   />
                 </div>
-                <p className="text-dark-brown font-script text-2xl text-center">
+                <p className="text-dark-brown font-script text-xl text-center leading-none">
                   {item.title}
                 </p>
               </motion.div>
@@ -216,7 +216,7 @@ function Index() {
       </section>
 
       {/* Avaliações */}
-      <section className="py-24 px-4 bg-warm-white">
+      <section className="relative py-24 px-4 bg-warm-white z-20">
         <div className="max-w-6xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 text-gold mb-4">
             <span className="text-2xl font-serif">5,0 / 5</span>
@@ -262,7 +262,7 @@ function Index() {
       </section>
 
       {/* Localização */}
-      <section className="py-24 px-4 bg-background">
+      <section className="relative py-24 px-4 bg-background z-20">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1">
             <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-8 leading-tight">
@@ -279,13 +279,15 @@ function Index() {
       </section>
 
       {/* CTA Final */}
-      <section className="relative py-24 px-4 flex flex-col items-center justify-center text-center text-warm-white">
-        <img
-          src={heroAsset.url}
-          alt="Chalé ao pôr do sol"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-soft-black/70" />
+      <section className="relative py-24 px-4 flex flex-col items-center justify-center text-center text-warm-white z-20">
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <img
+            src={heroAsset.url}
+            alt="Chalé ao pôr do sol"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-soft-black/70" />
+        </div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -318,9 +320,39 @@ function Index() {
           RESERVAR NO AIRBNB
         </a>
       </div>
-      {/* Footer minimalista */}
-      <footer className="bg-dark-brown py-12 px-4 text-warm-white/40 text-center text-xs uppercase tracking-widest font-sans">
-        <p>&copy; {new Date().getFullYear()} Chalé A-Frame Florianópolis. Todos os direitos reservados.</p>
+
+      {/* Footer */}
+      <footer className="relative bg-dark-brown pt-20 pb-12 px-4 text-warm-white z-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+          <div className="text-center md:text-left">
+            <h3 className="text-2xl font-serif mb-6">CHALÉ A-FRAME</h3>
+            <p className="text-sm opacity-60 font-light leading-relaxed max-w-xs mx-auto md:mx-0">
+              Uma experiência boutique em Florianópolis, conectando você com a natureza e o mar em um refúgio exclusivo.
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <h4 className="text-xs uppercase tracking-[0.2em] opacity-40 mb-6">Explorar</h4>
+            <ul className="space-y-4 text-sm font-light">
+              <li><a href="#sobre" className="hover:text-gold transition-colors">O Chalé</a></li>
+              <li><a href="#" className="hover:text-gold transition-colors">Galeria</a></li>
+              <li><a href="#" className="hover:text-gold transition-colors">Localização</a></li>
+              <li><a href={content.airbnb_url} className="hover:text-gold transition-colors">Reservar</a></li>
+            </ul>
+          </div>
+
+          <div className="text-center md:text-right">
+            <h4 className="text-xs uppercase tracking-[0.2em] opacity-40 mb-6">Contato</h4>
+            <p className="text-sm font-light mb-2">Florianópolis, SC - Brasil</p>
+            <p className="text-sm font-light opacity-60">Próximo ao Villa Casarão</p>
+          </div>
+        </div>
+        
+        <div className="pt-8 border-t border-white/5 text-center">
+          <p className="text-[10px] uppercase tracking-widest opacity-30">
+            &copy; {new Date().getFullYear()} Chalé A-Frame Florianópolis. Todos os direitos reservados.
+          </p>
+        </div>
       </footer>
     </div>
   );
