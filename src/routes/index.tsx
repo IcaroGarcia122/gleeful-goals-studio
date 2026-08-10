@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { getSiteContent, trackAirbnbClick } from "@/lib/cms.functions";
@@ -433,12 +433,12 @@ function Index() {
           <p className="text-[10px] uppercase tracking-widest opacity-30">
             &copy; {new Date().getFullYear()} Chalé A-Frame Florianópolis. Todos os direitos reservados.
           </p>
-          <a 
-            href="/admin" 
+          <Link 
+            to="/admin" 
             className="text-[9px] uppercase tracking-[0.2em] opacity-10 hover:opacity-40 transition-opacity"
           >
             Acesso Restrito
-          </a>
+          </Link>
         </div>
       </footer>
     </div>
