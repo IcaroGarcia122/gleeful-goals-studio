@@ -57,7 +57,7 @@ function Analytics() {
             ) : chartData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData}>
-                  <CartGrid strokeDasharray="3 3" vertical={false} stroke="#F7F3EA" />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F7F3EA" />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} />
                   <Tooltip 
