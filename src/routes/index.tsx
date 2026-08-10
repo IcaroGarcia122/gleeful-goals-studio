@@ -16,7 +16,12 @@ import {
   DoorOpen,
   Maximize2,
   Palmtree,
-  Users
+  Users,
+  MessageCircle,
+  Smartphone,
+  Info,
+  Compass,
+  Sparkles
 } from "lucide-react";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
@@ -284,6 +289,164 @@ function Index() {
               ))
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Seção Concierge Virtual */}
+      <section className="relative py-24 bg-[#F7F3EA] z-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
+                Seu guia durante a experiência
+              </span>
+              <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-6 leading-tight">
+                Tudo o que você precisar durante sua estadia, <span className="italic">a poucos toques.</span>
+              </h2>
+              <p className="text-lg text-muted-foreground font-sans mb-8 leading-relaxed max-w-xl">
+                Conheça nosso Concierge Virtual: um atendimento exclusivo pelo WhatsApp para ajudar você a aproveitar melhor a hospedagem e descobrir o melhor da região.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {[
+                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, checkout, comodidades, Wi-Fi e regras da Villa.", icon: Home },
+                  { title: "Onde comer", desc: "Receba recomendações de restaurantes e cafés próximos.", icon: UtensilsCrossed },
+                  { title: "O que fazer", desc: "Descubra praias, trilhas e passeios de acordo com o seu perfil.", icon: Waves },
+                  { title: "Explore a região", desc: "Sugestões personalizadas para conhecer melhor o Sul da Ilha.", icon: Compass },
+                  { title: "Atendimento WhatsApp", desc: "Conversa direta, sem aplicativos novos ou telas complicadas.", icon: MessageCircle },
+                  { title: "Experiência tranquila", desc: "Informações sempre à mão, sem precisar procurar em mensagens.", icon: Sparkles }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    whileHover={{ y: -5 }}
+                    className="p-4 bg-white rounded-2xl shadow-sm border border-beige/10 group cursor-default"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#F7F3EA] flex items-center justify-center mb-3 group-hover:bg-gold transition-colors">
+                      <item.icon className="w-4 h-4 text-gold group-hover:text-white transition-colors" />
+                    </div>
+                    <h4 className="font-serif text-dark-brown text-base mb-1">{item.title}</h4>
+                    <p className="text-xs text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.a
+                href="https://wa.me/5548999999999" // Link fictício
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm shadow-xl"
+              >
+                <MessageCircle className="w-5 h-5" />
+                FALAR COM O CONCIERGE
+              </motion.a>
+              
+              <p className="mt-8 text-sm italic text-dark-brown/60 font-serif">
+                "Você aproveita a viagem. Nós cuidamos dos detalhes."
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              {/* Mockup Smartphone */}
+              <div className="relative w-[300px] h-[600px] bg-[#1a1a1a] rounded-[3rem] border-8 border-[#333] shadow-2xl overflow-hidden">
+                {/* Status Bar */}
+                <div className="absolute top-0 w-full h-6 flex justify-between px-6 pt-1 text-[10px] text-white z-20">
+                  <span>9:41</span>
+                  <div className="flex gap-1">
+                    <Wifi className="w-3 h-3" />
+                    <div className="w-4 h-2 bg-white/30 rounded-sm" />
+                  </div>
+                </div>
+
+                {/* WhatsApp Header */}
+                <div className="bg-[#075e54] pt-8 pb-3 px-4 flex items-center gap-3 shadow-md">
+                  <div className="w-8 h-8 rounded-full bg-[#eee] overflow-hidden">
+                    <img src={heroAsset.url} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h5 className="text-white text-xs font-bold font-sans">Concierge Villa A-Frame</h5>
+                    <span className="text-[9px] text-white/70 font-sans">online</span>
+                  </div>
+                </div>
+
+                {/* Chat Background */}
+                <div className="absolute inset-0 top-[72px] bg-[#e5ddd5] z-0" />
+                
+                {/* Messages */}
+                <div className="relative z-10 p-4 space-y-4 font-sans overflow-y-auto h-[480px]">
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
+                    className="self-end ml-auto bg-[#dcf8c6] p-2 rounded-lg rounded-tr-none text-xs shadow-sm max-w-[80%]"
+                  >
+                    Oi! O que você recomenda para jantar hoje?
+                    <span className="block text-[8px] text-black/40 text-right mt-1">20:00</span>
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 1.5 }}
+                    className="bg-white p-2 rounded-lg rounded-tl-none text-xs shadow-sm max-w-[85%]"
+                  >
+                    Boa noite! 😊 Se vocês quiserem experimentar a gastronomia do Ribeirão da Ilha, posso indicar algumas opções de frutos do mar. Se preferirem algo mais romântico, também posso sugerir lugares especiais para um jantar a dois.
+                    <span className="block text-[8px] text-black/40 text-right mt-1">20:01</span>
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 3 }}
+                    className="self-end ml-auto bg-[#dcf8c6] p-2 rounded-lg rounded-tr-none text-xs shadow-sm max-w-[80%]"
+                  >
+                    E o que podemos fazer amanhã?
+                    <span className="block text-[8px] text-black/40 text-right mt-1">20:05</span>
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 4 }}
+                    className="bg-white p-2 rounded-lg rounded-tl-none text-xs shadow-sm max-w-[85%]"
+                  >
+                    Se vocês gostam de natureza, posso sugerir algumas praias e trilhas do Sul da Ilha. Se preferirem algo mais tranquilo, também posso montar um roteiro para vocês aproveitarem o dia sem pressa.
+                    <span className="block text-[8px] text-black/40 text-right mt-1">20:06</span>
+                  </motion.div>
+                </div>
+
+                {/* Input Bar */}
+                <div className="absolute bottom-4 w-[90%] left-1/2 -translate-x-1/2 bg-white rounded-full py-2 px-4 flex items-center justify-between shadow-lg">
+                  <span className="text-black/30 text-[10px]">Digite uma mensagem...</span>
+                  <div className="w-6 h-6 bg-[#075e54] rounded-full flex items-center justify-center">
+                    <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                      <MessageCircle className="w-3 h-3 text-white" />
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
+              <div className="absolute -z-10 -top-10 -left-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
