@@ -108,6 +108,33 @@ function Index() {
         </div>
       </section>
 
+      {/* Avaliações */}
+      <section className="py-24 px-4 bg-warm-white">
+        <div className="max-w-6xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-2 text-gold mb-4">
+            <span className="text-2xl font-serif">5,0 / 5</span>
+            <div className="flex gap-1">{"★★★★★".split("").map((s, i) => <span key={i}>{s}</span>)}</div>
+          </div>
+          <h2 className="text-4xl font-serif text-dark-brown mb-2">Preferido dos hóspedes</h2>
+          <p className="text-sm uppercase tracking-widest text-muted-foreground">100% das avaliações são 5 estrelas</p>
+        </div>
+        
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white p-8 md:p-12 rounded-sm shadow-sm border border-beige/30 relative">
+            <p className="text-xl md:text-2xl font-serif italic text-dark-brown text-center mb-8">
+              "Tudo simplesmente maravilhoso! O chalé é incrível, tudo muito limpo e bem feito. Estava nublado e mesmo assim o local é lindo demais. Super indico."
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-beige" />
+              <div>
+                <p className="font-sans font-bold text-dark-brown">Alice</p>
+                <div className="flex text-xs text-gold">★★★★★</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Localização */}
       <section className="py-24 px-4 bg-background">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
