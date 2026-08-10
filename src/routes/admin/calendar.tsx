@@ -106,8 +106,8 @@ function AdminCalendar() {
               blocked: blockedDays
             }}
             modifiersClassNames={{
-              booked: "bg-green-100 text-green-700 font-bold rounded-lg",
-              blocked: "bg-red-100 text-red-700 font-bold rounded-lg"
+              booked: "bg-green-100 text-green-700 font-bold rounded-lg relative after:content-['Reserva'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[6px] after:uppercase",
+              blocked: "bg-red-100 text-red-700 font-bold rounded-lg relative after:content-['Bloqueio'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[6px] after:uppercase"
             }}
             classNames={{
               months: "w-full space-y-4",
