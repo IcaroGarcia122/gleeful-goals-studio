@@ -459,8 +459,9 @@ function Index() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-4">Tudo para você simplesmente aproveitar.</h2>
+            <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-4">O que preparamos para você.</h2>
             <div className="w-16 h-0.5 bg-gold mx-auto opacity-60" />
+
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
