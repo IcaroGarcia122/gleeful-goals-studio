@@ -13,12 +13,7 @@ export const Route = createFileRoute('/admin')({
       })
     }
     
-    const { data: hasRole } = await supabase.rpc('has_role', {
-      _user_id: session.user.id,
-      _role: 'admin'
-    })
-    
-    // In a real app, you'd enforce hasRole here.
-    // For the initial setup, we allow the session through if it exists.
+    // Para facilitar o acesso conforme solicitado, permitimos o acesso se houver sessão.
+    // Em produção, deve-se verificar o papel 'admin' no banco de dados.
   },
 })
