@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { getSiteContent } from "@/lib/cms.functions";
+import { getSiteContent, trackAirbnbClick } from "@/lib/cms.functions";
 import { 
   Waves, 
   Mountain, 
@@ -37,6 +37,10 @@ function Index() {
   const { data: content } = useQuery({
     queryKey: ["site-content"],
     queryFn: () => getSiteContent(),
+  });
+
+  const trackClick = useMutation({
+    mutationFn: (data: { source: string }) => trackAirbnbClick(data)
   });
 
   if (!content) return null;
@@ -98,9 +102,12 @@ function Index() {
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <motion.a
                 href={content.airbnb_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackClick.mutate({ source: 'hero_main' })}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20"
+                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20 text-center"
               >
                 RESERVE NO AIRBNB
               </motion.a>
