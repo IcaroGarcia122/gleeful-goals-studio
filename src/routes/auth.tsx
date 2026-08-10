@@ -20,12 +20,16 @@ function AuthPage() {
     setMessage('')
     
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
       if (error) throw error
-      window.location.href = '/admin'
+      if (data.session) {
+        // Force refresh session in memory
+        await supabase.auth.setSession(data.session)
+      }
+      window.location.href = '/admin/dashboard'
     } catch (error: any) {
       setMessage(error.message || 'Erro ao entrar')
     } finally {
