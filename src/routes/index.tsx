@@ -16,7 +16,12 @@ import {
   DoorOpen,
   Maximize2,
   Palmtree,
-  Users
+  Users,
+  MessageCircle,
+  Smartphone,
+  Info,
+  Compass,
+  Sparkles
 } from "lucide-react";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
