@@ -285,6 +285,7 @@ function Index() {
             RESERVE AGORA
           </motion.a>
         </motion.div>
+      </section>
       
       {/* Botão Fixo Mobile */}
       <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
