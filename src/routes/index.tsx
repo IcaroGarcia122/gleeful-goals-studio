@@ -40,15 +40,17 @@ function Index() {
         <div className="absolute inset-0 bg-soft-black/40" />
         
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <span className="text-xs md:text-sm uppercase tracking-[0.3em] text-gold mb-6 block font-sans font-medium">
-            {content.hero_subtitle}
-          </span>
-          <h1 className="text-5xl md:text-7xl font-serif leading-tight mb-6">
+          <div className="inline-block border border-warm-white/30 px-4 py-1 mb-8">
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warm-white font-sans font-light">
+              CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
+            </span>
+          </div>
+          <h1 className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight">
             Conecte-se com<br />o que realmente<br />
-            <span className="italic text-gold">importa.</span>
+            <span className="italic text-gold font-serif block mt-2">importa.</span>
           </h1>
-          <p className="text-lg md:text-xl font-sans mb-10 max-w-2xl mx-auto">
-            {content.hero_description}
+          <p className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed">
+            Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <a
