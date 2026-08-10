@@ -335,17 +335,6 @@ function Index() {
                 ))}
               </div>
 
-              <motion.a
-                href="https://wa.me/5548999999999" // Link fictício
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm shadow-xl"
-              >
-                <MessageCircle className="w-5 h-5" />
-                FALAR COM O CONCIERGE
-              </motion.a>
               
               <p className="mt-8 text-sm italic text-dark-brown/60 font-serif">
                 "Você aproveita a viagem. Nós cuidamos dos detalhes."
