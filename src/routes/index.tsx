@@ -285,15 +285,6 @@ function Index() {
             RESERVE AGORA
           </motion.a>
         </motion.div>
-      </section>
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gold text-white px-12 py-5 rounded-sm font-sans text-lg hover:bg-gold/90 transition-all shadow-2xl"
-          >
-            RESERVE AGORA NO AIRBNB
-          </motion.a>
-        </motion.div>
-      </section>
       
       {/* Botão Fixo Mobile */}
       <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
