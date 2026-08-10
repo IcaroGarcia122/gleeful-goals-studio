@@ -257,27 +257,35 @@ function Index() {
       </section>
 
       {/* CTA Final */}
-      <section className="relative py-32 px-4 flex flex-col items-center justify-center text-center text-warm-white">
+      <section className="relative py-24 px-4 flex flex-col items-center justify-center text-center text-warm-white">
         <img
           src={heroAsset.url}
           alt="Chalé ao pôr do sol"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-soft-black/60" />
+        <div className="absolute inset-0 bg-soft-black/70" />
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative z-10 max-w-4xl px-4"
+          className="relative z-10 max-w-2xl px-4"
         >
-          <h2 className="text-4xl md:text-7xl font-serif mb-8 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
             Viva momentos únicos neste paraíso em <span className="italic text-gold">Florianópolis.</span>
           </h2>
-          <p className="text-lg md:text-xl font-sans mb-12 opacity-90 max-w-2xl mx-auto font-light">
+          <p className="text-base font-sans mb-8 opacity-80 max-w-lg mx-auto font-light leading-relaxed">
             Garanta sua data e aproveite uma experiência exclusiva em meio à natureza.
           </p>
           <motion.a
             href={content.airbnb_url}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block bg-gold text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm hover:bg-gold/90 transition-all shadow-xl"
+          >
+            RESERVE AGORA
+          </motion.a>
+        </motion.div>
+      </section>
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-gold text-white px-12 py-5 rounded-sm font-sans text-lg hover:bg-gold/90 transition-all shadow-2xl"
