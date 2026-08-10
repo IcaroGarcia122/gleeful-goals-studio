@@ -32,12 +32,12 @@ function AdminCalendar() {
   const { data: blockedDates, isLoading: loadingBlocks } = useQuery({
     queryKey: ['blocked-dates'],
     queryFn: async () => {
-      const { data, error } = await supabase.from('guests').select('*').eq('status', 'cancelled').order('check_in')
-      // Note: In a real app, I'd use a dedicated 'blocked_dates' table. 
-      // For now, I'll filter for status 'cancelled' or just show the ones we add as 'blocked'
-      const { data: all, error: err } = await supabase.from('guests').select('*').order('created_at')
-      if (err) throw err
-      return all.filter(g => g.notes?.includes('[BLOQUEIO]'))
+      const { data, error } = await supabase
+        .from('guests')
+        .select('*')
+        .order('created_at', { ascending: false })
+      if (error) throw error
+      return data.filter(g => g.notes?.includes('[BLOQUEIO]'))
     }
   })
 
@@ -106,8 +106,8 @@ function AdminCalendar() {
               blocked: blockedDays
             }}
             modifiersClassNames={{
-              booked: "bg-green-100 text-green-700 font-bold rounded-lg",
-              blocked: "bg-red-100 text-red-700 font-bold rounded-lg"
+              booked: "bg-green-100 text-green-700 font-bold rounded-lg relative after:content-['Reserva'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[6px] after:uppercase",
+              blocked: "bg-red-100 text-red-700 font-bold rounded-lg relative after:content-['Bloqueio'] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:text-[6px] after:uppercase"
             }}
             classNames={{
               months: "w-full space-y-4",
@@ -161,7 +161,7 @@ function AdminCalendar() {
                blockedDates?.length === 0 ? <p className="text-xs italic text-muted-foreground">Nenhuma data bloqueada.</p> :
                blockedDates?.map(block => (
                 <div key={block.id} className="flex items-center justify-between p-2 rounded bg-red-50 text-xs">
-                  <span>{new Date(block.check_in!).toLocaleDateString('pt-BR')} - {block.notes?.replace('[BLOQUEIO] ', '') || 'Bloqueado'}</span>
+                  <span>{block.check_in ? new Date(block.check_in).toLocaleDateString('pt-BR') : 'Data Indefinida'} - {block.notes?.replace('[BLOQUEIO] ', '') || 'Bloqueado'}</span>
                   <button onClick={() => deleteBlock.mutate(block.id)} className="text-red-500 hover:text-red-700">
                     <Trash2 className="w-3 h-3" />
                   </button>
