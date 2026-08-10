@@ -16,7 +16,6 @@ function AdminLayout() {
 
   const menuItems = [
     { label: 'Dashboard', icon: LayoutDashboard, to: '/admin/dashboard' },
-    { label: 'Calendário', icon: Calendar, to: '/admin/calendar' },
     { label: 'Reservas', icon: Users, to: '/admin/reservations' },
     { label: 'Hóspedes', icon: Users, to: '/admin/guests' },
     { label: 'Informações', icon: Info, to: '/admin/content' },

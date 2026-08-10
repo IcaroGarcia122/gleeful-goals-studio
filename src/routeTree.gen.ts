@@ -14,7 +14,6 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin/analytics'
-import { Route as AdminCalendarRouteImport } from './routes/admin/calendar'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminGalleryRouteImport } from './routes/admin/gallery'
@@ -46,11 +45,6 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminCalendarRoute = AdminCalendarRouteImport.update({
-  id: '/calendar',
-  path: '/calendar',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const AdminContentRoute = AdminContentRouteImport.update({
@@ -94,7 +88,6 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/calendar': typeof AdminCalendarRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/gallery': typeof AdminGalleryRoute
@@ -108,7 +101,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/calendar': typeof AdminCalendarRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/gallery': typeof AdminGalleryRoute
@@ -124,7 +116,6 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/calendar': typeof AdminCalendarRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/gallery': typeof AdminGalleryRoute
@@ -141,7 +132,6 @@ export interface FileRouteTypes {
     | '/admin'
     | '/auth'
     | '/admin/analytics'
-    | '/admin/calendar'
     | '/admin/content'
     | '/admin/dashboard'
     | '/admin/gallery'
@@ -155,7 +145,6 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/admin/analytics'
-    | '/admin/calendar'
     | '/admin/content'
     | '/admin/dashboard'
     | '/admin/gallery'
@@ -170,7 +159,6 @@ export interface FileRouteTypes {
     | '/admin'
     | '/auth'
     | '/admin/analytics'
-    | '/admin/calendar'
     | '/admin/content'
     | '/admin/dashboard'
     | '/admin/gallery'
@@ -222,13 +210,6 @@ declare module '@tanstack/react-router' {
       path: '/analytics'
       fullPath: '/admin/analytics'
       preLoaderRoute: typeof AdminAnalyticsRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/calendar': {
-      id: '/admin/calendar'
-      path: '/calendar'
-      fullPath: '/admin/calendar'
-      preLoaderRoute: typeof AdminCalendarRouteImport
       parentRoute: typeof AdminRouteRoute
     }
     '/admin/content': {
@@ -285,7 +266,6 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
-  AdminCalendarRoute: typeof AdminCalendarRoute
   AdminContentRoute: typeof AdminContentRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminGalleryRoute: typeof AdminGalleryRoute
@@ -298,7 +278,6 @@ interface AdminRouteRouteChildren {
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
-  AdminCalendarRoute: AdminCalendarRoute,
   AdminContentRoute: AdminContentRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminGalleryRoute: AdminGalleryRoute,
