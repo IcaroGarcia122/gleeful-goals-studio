@@ -34,12 +34,12 @@ function Index() {
       <section className="relative h-screen flex flex-col items-center justify-center text-warm-white overflow-hidden perspective-1000">
         <motion.div 
           style={{ 
-            scale: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.8]),
-            rotateX: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, 15]),
-            y: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, 100]),
-            opacity: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.5])
+            scale: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.85]),
+            rotateX: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, 20]),
+            y: useTransform(useScroll().scrollYProgress, [0, 0.2], [0, -150]),
+            opacity: useTransform(useScroll().scrollYProgress, [0, 0.2], [1, 0.4])
           }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 origin-bottom"
         >
           <img
             src={heroAsset.url}
@@ -196,14 +196,14 @@ function Index() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, type: "spring", stiffness: 50 }}
                 whileHover={{ 
-                  scale: 1.15, 
+                  scale: 1.1, 
                   rotate: 0, 
                   zIndex: 50,
                   transition: { duration: 0.3 }
                 }}
-                className="absolute bg-white p-3 pb-12 shadow-2xl cursor-pointer w-64 md:w-80 group"
+                className="absolute bg-white p-2 pb-8 shadow-2xl cursor-pointer w-48 md:w-56 group"
               >
-                <div className="aspect-[4/5] overflow-hidden mb-4">
+                <div className="aspect-[4/5] overflow-hidden mb-3">
                   <img 
                     src={item.img.url} 
                     alt={item.title} 
