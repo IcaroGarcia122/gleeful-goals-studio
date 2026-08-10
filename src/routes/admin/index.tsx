@@ -4,7 +4,7 @@ import { Link, Outlet } from '@tanstack/react-router'
 import { supabase } from '@/integrations/supabase/client'
 import { Button } from '@/components/ui/button'
 
-export const Route = createFileRoute('/admin')({
+export const Route = createFileRoute('/admin/')({
   component: AdminLayout,
 })
 

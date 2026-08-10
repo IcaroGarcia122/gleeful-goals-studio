@@ -4,7 +4,7 @@ import { getDashboardStats } from '@/lib/cms.functions'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { MousePointer2, Users, TrendingUp, Calendar } from 'lucide-react'
 
-export const Route = createFileRoute('/admin/')({
+export const Route = createFileRoute('/admin/dashboard')({
   component: Dashboard,
 })
 
