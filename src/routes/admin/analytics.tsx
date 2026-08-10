@@ -1,77 +1,92 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Card } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useQuery } from '@tanstack/react-query'
+import { supabase } from '@/integrations/supabase/client'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts'
-import { MousePointer2, Users, Eye, Clock } from 'lucide-react'
+import { MousePointer2, Users, TrendingUp, Smartphone, Monitor, Loader2 } from 'lucide-react'
 
 export const Route = createFileRoute('/admin/analytics')({
-  component: AnalyticsPage,
+  component: Analytics,
 })
 
-const data = [
-  { name: 'Seg', visitas: 400, cliques: 24 },
-  { name: 'Ter', visitas: 300, cliques: 18 },
-  { name: 'Qua', visitas: 600, cliques: 45 },
-  { name: 'Qui', visitas: 800, cliques: 62 },
-  { name: 'Sex', visitas: 500, cliques: 35 },
-  { name: 'Sáb', visitas: 900, cliques: 88 },
-  { name: 'Dom', visitas: 700, cliques: 54 },
-]
+function Analytics() {
+  const { data: clickData, isLoading: loadingClicks } = useQuery({
+    queryKey: ['analytics-clicks'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('airbnb_clicks')
+        .select('created_at, device')
+        .order('created_at', { ascending: true })
+      if (error) throw error
+      return data
+    }
+  })
 
-function AnalyticsPage() {
+  // Process data for charts
+  const clicksByDay = clickData?.reduce((acc: any, click) => {
+    const day = new Date(click.created_at!).toLocaleDateString('pt-BR', { weekday: 'short' })
+    acc[day] = (acc[day] || 0) + 1
+    return acc
+  }, {})
+
+  const chartData = Object.keys(clicksByDay || {}).map(day => ({
+    name: day,
+    cliques: clicksByDay[day]
+  }))
+
+  const deviceData = [
+    { name: 'Mobile', value: clickData?.filter(c => c.device === 'mobile').length || 0, icon: Smartphone },
+    { name: 'Desktop', value: clickData?.filter(c => c.device === 'web' || c.device === 'desktop').length || 0, icon: Monitor },
+  ]
+
   return (
     <div className="space-y-8">
       <div>
         <h2 className="text-3xl font-serif text-[#24170F]">Analytics</h2>
-        <p className="text-muted-foreground font-sans">Acompanhe o desempenho da sua landing page</p>
+        <p className="text-muted-foreground font-sans">Desempenho da sua landing page</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          { label: 'Visitantes Únicos', value: '4.2k', icon: Users },
-          { label: 'Visualizações', value: '12.8k', icon: Eye },
-          { label: 'Cliques Airbnb', value: '326', icon: MousePointer2 },
-          { label: 'Tempo Médio', value: '2m 14s', icon: Clock },
-        ].map((stat) => (
-          <Card key={stat.label} className="p-6 border-none shadow-sm bg-white flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-[#F7F3EA] flex items-center justify-center">
-              <stat.icon className="w-6 h-6 text-[#C59A55]" />
-            </div>
-            <div>
-              <p className="text-xs font-sans text-muted-foreground uppercase tracking-widest">{stat.label}</p>
-              <p className="text-2xl font-bold text-[#24170F]">{stat.value}</p>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="p-6 border-none shadow-sm bg-white">
-          <h3 className="text-lg font-serif mb-6 text-[#24170F]">Acessos por Dia</h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                <YAxis axisLine={false} tickLine={false} />
-                <Tooltip />
-                <Bar dataKey="visitas" fill="#C59A55" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <Card className="lg:col-span-2 border-none shadow-sm bg-white p-6">
+          <CardHeader className="px-0 pt-0">
+            <CardTitle className="text-lg font-serif text-[#24170F]">Cliques no Airbnb (Últimos Dias)</CardTitle>
+          </CardHeader>
+          <div className="h-[300px] w-full mt-4">
+            {loadingClicks ? (
+              <div className="flex items-center justify-center h-full"><Loader2 className="animate-spin text-gold" /></div>
+            ) : chartData.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData}>
+                  <CartGrid strokeDasharray="3 3" vertical={false} stroke="#F7F3EA" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#888' }} />
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                    cursor={{ fill: '#F7F3EA' }}
+                  />
+                  <Bar dataKey="cliques" fill="#C59A55" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="flex items-center justify-center h-full text-muted-foreground italic">Sem dados suficientes.</div>
+            )}
           </div>
         </Card>
 
-        <Card className="p-6 border-none shadow-sm bg-white">
-          <h3 className="text-lg font-serif mb-6 text-[#24170F]">Conversão (Cliques)</h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                <YAxis axisLine={false} tickLine={false} />
-                <Tooltip />
-                <Line type="monotone" dataKey="cliques" stroke="#24170F" strokeWidth={2} dot={{ fill: '#24170F' }} />
-              </LineChart>
-            </ResponsiveContainer>
+        <Card className="border-none shadow-sm bg-white p-6">
+          <CardHeader className="px-0 pt-0">
+            <CardTitle className="text-lg font-serif text-[#24170F]">Dispositivos</CardTitle>
+          </CardHeader>
+          <div className="space-y-6 mt-6">
+            {deviceData.map((device) => (
+              <div key={device.name} className="flex items-center justify-between p-4 rounded-xl bg-[#F7F3EA]/30 border border-[#DCC9A5]/10">
+                <div className="flex items-center gap-3">
+                  <device.icon className="w-5 h-5 text-gold" />
+                  <span className="font-sans font-medium text-[#24170F]">{device.name}</span>
+                </div>
+                <span className="text-xl font-bold text-[#24170F]">{device.value}</span>
+              </div>
+            ))}
           </div>
         </Card>
       </div>
