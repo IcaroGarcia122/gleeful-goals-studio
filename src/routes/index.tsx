@@ -347,7 +347,7 @@ function Index() {
             </motion.div>
           </div>
           
-          <div className="mt-20 rounded-2xl overflow-hidden shadow-2xl aspect-[21/9] hidden md:block">
+          <div className="mt-20 rounded-2xl overflow-hidden shadow-2xl aspect-[21/9] block md:hidden">
             <img src={img15Asset.url} alt="Vista Panorâmica" className="w-full h-full object-cover" />
           </div>
         </div>
