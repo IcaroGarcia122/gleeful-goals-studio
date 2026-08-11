@@ -188,12 +188,12 @@ function Index() {
                 rel="noopener noreferrer"
                 onClick={() => trackClick.mutate({ source: 'about_section' })}
                 whileHover={{ gap: "2rem" }}
-                className="inline-flex items-center gap-4 group"
+                className="inline-flex items-center gap-4 group w-full md:w-auto justify-center md:justify-start"
               >
-                <div className="w-14 h-14 rounded-full border border-gold flex items-center justify-center transition-all group-hover:bg-gold">
+                <div className="w-14 h-14 rounded-full border border-gold flex items-center justify-center transition-all group-hover:bg-gold shrink-0">
                   <ArrowRight className="w-6 h-6 text-gold group-hover:text-white transition-colors" />
                 </div>
-                <span className="text-gold font-sans font-bold uppercase tracking-[0.2em] text-sm">Ver disponibilidade completa</span>
+                <span className="text-gold font-sans font-bold uppercase tracking-[0.2em] text-sm text-center md:text-left">Ver disponibilidade completa</span>
               </motion.a>
             </motion.div>
 
