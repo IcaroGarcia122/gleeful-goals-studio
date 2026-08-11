@@ -357,14 +357,15 @@ function Index() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="relative flex justify-center lg:justify-end"
+              transition={{ duration: 1, delay: 0.2 }}
+              className="relative flex justify-center lg:justify-end lg:pr-12 lg:scale-110 xl:scale-125"
             >
               {/* Mockup Smartphone Premium */}
-              <div className="relative w-[310px] h-[630px] bg-[#121212] rounded-[3.5rem] border-[10px] border-[#222] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10">
+              <div className="relative w-[310px] h-[630px] bg-[#121212] rounded-[3.5rem] border-[10px] border-[#222] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10 scale-90 md:scale-100">
+
                 {/* Speaker & Sensor */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#222] rounded-b-2xl z-30 flex items-center justify-center">
                   <div className="w-8 h-1 bg-[#333] rounded-full" />
