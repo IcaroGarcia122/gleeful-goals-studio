@@ -136,41 +136,62 @@ function Index() {
         </div>
       </section>
 
-      {/* Sobre o Chalé */}
-      <section id="sobre" className="relative py-24 bg-background z-20 shadow-[0_-20px_80px_rgba(0,0,0,0.5)]">
+      {/* Sobre o Chalé - Versão Profissionalizada */}
+      <section id="sobre" className="relative py-32 bg-[#FBF9F4] z-20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="order-2 md:order-1"
+              className="lg:w-1/2"
             >
-              <h2 className="text-4xl md:text-6xl font-serif text-dark-brown mb-8 leading-tight">
+              <div className="inline-flex items-center gap-4 text-gold mb-6">
+                <div className="w-12 h-[1px] bg-gold" />
+                <span className="text-xs uppercase tracking-[0.3em] font-bold">O Refúgio</span>
+              </div>
+              
+              <h2 className="text-5xl md:text-7xl font-serif text-dark-brown mb-10 leading-[1.1] tracking-tight">
                 {content.about_title.split("\n").map((line, i) => (
                   <span key={i} className="block">{line}</span>
                 ))}
               </h2>
-              <div className="space-y-6 max-w-md">
-                <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+              
+              <div className="space-y-8 mb-12">
+                <p className="text-xl text-muted-foreground font-sans leading-relaxed font-light">
                   {content.about_text_1}
                 </p>
-                <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+                
+                <div className="grid grid-cols-2 gap-8 border-y border-beige/30 py-10">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-3xl font-serif text-dark-brown italic">2 Quartos</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground">Conforto absoluto</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-3xl font-serif text-dark-brown italic">Vista Mar</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground">Horizonte infinito</span>
+                  </div>
+                </div>
+
+                <p className="text-lg text-muted-foreground/80 font-sans leading-relaxed">
                   {content.about_text_2}
                 </p>
-                <div className="pt-8">
-                  <a
-                    href={content.airbnb_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackClick.mutate({ source: 'about_section' })}
-                    className="inline-flex items-center gap-2 text-gold font-sans font-bold uppercase tracking-widest hover:gap-4 transition-all"
-                  >
-                    Ver disponibilidade <span className="text-xl">→</span>
-                  </a>
-                </div>
               </div>
+
+              <motion.a
+                href={content.airbnb_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackClick.mutate({ source: 'about_section' })}
+                whileHover={{ gap: "2rem" }}
+                className="inline-flex items-center gap-4 group"
+              >
+                <div className="w-14 h-14 rounded-full border border-gold flex items-center justify-center transition-all group-hover:bg-gold">
+                  <ArrowRight className="w-6 h-6 text-gold group-hover:text-white transition-colors" />
+                </div>
+                <span className="text-gold font-sans font-bold uppercase tracking-[0.2em] text-sm">Ver disponibilidade completa</span>
+              </motion.a>
             </motion.div>
 
             <motion.div 
@@ -178,21 +199,36 @@ function Index() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="order-1 md:order-2 grid grid-cols-2 gap-4"
+              className="lg:w-1/2 relative"
             >
-              <div className="col-span-2 aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] aspect-[4/5]">
                 <img src={img14Asset.url} alt="Vista principal" className="w-full h-full object-cover" />
               </div>
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <img src={img12Asset.url} alt="Sala de estar" className="w-full h-full object-cover" />
-              </div>
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <img src={img13Asset.url} alt="Cozinha e escada" className="w-full h-full object-cover" />
-              </div>
+              
+              {/* Floating Element */}
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-12 -left-12 z-20 bg-white p-6 rounded-2xl shadow-xl max-w-[240px] hidden md:block"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                    <Star className="w-4 h-4 text-gold" />
+                  </div>
+                  <span className="text-sm font-serif font-bold text-dark-brown">Experiência 5 Estrelas</span>
+                </div>
+                <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
+                  "Um lugar que redefine o conceito de paz e exclusividade."
+                </p>
+              </motion.div>
+              
+              {/* Abstract Shape Decor */}
+              <div className="absolute -top-12 -right-12 w-64 h-64 border border-gold/10 rounded-full -z-0" />
             </motion.div>
           </div>
         </div>
       </section>
+
       {/* Galeria / Destaques (Design Editorial de Luxo) */}
       <section className="relative py-32 bg-[#100D0A] z-20 overflow-hidden">
         {/* Background Elements */}
