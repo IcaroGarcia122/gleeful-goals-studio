@@ -120,12 +120,17 @@ function Index() {
               >
                 RESERVE NO AIRBNB
               </motion.a>
-              <a
+              <motion.a
                 href="#sobre"
-                className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="group relative px-8 py-4 overflow-hidden rounded-full border border-gold/30 text-white font-sans transition-all hover:border-gold"
               >
-                CONHEÇA O CHALÉ ↓
-              </a>
+                <span className="relative z-10">CONHEÇA O CHALÉ ↓</span>
+                <div className="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0" />
+              </motion.a>
+
             </div>
           </div>
         </div>
