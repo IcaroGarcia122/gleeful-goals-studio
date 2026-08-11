@@ -14,9 +14,12 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin/analytics'
+import { Route as AdminAutomationsRouteImport } from './routes/admin/automations'
+import { Route as AdminConciergeRouteImport } from './routes/admin/concierge'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminGuestsRouteImport } from './routes/admin/guests'
+import { Route as AdminRecommendationsRouteImport } from './routes/admin/recommendations'
 import { Route as AdminReservationsRouteImport } from './routes/admin/reservations'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminTasksRouteImport } from './routes/admin/tasks'
@@ -46,6 +49,16 @@ const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminAutomationsRoute = AdminAutomationsRouteImport.update({
+  id: '/automations',
+  path: '/automations',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminConciergeRoute = AdminConciergeRouteImport.update({
+  id: '/concierge',
+  path: '/concierge',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminContentRoute = AdminContentRouteImport.update({
   id: '/content',
   path: '/content',
@@ -59,6 +72,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
 const AdminGuestsRoute = AdminGuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminRecommendationsRoute = AdminRecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const AdminReservationsRoute = AdminReservationsRouteImport.update({
@@ -82,9 +100,12 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/automations': typeof AdminAutomationsRoute
+  '/admin/concierge': typeof AdminConciergeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/guests': typeof AdminGuestsRoute
+  '/admin/recommendations': typeof AdminRecommendationsRoute
   '/admin/reservations': typeof AdminReservationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/tasks': typeof AdminTasksRoute
@@ -94,9 +115,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/automations': typeof AdminAutomationsRoute
+  '/admin/concierge': typeof AdminConciergeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/guests': typeof AdminGuestsRoute
+  '/admin/recommendations': typeof AdminRecommendationsRoute
   '/admin/reservations': typeof AdminReservationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/tasks': typeof AdminTasksRoute
@@ -108,9 +132,12 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/automations': typeof AdminAutomationsRoute
+  '/admin/concierge': typeof AdminConciergeRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/guests': typeof AdminGuestsRoute
+  '/admin/recommendations': typeof AdminRecommendationsRoute
   '/admin/reservations': typeof AdminReservationsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/tasks': typeof AdminTasksRoute
@@ -123,9 +150,12 @@ export interface FileRouteTypes {
     | '/admin'
     | '/auth'
     | '/admin/analytics'
+    | '/admin/automations'
+    | '/admin/concierge'
     | '/admin/content'
     | '/admin/dashboard'
     | '/admin/guests'
+    | '/admin/recommendations'
     | '/admin/reservations'
     | '/admin/settings'
     | '/admin/tasks'
@@ -135,9 +165,12 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/admin/analytics'
+    | '/admin/automations'
+    | '/admin/concierge'
     | '/admin/content'
     | '/admin/dashboard'
     | '/admin/guests'
+    | '/admin/recommendations'
     | '/admin/reservations'
     | '/admin/settings'
     | '/admin/tasks'
@@ -148,9 +181,12 @@ export interface FileRouteTypes {
     | '/admin'
     | '/auth'
     | '/admin/analytics'
+    | '/admin/automations'
+    | '/admin/concierge'
     | '/admin/content'
     | '/admin/dashboard'
     | '/admin/guests'
+    | '/admin/recommendations'
     | '/admin/reservations'
     | '/admin/settings'
     | '/admin/tasks'
@@ -200,6 +236,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAnalyticsRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/automations': {
+      id: '/admin/automations'
+      path: '/automations'
+      fullPath: '/admin/automations'
+      preLoaderRoute: typeof AdminAutomationsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/concierge': {
+      id: '/admin/concierge'
+      path: '/concierge'
+      fullPath: '/admin/concierge'
+      preLoaderRoute: typeof AdminConciergeRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/content': {
       id: '/admin/content'
       path: '/content'
@@ -219,6 +269,13 @@ declare module '@tanstack/react-router' {
       path: '/guests'
       fullPath: '/admin/guests'
       preLoaderRoute: typeof AdminGuestsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/recommendations': {
+      id: '/admin/recommendations'
+      path: '/recommendations'
+      fullPath: '/admin/recommendations'
+      preLoaderRoute: typeof AdminRecommendationsRouteImport
       parentRoute: typeof AdminRouteRoute
     }
     '/admin/reservations': {
@@ -247,9 +304,12 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminAutomationsRoute: typeof AdminAutomationsRoute
+  AdminConciergeRoute: typeof AdminConciergeRoute
   AdminContentRoute: typeof AdminContentRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminGuestsRoute: typeof AdminGuestsRoute
+  AdminRecommendationsRoute: typeof AdminRecommendationsRoute
   AdminReservationsRoute: typeof AdminReservationsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminTasksRoute: typeof AdminTasksRoute
@@ -258,9 +318,12 @@ interface AdminRouteRouteChildren {
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminAutomationsRoute: AdminAutomationsRoute,
+  AdminConciergeRoute: AdminConciergeRoute,
   AdminContentRoute: AdminContentRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminGuestsRoute: AdminGuestsRoute,
+  AdminRecommendationsRoute: AdminRecommendationsRoute,
   AdminReservationsRoute: AdminReservationsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminTasksRoute: AdminTasksRoute,
@@ -279,13 +342,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

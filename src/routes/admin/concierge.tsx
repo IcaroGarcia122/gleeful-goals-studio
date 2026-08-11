@@ -36,7 +36,8 @@ function ConciergePage() {
 
   const updateSettingsMutation = useMutation({
     mutationFn: async (newData: any) => {
-      const { error } = await supabase.from('concierge_settings').update(newData).eq('id', settings?.id)
+      if (!settings?.id) return;
+      const { error } = await supabase.from('concierge_settings').update(newData).eq('id', settings.id)
       if (error) throw error
     },
     onSuccess: () => {
