@@ -690,12 +690,15 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackClick.mutate({ source: 'cta_final' })}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(197, 154, 85, 0.3)" }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gold text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm hover:bg-gold/90 transition-all shadow-xl"
+            className="group relative inline-flex items-center gap-4 bg-gold text-white px-12 py-6 rounded-full font-sans font-bold tracking-[0.2em] text-xs md:text-sm overflow-hidden shadow-2xl transition-all"
           >
-            RESERVE AGORA NO AIRBNB
+            <span className="relative z-10">RESERVE AGORA NO AIRBNB</span>
+            <div className="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 opacity-10" />
+            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform" />
           </motion.a>
+
         </motion.div>
       </section>
       
