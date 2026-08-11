@@ -35,6 +35,36 @@ export type Database = {
         }
         Relationships: []
       }
+      concierge_settings: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          name: string | null
+          tone: string | null
+          updated_at: string | null
+          welcome_message: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string | null
+          tone?: string | null
+          updated_at?: string | null
+          welcome_message?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string | null
+          tone?: string | null
+          updated_at?: string | null
+          welcome_message?: string | null
+        }
+        Relationships: []
+      }
       guests: {
         Row: {
           check_in: string | null
@@ -73,6 +103,72 @@ export type Database = {
           num_guests?: number | null
           phone?: string | null
           status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      knowledge_base: {
+        Row: {
+          answer: string
+          category: string
+          created_at: string | null
+          id: string
+          question: string
+          updated_at: string | null
+        }
+        Insert: {
+          answer: string
+          category: string
+          created_at?: string | null
+          id?: string
+          question: string
+          updated_at?: string | null
+        }
+        Update: {
+          answer?: string
+          category?: string
+          created_at?: string | null
+          id?: string
+          question?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      local_recommendations: {
+        Row: {
+          address: string | null
+          category: string
+          created_at: string | null
+          description: string | null
+          google_maps_url: string | null
+          id: string
+          image_url: string | null
+          is_recommended: boolean | null
+          name: string
+          updated_at: string | null
+        }
+        Insert: {
+          address?: string | null
+          category: string
+          created_at?: string | null
+          description?: string | null
+          google_maps_url?: string | null
+          id?: string
+          image_url?: string | null
+          is_recommended?: boolean | null
+          name: string
+          updated_at?: string | null
+        }
+        Update: {
+          address?: string | null
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          google_maps_url?: string | null
+          id?: string
+          image_url?: string | null
+          is_recommended?: boolean | null
+          name?: string
           updated_at?: string | null
         }
         Relationships: []
@@ -155,6 +251,39 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      whatsapp_automations: {
+        Row: {
+          created_at: string | null
+          days_relative: number | null
+          id: string
+          is_active: boolean | null
+          message_template: string | null
+          send_time: string | null
+          type: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          days_relative?: number | null
+          id?: string
+          is_active?: boolean | null
+          message_template?: string | null
+          send_time?: string | null
+          type: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          days_relative?: number | null
+          id?: string
+          is_active?: boolean | null
+          message_template?: string | null
+          send_time?: string | null
+          type?: string
+          updated_at?: string | null
         }
         Relationships: []
       }

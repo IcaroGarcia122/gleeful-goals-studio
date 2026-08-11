@@ -24,6 +24,9 @@ function AdminLayout() {
     { label: 'Informações', icon: Info, to: '/admin/content' },
     { label: 'Analytics', icon: BarChart3, to: '/admin/analytics' },
     { label: 'Organização', icon: CheckSquare, to: '/admin/tasks' },
+    { label: 'Guia', icon: Info, to: '/admin/recommendations' },
+    { label: 'Concierge', icon: Settings, to: '/admin/concierge' },
+    { label: 'Automações', icon: Settings, to: '/admin/automations' },
     { label: 'Configurações', icon: Settings, to: '/admin/settings' },
   ]
 
