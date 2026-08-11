@@ -555,25 +555,33 @@ function Index() {
           >
             {[...Array(6)].map((_, idx) => (
               [
-                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
-                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
-                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
-                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
+                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível, tudo muito limpo e bem feito.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
+                { author: "Bruna", text: "Chalé maravilhoso, com decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
+                { author: "Higor Daniel", text: "O chalé superou as expectativas. A vista para o mar é simplesmente incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
+                { author: "Jakcson", text: "Lugar muito aconchegante, visual espetacular, meio da natureza, vista do mar indescritível.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
               ].map((rev, i) => (
-                <div key={`${idx}-${i}`} className="min-w-[300px] bg-white p-6 rounded-lg shadow-sm border border-beige/20 flex flex-col justify-between">
-                  <p className="text-sm font-serif italic text-dark-brown/80 mb-4 whitespace-normal">
-                    "{rev.text}"
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <img src={rev.avatar} alt={rev.author} className="w-8 h-8 rounded-full object-cover" />
+                <div key={`${idx}-${i}`} className="min-w-[400px] bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-beige/10 flex flex-col justify-between group hover:border-gold/30 transition-all duration-500">
+                  <div>
+                    <div className="flex text-gold mb-6">
+                      {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-gold" />)}
+                    </div>
+                    <p className="text-lg font-serif italic text-dark-brown/90 mb-8 whitespace-normal leading-relaxed">
+                      "{rev.text}"
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-gold to-beige">
+                      <img src={rev.avatar} alt={rev.author} className="w-full h-full rounded-full object-cover border-2 border-white" />
+                    </div>
                     <div>
-                      <p className="text-xs font-bold text-dark-brown">{rev.author}</p>
-                      <div className="flex text-[8px] text-gold">★★★★★</div>
+                      <p className="text-sm font-bold text-dark-brown tracking-tight">{rev.author}</p>
+                      <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Hóspede verificado</p>
                     </div>
                   </div>
                 </div>
               ))
             ))}
+
           </motion.div>
         </div>
       </section>
