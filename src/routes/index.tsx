@@ -21,8 +21,13 @@ import {
   Smartphone,
   Info,
   Compass,
-  Sparkles
+  Sparkles,
+  Heart,
+  Calendar,
+  Star,
+  ArrowRight
 } from "lucide-react";
+
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
@@ -33,6 +38,7 @@ import img13Asset from "@/assets/image-13.png.asset.json";
 import img14Asset from "@/assets/image-14.png.asset.json";
 import quartoAsset from "@/assets/quarto.png.asset.json";
 import img15Asset from "@/assets/image-15.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -110,58 +116,85 @@ function Index() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackClick.mutate({ source: 'hero_main' })}
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
+                whileHover={{ scale: 1.05, y: -5, boxShadow: "0 25px 50px -12px rgba(197, 154, 85, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20 text-center"
+                className="bg-gold text-white px-12 py-6 rounded-full font-sans font-bold tracking-[0.2em] hover:bg-[#d4a85f] transition-all shadow-[0_15px_35px_rgba(197, 154, 85, 0.4)] ring-4 ring-gold/10 text-center text-sm md:text-base"
               >
                 RESERVE NO AIRBNB
               </motion.a>
-              <a
+
+              <motion.a
                 href="#sobre"
-                className="border border-gold text-white px-8 py-4 rounded-sm font-sans hover:bg-white/10 transition-colors"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="group relative px-8 py-4 overflow-hidden rounded-full border border-gold/30 text-white font-sans transition-all hover:border-gold"
               >
-                CONHEÇA O CHALÉ ↓
-              </a>
+                <span className="relative z-10">CONHEÇA O CHALÉ ↓</span>
+                <div className="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0" />
+              </motion.a>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sobre o Chalé */}
-      <section id="sobre" className="relative py-24 bg-background z-20 shadow-[0_-20px_80px_rgba(0,0,0,0.5)]">
+      {/* Sobre o Chalé - Versão Profissionalizada */}
+      <section id="sobre" className="relative py-32 bg-[#FBF9F4] z-20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="order-2 md:order-1"
+              className="lg:w-1/2"
             >
-              <h2 className="text-4xl md:text-6xl font-serif text-dark-brown mb-8 leading-tight">
+              <div className="inline-flex items-center gap-4 text-gold mb-6">
+                <div className="w-12 h-[1px] bg-gold" />
+                <span className="text-xs uppercase tracking-[0.3em] font-bold">O Refúgio</span>
+              </div>
+              
+              <h2 className="text-5xl md:text-7xl font-serif text-dark-brown mb-10 leading-[1.1] tracking-tight">
                 {content.about_title.split("\n").map((line, i) => (
                   <span key={i} className="block">{line}</span>
                 ))}
               </h2>
-              <div className="space-y-6 max-w-md">
-                <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+              
+              <div className="space-y-8 mb-12">
+                <p className="text-xl text-muted-foreground font-sans leading-relaxed font-light">
                   {content.about_text_1}
                 </p>
-                <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+                
+                <div className="grid grid-cols-2 gap-8 border-y border-beige/30 py-10">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-3xl font-serif text-dark-brown italic">2 Quartos</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground">Conforto absoluto</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-3xl font-serif text-dark-brown italic">Vista Mar</span>
+                    <span className="text-xs uppercase tracking-widest text-muted-foreground">Horizonte infinito</span>
+                  </div>
+                </div>
+
+                <p className="text-lg text-muted-foreground/80 font-sans leading-relaxed">
                   {content.about_text_2}
                 </p>
-                <div className="pt-8">
-                  <a
-                    href={content.airbnb_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackClick.mutate({ source: 'about_section' })}
-                    className="inline-flex items-center gap-2 text-gold font-sans font-bold uppercase tracking-widest hover:gap-4 transition-all"
-                  >
-                    Ver disponibilidade <span className="text-xl">→</span>
-                  </a>
-                </div>
               </div>
+
+              <motion.a
+                href={content.airbnb_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackClick.mutate({ source: 'about_section' })}
+                whileHover={{ gap: "2rem" }}
+                className="inline-flex items-center gap-4 group"
+              >
+                <div className="w-14 h-14 rounded-full border border-gold flex items-center justify-center transition-all group-hover:bg-gold">
+                  <ArrowRight className="w-6 h-6 text-gold group-hover:text-white transition-colors" />
+                </div>
+                <span className="text-gold font-sans font-bold uppercase tracking-[0.2em] text-sm">Ver disponibilidade completa</span>
+              </motion.a>
             </motion.div>
 
             <motion.div 
@@ -169,125 +202,156 @@ function Index() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="order-1 md:order-2 grid grid-cols-2 gap-4"
+              className="lg:w-1/2 relative"
             >
-              <div className="col-span-2 aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] aspect-[4/5]">
                 <img src={img14Asset.url} alt="Vista principal" className="w-full h-full object-cover" />
               </div>
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <img src={img12Asset.url} alt="Sala de estar" className="w-full h-full object-cover" />
-              </div>
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <img src={img13Asset.url} alt="Cozinha e escada" className="w-full h-full object-cover" />
-              </div>
+              
+              {/* Floating Element */}
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-12 -left-12 z-20 bg-white p-6 rounded-2xl shadow-xl max-w-[240px] hidden md:block"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                    <Star className="w-4 h-4 text-gold" />
+                  </div>
+                  <span className="text-sm font-serif font-bold text-dark-brown">Experiência 5 Estrelas</span>
+                </div>
+                <p className="text-[11px] text-muted-foreground font-sans leading-relaxed">
+                  "Um lugar que redefine o conceito de paz e exclusividade."
+                </p>
+              </motion.div>
+              
+              {/* Abstract Shape Decor */}
+              <div className="absolute -top-12 -right-12 w-64 h-64 border border-gold/10 rounded-full -z-0" />
             </motion.div>
           </div>
         </div>
       </section>
-      {/* Galeria / Destaques (Novo Design Profissional) */}
-      <section className="relative py-32 px-4 bg-[#17130F] text-[#FFFDF8] overflow-hidden z-20">
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] " />
+
+      {/* Galeria / Destaques (Design Editorial de Luxo) */}
+      <section className="relative py-32 bg-[#100D0A] z-20 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-20">
-            <motion.div 
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5"
+              className="max-w-2xl"
             >
-              <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
-                Galeria Exclusiva
+              <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.4em] mb-6 block">
+                Galeria de Destaques
               </span>
-              <h2 className="text-5xl md:text-7xl font-serif leading-[1.1] mb-6 tracking-tight">
-                Cada detalhe,<br />uma <span className="italic text-gold">descoberta.</span>
+              <h2 className="text-5xl md:text-8xl font-serif text-warm-white leading-[0.95] tracking-tighter">
+                Onde o luxo encontra a <span className="italic text-gold block md:inline">natureza.</span>
               </h2>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="lg:col-span-7 lg:pb-4"
+              className="md:pb-4"
             >
-              <p className="text-lg md:text-xl font-sans font-light text-warm-white/60 max-w-xl leading-relaxed">
-                Ambientes pensados para integrar o conforto contemporâneo à rusticidade da madeira, 
-                moldados pela luz natural e a vista infinita do oceano.
+              <p className="text-warm-white/40 font-sans text-lg max-w-xs leading-relaxed border-l border-gold/30 pl-6">
+                Uma curadoria visual dos espaços que tornam nossa hospedagem um refúgio singular em Florianópolis.
               </p>
             </motion.div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 h-auto md:h-[800px]">
-            {/* Foto principal - Grande destaque */}
+
+          {/* New Interactive Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-6 gap-6 h-auto md:h-[1000px]">
+            {/* Foto 1: A-Frame Exterior - O Impacto Principal */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="md:col-span-3 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-2xl"
+              className="md:col-span-8 md:row-span-4 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={heroAsset.url} 
-                alt="Vista Panorâmica" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <p className="text-gold font-sans font-bold text-xs uppercase tracking-widest mb-2">Destaque</p>
-                <h3 className="text-2xl font-serif text-white">Arquitetura A-Frame</h3>
+              <img src={heroAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" alt="Arquitetura" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+              <div className="absolute bottom-10 left-10 p-2">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "40px" }}
+                  viewport={{ once: true }}
+                  className="h-0.5 bg-gold mb-4" 
+                />
+                <h3 className="text-3xl md:text-4xl font-serif text-white mb-2 tracking-wide">Arquitetura Signature</h3>
+                <p className="text-warm-white/70 font-sans text-sm tracking-widest uppercase">Design A-Frame Exclusivo</p>
               </div>
             </motion.div>
 
-            {/* Foto Vertical */}
+            {/* Foto 2: Quarto - O Conforto Vertical */}
             <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-2xl"
+              className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={quartoAsset.url} 
-                alt="Suíte" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+              <img src={quartoAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Suíte" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-700" />
+              <div className="absolute top-8 right-8">
+                <span className="bg-white/10 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/20">
+                  Suíte Master
+                </span>
+              </div>
             </motion.div>
 
-            {/* Fotos Menores - Horizontal */}
+            {/* Foto 3: Banheira - O Relaxamento */}
             <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="md:col-span-2 relative group overflow-hidden rounded-2xl shadow-xl aspect-video md:aspect-auto"
+              className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={banheiraAsset.url} 
-                alt="Banheira" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
+              <img src={banheiraAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Banheira" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-700" />
+              <div className="absolute bottom-8 left-8">
+                <h4 className="text-xl font-serif text-white italic">Self-Care moments</h4>
+              </div>
             </motion.div>
 
+            {/* Foto 4: Sala - A Integração */}
             <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="md:col-span-2 relative group overflow-hidden rounded-2xl shadow-xl aspect-video md:aspect-auto"
+              className="md:col-span-5 md:row-span-2 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={cozinhaAsset.url} 
-                alt="Cozinha" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
+              <img src={salaAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Living" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
+            </motion.div>
+
+            {/* Foto 5: Cozinha - A Praticidade */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8 }}
+              className="md:col-span-3 md:row-span-2 relative group overflow-hidden rounded-3xl"
+            >
+              <img src={cozinhaAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Gastronomia" />
+              <div className="absolute inset-0 bg-gold/10 group-hover:bg-transparent transition-all duration-700" />
             </motion.div>
           </div>
         </div>
+
+        {/* Floating Accent */}
+        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-gold/5 rounded-full blur-[120px]" />
       </section>
+
 
 
 
@@ -307,29 +371,31 @@ function Index() {
               <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-6 leading-tight">
                 Tudo o que você precisar durante sua estadia, <span className="italic">a poucos toques.</span>
               </h2>
-              <p className="text-lg text-muted-foreground font-sans mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl text-muted-foreground font-sans mb-10 leading-relaxed max-w-xl font-light">
                 Conheça nosso Concierge Virtual: um atendimento exclusivo pelo WhatsApp para ajudar você a aproveitar melhor a hospedagem e descobrir o melhor da região.
               </p>
+
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 {[
-                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, comodidades, Wi-Fi e regras da Villa.", icon: Home },
-                  { title: "Explore a região", desc: "Sugestões personalizadas para conhecer melhor o Sul da Ilha.", icon: Compass },
-                  { title: "Gastronomia Local", desc: "Descubra os melhores sabores de Florianópolis perto de você.", icon: UtensilsCrossed },
-                  { title: "Experiência tranquila", desc: "Informações sempre à mão, sem precisar procurar em mensagens.", icon: Sparkles }
+                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, comodidades e regras.", icon: Home },
+                  { title: "Explore a região", desc: "Sugestões personalizadas do Sul da Ilha.", icon: Compass },
+                  { title: "Gastronomia Local", desc: "Descubra os melhores sabores perto de você.", icon: UtensilsCrossed },
+                  { title: "Check-in Digital", desc: "Processo ágil e informações sempre à mão.", icon: Smartphone }
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.4)" }}
-                    className="p-6 bg-white rounded-2xl shadow-sm border border-beige/10 group cursor-default transition-all"
+                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.4)", boxShadow: "0 20px 40px -15px rgba(197, 154, 85, 0.15)" }}
+                    className="p-8 bg-white rounded-[2rem] shadow-sm border border-beige/10 group cursor-default transition-all"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#F7F3EA] flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
-                      <item.icon className="w-5 h-5 text-gold group-hover:text-white transition-colors" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#F7F3EA] flex items-center justify-center mb-6 group-hover:bg-gold transition-all group-hover:rotate-6">
+                      <item.icon className="w-6 h-6 text-gold group-hover:text-white transition-colors" />
                     </div>
-                    <h4 className="font-serif text-dark-brown text-lg mb-2">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
+                    <h4 className="font-serif text-dark-brown text-xl mb-3">{item.title}</h4>
+                    <p className="text-[13px] text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
+
 
               </div>
 
@@ -341,14 +407,16 @@ function Index() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="relative flex justify-center lg:justify-end"
+              transition={{ duration: 1, delay: 0.2 }}
+              className="relative flex justify-center lg:justify-end lg:-mr-12 xl:-mr-20 lg:scale-110 xl:scale-125"
             >
               {/* Mockup Smartphone Premium */}
-              <div className="relative w-[310px] h-[630px] bg-[#121212] rounded-[3.5rem] border-[10px] border-[#222] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10">
+              <div className="relative w-[310px] h-[630px] bg-[#121212] rounded-[3.5rem] border-[10px] border-[#222] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10 scale-90 md:scale-100">
+
+
                 {/* Speaker & Sensor */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#222] rounded-b-2xl z-30 flex items-center justify-center">
                   <div className="w-8 h-1 bg-[#333] rounded-full" />
@@ -450,12 +518,30 @@ function Index() {
       {/* Avaliações */}
       <section className="relative py-24 px-4 bg-warm-white z-20">
         <div className="max-w-6xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-gold mb-4">
-            <span className="text-2xl font-serif">5,0 / 5</span>
-            <div className="flex gap-1">{"★★★★★".split("").map((s, i) => <span key={i}>{s}</span>)}</div>
-          </div>
-          <h2 className="text-4xl font-serif text-dark-brown mb-2">Preferido dos hóspedes</h2>
-          <p className="text-sm uppercase tracking-widest text-muted-foreground">100% das avaliações são 5 estrelas</p>
+        <div className="max-w-6xl mx-auto text-center mb-16 relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex flex-col items-center gap-2 mb-8"
+          >
+            <div className="flex gap-1 mb-2">
+              {"★★★★★".split("").map((s, i) => (
+                <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+              ))}
+            </div>
+            <span className="text-3xl font-serif text-dark-brown">5,0 / 5,0</span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold">Avaliação Impecável</span>
+          </motion.div>
+          <h2 className="text-5xl md:text-7xl font-serif text-dark-brown mb-6 tracking-tight">Preferido dos <span className="italic">Hóspedes</span></h2>
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground font-light">
+            <span className="text-gold font-bold">100%</span> das experiências são avaliadas com nota máxima
+          </p>
+          
+          {/* Decorative line */}
+          <div className="w-px h-20 bg-gradient-to-b from-gold/40 to-transparent mx-auto mt-12" />
+        </div>
+
         </div>
         
         <div className="max-w-7xl mx-auto overflow-hidden">
@@ -470,25 +556,33 @@ function Index() {
           >
             {[...Array(6)].map((_, idx) => (
               [
-                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
-                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
-                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
-                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
+                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível, tudo muito limpo e bem feito.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
+                { author: "Bruna", text: "Chalé maravilhoso, com decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
+                { author: "Higor Daniel", text: "O chalé superou as expectativas. A vista para o mar é simplesmente incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
+                { author: "Jakcson", text: "Lugar muito aconchegante, visual espetacular, meio da natureza, vista do mar indescritível.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
               ].map((rev, i) => (
-                <div key={`${idx}-${i}`} className="min-w-[300px] bg-white p-6 rounded-lg shadow-sm border border-beige/20 flex flex-col justify-between">
-                  <p className="text-sm font-serif italic text-dark-brown/80 mb-4 whitespace-normal">
-                    "{rev.text}"
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <img src={rev.avatar} alt={rev.author} className="w-8 h-8 rounded-full object-cover" />
+                <div key={`${idx}-${i}`} className="min-w-[400px] bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-beige/10 flex flex-col justify-between group hover:border-gold/30 transition-all duration-500">
+                  <div>
+                    <div className="flex text-gold mb-6">
+                      {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-gold" />)}
+                    </div>
+                    <p className="text-lg font-serif italic text-dark-brown/90 mb-8 whitespace-normal leading-relaxed">
+                      "{rev.text}"
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-gold to-beige">
+                      <img src={rev.avatar} alt={rev.author} className="w-full h-full rounded-full object-cover border-2 border-white" />
+                    </div>
                     <div>
-                      <p className="text-xs font-bold text-dark-brown">{rev.author}</p>
-                      <div className="flex text-[8px] text-gold">★★★★★</div>
+                      <p className="text-sm font-bold text-dark-brown tracking-tight">{rev.author}</p>
+                      <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Hóspede verificado</p>
                     </div>
                   </div>
                 </div>
               ))
             ))}
+
           </motion.div>
         </div>
       </section>
@@ -597,12 +691,15 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackClick.mutate({ source: 'cta_final' })}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(197, 154, 85, 0.3)" }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gold text-white px-8 py-4 rounded-full font-sans font-bold tracking-widest text-sm hover:bg-gold/90 transition-all shadow-xl"
+            className="group relative inline-flex items-center gap-4 bg-gold text-white px-12 py-6 rounded-full font-sans font-bold tracking-[0.2em] text-xs md:text-sm overflow-hidden shadow-2xl transition-all"
           >
-            RESERVE AGORA NO AIRBNB
+            <span className="relative z-10">RESERVE AGORA NO AIRBNB</span>
+            <div className="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-0 opacity-10" />
+            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform" />
           </motion.a>
+
         </motion.div>
       </section>
       
