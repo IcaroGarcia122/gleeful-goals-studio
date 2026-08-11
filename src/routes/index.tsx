@@ -370,9 +370,10 @@ function Index() {
               <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-6 leading-tight">
                 Tudo o que você precisar durante sua estadia, <span className="italic">a poucos toques.</span>
               </h2>
-              <p className="text-lg text-muted-foreground font-sans mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl text-muted-foreground font-sans mb-10 leading-relaxed max-w-xl font-light">
                 Conheça nosso Concierge Virtual: um atendimento exclusivo pelo WhatsApp para ajudar você a aproveitar melhor a hospedagem e descobrir o melhor da região.
               </p>
+
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 {[
