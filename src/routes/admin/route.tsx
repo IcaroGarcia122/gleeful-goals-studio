@@ -22,7 +22,6 @@ function AdminLayout() {
     { label: 'Reservas', icon: Users, to: '/admin/reservations' },
     { label: 'Hóspedes', icon: Users, to: '/admin/guests' },
     { label: 'Informações', icon: Info, to: '/admin/content' },
-    { label: 'Galeria', icon: Image, to: '/admin/gallery' },
     { label: 'Analytics', icon: BarChart3, to: '/admin/analytics' },
     { label: 'Organização', icon: CheckSquare, to: '/admin/tasks' },
     { label: 'Configurações', icon: Settings, to: '/admin/settings' },
