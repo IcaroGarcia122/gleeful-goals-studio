@@ -466,10 +466,10 @@ function Index() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-8 text-center md:text-left"
             >
               <h3 className="text-2xl font-serif text-dark-brown border-b border-beige/30 pb-4">O Espaço</h3>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center md:justify-items-start">
                 {[
                   { label: "Imóvel privativo", icon: Home },
                   { label: "2 Quartos (1 Suíte)", icon: BedDouble },
@@ -495,7 +495,7 @@ function Index() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-8 text-center md:text-left"
             >
               <h3 className="text-2xl font-serif text-dark-brown border-b border-beige/30 pb-4">Comodidades</h3>
               <div className="grid grid-cols-2 gap-6">
