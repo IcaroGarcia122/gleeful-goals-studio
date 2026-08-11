@@ -315,6 +315,7 @@ function Index() {
                 {[
                   { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, comodidades, Wi-Fi e regras da Villa.", icon: Home },
                   { title: "Explore a região", desc: "Sugestões personalizadas para conhecer melhor o Sul da Ilha.", icon: Compass },
+                  { title: "Gastronomia Local", desc: "Descubra os melhores sabores de Florianópolis perto de você.", icon: UtensilsCrossed },
                   { title: "Experiência tranquila", desc: "Informações sempre à mão, sem precisar procurar em mensagens.", icon: Sparkles }
                 ].map((item, i) => (
                   <motion.div 
@@ -329,6 +330,7 @@ function Index() {
                     <p className="text-sm text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
+
               </div>
 
 
