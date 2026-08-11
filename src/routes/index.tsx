@@ -24,8 +24,10 @@ import {
   Sparkles,
   Heart,
   Calendar,
-  Star
+  Star,
+  ArrowRight
 } from "lucide-react";
+
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
 import salaAsset from "@/assets/sala.png.asset.json";
