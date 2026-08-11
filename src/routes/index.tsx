@@ -377,23 +377,24 @@ function Index() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 {[
-                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, comodidades, Wi-Fi e regras da Villa.", icon: Home },
-                  { title: "Explore a região", desc: "Sugestões personalizadas para conhecer melhor o Sul da Ilha.", icon: Compass },
-                  { title: "Gastronomia Local", desc: "Descubra os melhores sabores de Florianópolis perto de você.", icon: UtensilsCrossed },
-                  { title: "Experiência tranquila", desc: "Informações sempre à mão, sem precisar procurar em mensagens.", icon: Sparkles }
+                  { title: "Sobre a hospedagem", desc: "Tire dúvidas sobre check-in, comodidades e regras.", icon: Home },
+                  { title: "Explore a região", desc: "Sugestões personalizadas do Sul da Ilha.", icon: Compass },
+                  { title: "Gastronomia Local", desc: "Descubra os melhores sabores perto de você.", icon: UtensilsCrossed },
+                  { title: "Check-in Digital", desc: "Processo ágil e informações sempre à mão.", icon: Smartphone }
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.4)" }}
-                    className="p-6 bg-white rounded-2xl shadow-sm border border-beige/10 group cursor-default transition-all"
+                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.4)", boxShadow: "0 20px 40px -15px rgba(197, 154, 85, 0.15)" }}
+                    className="p-8 bg-white rounded-[2rem] shadow-sm border border-beige/10 group cursor-default transition-all"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#F7F3EA] flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
-                      <item.icon className="w-5 h-5 text-gold group-hover:text-white transition-colors" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#F7F3EA] flex items-center justify-center mb-6 group-hover:bg-gold transition-all group-hover:rotate-6">
+                      <item.icon className="w-6 h-6 text-gold group-hover:text-white transition-colors" />
                     </div>
-                    <h4 className="font-serif text-dark-brown text-lg mb-2">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
+                    <h4 className="font-serif text-dark-brown text-xl mb-3">{item.title}</h4>
+                    <p className="text-[13px] text-muted-foreground font-sans leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
+
 
               </div>
 
