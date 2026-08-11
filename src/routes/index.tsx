@@ -21,7 +21,10 @@ import {
   Smartphone,
   Info,
   Compass,
-  Sparkles
+  Sparkles,
+  Heart,
+  Calendar,
+  Star
 } from "lucide-react";
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
@@ -33,6 +36,7 @@ import img13Asset from "@/assets/image-13.png.asset.json";
 import img14Asset from "@/assets/image-14.png.asset.json";
 import quartoAsset from "@/assets/quarto.png.asset.json";
 import img15Asset from "@/assets/image-15.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
