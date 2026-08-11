@@ -116,12 +116,13 @@ function Index() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackClick.mutate({ source: 'hero_main' })}
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(197, 154, 85, 0.4)" }}
+                whileHover={{ scale: 1.05, y: -5, boxShadow: "0 25px 50px -12px rgba(197, 154, 85, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gold text-white px-10 py-5 rounded-full font-sans font-bold tracking-widest hover:bg-gold/90 transition-all shadow-[0_10px_30px_rgba(197, 154, 85, 0.3)] ring-2 ring-gold/20 text-center"
+                className="bg-gold text-white px-12 py-6 rounded-full font-sans font-bold tracking-[0.2em] hover:bg-[#d4a85f] transition-all shadow-[0_15px_35px_rgba(197, 154, 85, 0.4)] ring-4 ring-gold/10 text-center text-sm md:text-base"
               >
                 RESERVE NO AIRBNB
               </motion.a>
+
               <motion.a
                 href="#sobre"
                 initial={{ opacity: 0 }}
