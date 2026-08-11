@@ -246,51 +246,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Avaliações */}
-      <section className="relative py-24 px-4 bg-warm-white z-20">
-        <div className="max-w-6xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-gold mb-4">
-            <span className="text-2xl font-serif">5,0 / 5</span>
-            <div className="flex gap-1">{"★★★★★".split("").map((s, i) => <span key={i}>{s}</span>)}</div>
-          </div>
-          <h2 className="text-4xl font-serif text-dark-brown mb-2">Preferido dos hóspedes</h2>
-          <p className="text-sm uppercase tracking-widest text-muted-foreground">100% das avaliações são 5 estrelas</p>
-        </div>
-        
-        <div className="max-w-7xl mx-auto overflow-hidden">
-          <motion.div 
-            animate={{ x: [0, -1000] }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 40, 
-              ease: "linear" 
-            }}
-            className="flex gap-8 whitespace-nowrap"
-          >
-            {[...Array(6)].map((_, idx) => (
-              [
-                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
-                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
-                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
-                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
-              ].map((rev, i) => (
-                <div key={`${idx}-${i}`} className="min-w-[300px] bg-white p-6 rounded-lg shadow-sm border border-beige/20 flex flex-col justify-between">
-                  <p className="text-sm font-serif italic text-dark-brown/80 mb-4 whitespace-normal">
-                    "{rev.text}"
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <img src={rev.avatar} alt={rev.author} className="w-8 h-8 rounded-full object-cover" />
-                    <div>
-                      <p className="text-xs font-bold text-dark-brown">{rev.author}</p>
-                      <div className="flex text-[8px] text-gold">★★★★★</div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Seção Concierge Virtual */}
       <section className="relative py-24 bg-[#F7F3EA] z-20 overflow-hidden">
@@ -443,6 +398,52 @@ function Index() {
 
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Avaliações */}
+      <section className="relative py-24 px-4 bg-warm-white z-20">
+        <div className="max-w-6xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-2 text-gold mb-4">
+            <span className="text-2xl font-serif">5,0 / 5</span>
+            <div className="flex gap-1">{"★★★★★".split("").map((s, i) => <span key={i}>{s}</span>)}</div>
+          </div>
+          <h2 className="text-4xl font-serif text-dark-brown mb-2">Preferido dos hóspedes</h2>
+          <p className="text-sm uppercase tracking-widest text-muted-foreground">100% das avaliações são 5 estrelas</p>
+        </div>
+        
+        <div className="max-w-7xl mx-auto overflow-hidden">
+          <motion.div 
+            animate={{ x: [0, -1000] }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 40, 
+              ease: "linear" 
+            }}
+            className="flex gap-8 whitespace-nowrap"
+          >
+            {[...Array(6)].map((_, idx) => (
+              [
+                { author: "Alice", text: "Tudo simplesmente maravilhoso! O chalé é incrível.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop" },
+                { author: "Bruna", text: "Decoração de muito bom gosto, ótima climatização, vista perfeita.", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" },
+                { author: "Higor", text: "Superou as expectativas. A vista para o mar é incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
+                { author: "Gerusa", text: "Buscando tranquilidade e super correspondeu. Cabana cheirosa.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
+              ].map((rev, i) => (
+                <div key={`${idx}-${i}`} className="min-w-[300px] bg-white p-6 rounded-lg shadow-sm border border-beige/20 flex flex-col justify-between">
+                  <p className="text-sm font-serif italic text-dark-brown/80 mb-4 whitespace-normal">
+                    "{rev.text}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <img src={rev.avatar} alt={rev.author} className="w-8 h-8 rounded-full object-cover" />
+                    <div>
+                      <p className="text-xs font-bold text-dark-brown">{rev.author}</p>
+                      <div className="flex text-[8px] text-gold">★★★★★</div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ))}
+          </motion.div>
         </div>
       </section>
 
