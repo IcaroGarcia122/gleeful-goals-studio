@@ -184,110 +184,126 @@ function Index() {
           </div>
         </div>
       </section>
-      {/* Galeria / Destaques (Novo Design Profissional) */}
-      <section className="relative py-32 px-4 bg-[#17130F] text-[#FFFDF8] overflow-hidden z-20">
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] " />
+      {/* Galeria / Destaques (Design Editorial de Luxo) */}
+      <section className="relative py-32 bg-[#100D0A] z-20 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-20">
-            <motion.div 
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5"
+              className="max-w-2xl"
             >
-              <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
-                Galeria Exclusiva
+              <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.4em] mb-6 block">
+                Galeria de Destaques
               </span>
-              <h2 className="text-5xl md:text-7xl font-serif leading-[1.1] mb-6 tracking-tight">
-                Cada detalhe,<br />uma <span className="italic text-gold">descoberta.</span>
+              <h2 className="text-5xl md:text-8xl font-serif text-warm-white leading-[0.95] tracking-tighter">
+                Onde o luxo encontra a <span className="italic text-gold block md:inline">natureza.</span>
               </h2>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="lg:col-span-7 lg:pb-4"
+              className="md:pb-4"
             >
-              <p className="text-lg md:text-xl font-sans font-light text-warm-white/60 max-w-xl leading-relaxed">
-                Ambientes pensados para integrar o conforto contemporâneo à rusticidade da madeira, 
-                moldados pela luz natural e a vista infinita do oceano.
+              <p className="text-warm-white/40 font-sans text-lg max-w-xs leading-relaxed border-l border-gold/30 pl-6">
+                Uma curadoria visual dos espaços que tornam nossa hospedagem um refúgio singular em Florianópolis.
               </p>
             </motion.div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 h-auto md:h-[800px]">
-            {/* Foto principal - Grande destaque */}
+
+          {/* New Interactive Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-6 gap-6 h-auto md:h-[1000px]">
+            {/* Foto 1: A-Frame Exterior - O Impacto Principal */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="md:col-span-3 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-2xl"
+              className="md:col-span-8 md:row-span-4 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={heroAsset.url} 
-                alt="Vista Panorâmica" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <p className="text-gold font-sans font-bold text-xs uppercase tracking-widest mb-2">Destaque</p>
-                <h3 className="text-2xl font-serif text-white">Arquitetura A-Frame</h3>
+              <img src={heroAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" alt="Arquitetura" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+              <div className="absolute bottom-10 left-10 p-2">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "40px" }}
+                  viewport={{ once: true }}
+                  className="h-0.5 bg-gold mb-4" 
+                />
+                <h3 className="text-3xl md:text-4xl font-serif text-white mb-2 tracking-wide">Arquitetura Signature</h3>
+                <p className="text-warm-white/70 font-sans text-sm tracking-widest uppercase">Design A-Frame Exclusivo</p>
               </div>
             </motion.div>
 
-            {/* Foto Vertical */}
+            {/* Foto 2: Quarto - O Conforto Vertical */}
             <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-2xl"
+              className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={quartoAsset.url} 
-                alt="Suíte" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+              <img src={quartoAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Suíte" />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-700" />
+              <div className="absolute top-8 right-8">
+                <span className="bg-white/10 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/20">
+                  Suíte Master
+                </span>
+              </div>
             </motion.div>
 
-            {/* Fotos Menores - Horizontal */}
+            {/* Foto 3: Banheira - O Relaxamento */}
             <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="md:col-span-2 relative group overflow-hidden rounded-2xl shadow-xl aspect-video md:aspect-auto"
+              className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={banheiraAsset.url} 
-                alt="Banheira" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
+              <img src={banheiraAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Banheira" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-700" />
+              <div className="absolute bottom-8 left-8">
+                <h4 className="text-xl font-serif text-white italic">Self-Care moments</h4>
+              </div>
             </motion.div>
 
+            {/* Foto 4: Sala - A Integração */}
             <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="md:col-span-2 relative group overflow-hidden rounded-2xl shadow-xl aspect-video md:aspect-auto"
+              className="md:col-span-5 md:row-span-2 relative group overflow-hidden rounded-3xl"
             >
-              <img 
-                src={cozinhaAsset.url} 
-                alt="Cozinha" 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
+              <img src={salaAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Living" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
+            </motion.div>
+
+            {/* Foto 5: Cozinha - A Praticidade */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8 }}
+              className="md:col-span-3 md:row-span-2 relative group overflow-hidden rounded-3xl"
+            >
+              <img src={cozinhaAsset.url} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt="Gastronomia" />
+              <div className="absolute inset-0 bg-gold/10 group-hover:bg-transparent transition-all duration-700" />
             </motion.div>
           </div>
         </div>
+
+        {/* Floating Accent */}
+        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-gold/5 rounded-full blur-[120px]" />
       </section>
+
 
 
 
