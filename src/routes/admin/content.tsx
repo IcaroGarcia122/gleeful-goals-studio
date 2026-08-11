@@ -51,10 +51,10 @@ function ContentManagement() {
   }
 
   return (
-    <div className="space-y-8 max-w-4xl">
+    <div className="space-y-6 md:space-y-8 max-w-4xl">
       <div>
-        <h2 className="text-3xl font-serif text-[#24170F]">Gerenciar Conteúdo</h2>
-        <p className="text-muted-foreground font-sans">Edite as informações exibidas na landing page</p>
+        <h2 className="text-2xl md:text-3xl font-serif text-[#24170F]">Conteúdo</h2>
+        <p className="text-sm md:text-base text-muted-foreground font-sans">Edite as informações da landing page</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
