@@ -16,7 +16,6 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin/analytics'
 import { Route as AdminContentRouteImport } from './routes/admin/content'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
-import { Route as AdminGalleryRouteImport } from './routes/admin/gallery'
 import { Route as AdminGuestsRouteImport } from './routes/admin/guests'
 import { Route as AdminReservationsRouteImport } from './routes/admin/reservations'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
@@ -57,11 +56,6 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AdminRouteRoute,
 } as any)
-const AdminGalleryRoute = AdminGalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
 const AdminGuestsRoute = AdminGuestsRouteImport.update({
   id: '/guests',
   path: '/guests',
@@ -90,7 +84,6 @@ export interface FileRoutesByFullPath {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/guests': typeof AdminGuestsRoute
   '/admin/reservations': typeof AdminReservationsRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -103,7 +96,6 @@ export interface FileRoutesByTo {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/guests': typeof AdminGuestsRoute
   '/admin/reservations': typeof AdminReservationsRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -118,7 +110,6 @@ export interface FileRoutesById {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/guests': typeof AdminGuestsRoute
   '/admin/reservations': typeof AdminReservationsRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -134,7 +125,6 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/content'
     | '/admin/dashboard'
-    | '/admin/gallery'
     | '/admin/guests'
     | '/admin/reservations'
     | '/admin/settings'
@@ -147,7 +137,6 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/content'
     | '/admin/dashboard'
-    | '/admin/gallery'
     | '/admin/guests'
     | '/admin/reservations'
     | '/admin/settings'
@@ -161,7 +150,6 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/content'
     | '/admin/dashboard'
-    | '/admin/gallery'
     | '/admin/guests'
     | '/admin/reservations'
     | '/admin/settings'
@@ -226,13 +214,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof AdminRouteRoute
     }
-    '/admin/gallery': {
-      id: '/admin/gallery'
-      path: '/gallery'
-      fullPath: '/admin/gallery'
-      preLoaderRoute: typeof AdminGalleryRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
     '/admin/guests': {
       id: '/admin/guests'
       path: '/guests'
@@ -268,7 +249,6 @@ interface AdminRouteRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminContentRoute: typeof AdminContentRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
-  AdminGalleryRoute: typeof AdminGalleryRoute
   AdminGuestsRoute: typeof AdminGuestsRoute
   AdminReservationsRoute: typeof AdminReservationsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
@@ -280,7 +260,6 @@ const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminContentRoute: AdminContentRoute,
   AdminDashboardRoute: AdminDashboardRoute,
-  AdminGalleryRoute: AdminGalleryRoute,
   AdminGuestsRoute: AdminGuestsRoute,
   AdminReservationsRoute: AdminReservationsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
