@@ -50,48 +50,48 @@ function Dashboard() {
   ]
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <div>
-        <h2 className="text-3xl font-serif text-[#24170F]">Dashboard</h2>
-        <p className="text-muted-foreground font-sans">Visão geral da sua hospedagem</p>
+        <h2 className="text-2xl md:text-3xl font-serif text-[#24170F]">Dashboard</h2>
+        <p className="text-sm md:text-base text-muted-foreground font-sans">Visão geral da sua hospedagem</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {cards.map((card) => (
           <Card key={card.title} className="border-none shadow-sm bg-white">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+              <CardTitle className="text-[10px] md:text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 {card.title}
               </CardTitle>
               <card.icon className={`w-4 h-4 ${card.color}`} />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-[#24170F]">{card.value}</div>
+              <div className="text-xl md:text-2xl font-bold text-[#24170F]">{card.value}</div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="border-none shadow-sm bg-white p-6">
-          <h3 className="text-lg font-serif mb-6 text-[#24170F]">Atividades Recentes</h3>
-          <div className="space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <Card className="border-none shadow-sm bg-white p-4 md:p-6 overflow-hidden">
+          <h3 className="text-base md:text-lg font-serif mb-4 md:mb-6 text-[#24170F]">Atividades Recentes</h3>
+          <div className="space-y-3 md:space-y-4">
             {recentReservations?.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground italic">Nenhuma atividade recente.</div>
+              <div className="text-center py-8 md:py-12 text-muted-foreground italic text-sm">Nenhuma atividade recente.</div>
             ) : (
               recentReservations?.map((res) => (
                 <div key={res.id} className="flex items-center justify-between p-3 rounded-lg bg-[#F7F3EA]/50 border border-beige/10">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
                       <Users className="w-4 h-4 text-gold" />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-[#24170F]">{res.name}</p>
-                      <p className="text-xs text-muted-foreground">{res.status}</p>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-[#24170F] truncate">{res.name}</p>
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-tighter">{res.status}</p>
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {res.created_at ? new Date(res.created_at).toLocaleDateString() : '-'}
+                  <span className="text-[10px] text-muted-foreground whitespace-nowrap ml-2">
+                    {res.created_at ? new Date(res.created_at).toLocaleDateString('pt-BR') : '-'}
                   </span>
                 </div>
               ))
@@ -99,21 +99,24 @@ function Dashboard() {
           </div>
         </Card>
 
-        <Card className="border-none shadow-sm bg-white p-6">
-          <h3 className="text-lg font-serif mb-6 text-[#24170F]">Tarefas de Hoje</h3>
-          <div className="space-y-4">
+        <Card className="border-none shadow-sm bg-white p-4 md:p-6">
+          <h3 className="text-base md:text-lg font-serif mb-4 md:mb-6 text-[#24170F]">Tarefas de Hoje</h3>
+          <div className="space-y-3 md:space-y-4">
             {loadingTasks ? <Loader2 className="animate-spin text-gold mx-auto" /> : 
-             tasks?.length === 0 ? <p className="text-center italic text-muted-foreground">Sem tarefas.</p> :
+             tasks?.length === 0 ? <p className="text-center italic text-muted-foreground text-sm">Sem tarefas.</p> :
              tasks?.map((task) => (
               <div key={task.id} className="flex items-center gap-3 p-3 rounded-lg bg-[#F7F3EA]/50 border border-beige/10 group">
-                <button onClick={() => toggleTaskMutation.mutate({ id: task.id, completed: !task.completed })}>
+                <button 
+                  onClick={() => toggleTaskMutation.mutate({ id: task.id, completed: !task.completed })}
+                  className="shrink-0"
+                >
                   {task.completed ? (
                     <CheckCircle2 className="w-4 h-4 text-green-600" />
                   ) : (
                     <Circle className="w-4 h-4 text-gold" />
                   )}
                 </button>
-                <span className={`text-sm font-sans ${task.completed ? 'line-through text-muted-foreground' : 'text-[#24170F]'}`}>
+                <span className={`text-sm font-sans ${task.completed ? 'line-through text-muted-foreground' : 'text-[#24170F]'} truncate`}>
                   {task.title}
                 </span>
               </div>

@@ -42,18 +42,18 @@ function ReservationsPage() {
   })
 
   return (
-    <div className="space-y-8">
-      <div className="flex justify-between items-center">
+    <div className="space-y-6 md:space-y-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-3xl font-serif text-[#24170F]">Reservas</h2>
-          <p className="text-muted-foreground font-sans">Controle central de todas as estadias</p>
+          <h2 className="text-2xl md:text-3xl font-serif text-[#24170F]">Reservas</h2>
+          <p className="text-sm md:text-base text-muted-foreground font-sans">Controle central de todas as estadias</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" className="border-[#DCC9A5] text-[#24170F]">
+        <div className="flex w-full sm:w-auto gap-2">
+          <Button variant="outline" className="flex-1 sm:flex-none border-[#DCC9A5] text-[#24170F]">
             <Filter className="w-4 h-4 mr-2" /> Filtrar
           </Button>
-          <Button onClick={() => window.location.href = '/admin/guests'} className="bg-gold text-white">
-            <Plus className="w-4 h-4 mr-2" /> Nova Reserva
+          <Button onClick={() => window.location.href = '/admin/guests'} className="flex-1 sm:flex-none bg-gold text-white">
+            <Plus className="w-4 h-4 mr-2" /> Nova
           </Button>
         </div>
       </div>

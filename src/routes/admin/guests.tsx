@@ -41,13 +41,13 @@ function GuestsManagement() {
   })
 
   return (
-    <div className="space-y-8">
-      <div className="flex justify-between items-center">
+    <div className="space-y-6 md:space-y-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-3xl font-serif text-[#24170F]">Hóspedes</h2>
-          <p className="text-muted-foreground font-sans">Gerenciamento e histórico de hóspedes</p>
+          <h2 className="text-2xl md:text-3xl font-serif text-[#24170F]">Hóspedes</h2>
+          <p className="text-sm md:text-base text-muted-foreground font-sans">Gerenciamento e histórico</p>
         </div>
-        <Button onClick={() => setIsAdding(!isAdding)} className="bg-[#24170F] text-white">
+        <Button onClick={() => setIsAdding(!isAdding)} className="w-full sm:w-auto bg-[#24170F] text-white">
           <UserPlus className="w-4 h-4 mr-2" /> Novo Hóspede
         </Button>
       </div>
