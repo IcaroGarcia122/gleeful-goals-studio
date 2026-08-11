@@ -184,67 +184,111 @@ function Index() {
           </div>
         </div>
       </section>
-      {/* Galeria / Destaques (Estilo Polaroid) */}
-      <section className="relative py-20 px-4 bg-[#24170F] text-[#FFFDF8] overflow-hidden z-20">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] filter contrast-150" />
+      {/* Galeria / Destaques (Novo Design Profissional) */}
+      <section className="relative py-32 px-4 bg-[#17130F] text-[#FFFDF8] overflow-hidden z-20">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] " />
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/20 to-transparent" />
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-serif mb-4 tracking-tight italic">Destaques do Chalé</h2>
-            <div className="w-16 h-0.5 bg-[#C59A55] mx-auto opacity-60" />
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5"
+            >
+              <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
+                Galeria Exclusiva
+              </span>
+              <h2 className="text-5xl md:text-7xl font-serif leading-[1.1] mb-6 tracking-tight">
+                Cada detalhe,<br />uma <span className="italic text-gold">descoberta.</span>
+              </h2>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="lg:col-span-7 lg:pb-4"
+            >
+              <p className="text-lg md:text-xl font-sans font-light text-warm-white/60 max-w-xl leading-relaxed">
+                Ambientes pensados para integrar o conforto contemporâneo à rusticidade da madeira, 
+                moldados pela luz natural e a vista infinita do oceano.
+              </p>
+            </motion.div>
+          </div>
           
-          <div className="relative h-[550px] w-full max-w-4xl mx-auto">
-            {[
-              { img: quartoAsset, title: "Suíte Aconchegante", x: "-30%", y: "-20%", rotate: -8 },
-              { img: cozinhaAsset, title: "Design Moderno", x: "35%", y: "25%", rotate: 12 },
-              { img: banheiraAsset, title: "Relaxe na Hidro", x: "-25%", y: "30%", rotate: -5 },
-              { img: heroAsset, title: "Vista Privilegiada", x: "30%", y: "-25%", rotate: 6 },
-              { img: img14Asset, title: "Paz & Natureza", x: "0%", y: "0%", rotate: 0, priority: true },
-            ].map((item, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  scale: item.priority ? 1.05 : 0.85, 
-                  left: `calc(50% + ${item.x})`,
-                  top: `calc(50% + ${item.y})`,
-                  rotate: item.rotate 
-                }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, type: "spring", stiffness: 50 }}
-                whileHover={{ 
-                  scale: 1.1, 
-                  rotate: 0, 
-                  zIndex: 50,
-                  transition: { duration: 0.3 }
-                }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 bg-white p-1.5 pb-6 shadow-2xl cursor-pointer w-40 md:w-48 group border-[0.5px] border-black/5"
-              >
-                <div className="aspect-[4/5] overflow-hidden mb-2">
-                  <img 
-                    src={item.img.url} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500" 
-                  />
-                </div>
-                <p className="text-dark-brown font-script text-xl text-center leading-none">
-                  {item.title}
-                </p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 h-auto md:h-[800px]">
+            {/* Foto principal - Grande destaque */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="md:col-span-3 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-2xl"
+            >
+              <img 
+                src={heroAsset.url} 
+                alt="Vista Panorâmica" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                <p className="text-gold font-sans font-bold text-xs uppercase tracking-widest mb-2">Destaque</p>
+                <h3 className="text-2xl font-serif text-white">Arquitetura A-Frame</h3>
+              </div>
+            </motion.div>
+
+            {/* Foto Vertical */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-2xl"
+            >
+              <img 
+                src={quartoAsset.url} 
+                alt="Suíte" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+            </motion.div>
+
+            {/* Fotos Menores - Horizontal */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="md:col-span-2 relative group overflow-hidden rounded-2xl shadow-xl aspect-video md:aspect-auto"
+            >
+              <img 
+                src={banheiraAsset.url} 
+                alt="Banheira" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="md:col-span-2 relative group overflow-hidden rounded-2xl shadow-xl aspect-video md:aspect-auto"
+            >
+              <img 
+                src={cozinhaAsset.url} 
+                alt="Cozinha" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
+            </motion.div>
           </div>
         </div>
       </section>
+
 
 
       {/* Seção Concierge Virtual */}
