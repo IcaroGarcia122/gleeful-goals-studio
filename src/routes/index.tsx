@@ -517,12 +517,30 @@ function Index() {
       {/* Avaliações */}
       <section className="relative py-24 px-4 bg-warm-white z-20">
         <div className="max-w-6xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-gold mb-4">
-            <span className="text-2xl font-serif">5,0 / 5</span>
-            <div className="flex gap-1">{"★★★★★".split("").map((s, i) => <span key={i}>{s}</span>)}</div>
-          </div>
-          <h2 className="text-4xl font-serif text-dark-brown mb-2">Preferido dos hóspedes</h2>
-          <p className="text-sm uppercase tracking-widest text-muted-foreground">100% das avaliações são 5 estrelas</p>
+        <div className="max-w-6xl mx-auto text-center mb-16 relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex flex-col items-center gap-2 mb-8"
+          >
+            <div className="flex gap-1 mb-2">
+              {"★★★★★".split("").map((s, i) => (
+                <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+              ))}
+            </div>
+            <span className="text-3xl font-serif text-dark-brown">5,0 / 5,0</span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold">Avaliação Impecável</span>
+          </motion.div>
+          <h2 className="text-5xl md:text-7xl font-serif text-dark-brown mb-6 tracking-tight">Preferido dos <span className="italic">Hóspedes</span></h2>
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground font-light">
+            <span className="text-gold font-bold">100%</span> das experiências são avaliadas com nota máxima
+          </p>
+          
+          {/* Decorative line */}
+          <div className="w-px h-20 bg-gradient-to-b from-gold/40 to-transparent mx-auto mt-12" />
+        </div>
+
         </div>
         
         <div className="max-w-7xl mx-auto overflow-hidden">
