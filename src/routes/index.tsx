@@ -122,7 +122,7 @@ function Index() {
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8 }}
                 style={{ fontFamily: "'Alex Brush', cursive" }}
-                className="text-gold-lux block mt-3 text-6xl md:text-9xl font-normal"
+                className="bg-gradient-to-br from-[#E6C994] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-6xl md:text-9xl font-normal drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
               >
                 importa.
               </motion.span>
@@ -570,7 +570,7 @@ function Index() {
             <span className="text-3xl font-serif text-dark-brown">5,0 / 5,0</span>
             <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold">Avaliação Impecável</span>
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-serif font-light text-dark-brown mb-6 tracking-tight">Preferido dos <span className="italic text-gold-lux">Hóspedes</span></h2>
+          <h2 className="text-5xl md:text-7xl font-serif font-light text-dark-brown mb-6 tracking-tight">Preferido dos <span className="italic text-gold">Hóspedes</span></h2>
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground font-light">
             <span className="text-gold font-bold">100%</span> das experiências são avaliadas com nota máxima
           </p>
