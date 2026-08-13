@@ -88,7 +88,12 @@ function Index() {
             alt="Chalé A-frame"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-soft-black/40" />
+          {/* Camadas cinematográficas: escurecimento, vinheta e fade inferior */}
+          <div className="absolute inset-0 bg-gradient-to-b from-soft-black/70 via-soft-black/35 to-soft-black/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(23,19,15,0.65)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#FBF9F4] to-transparent" />
+          <div className="absolute inset-0 grain" />
+
           
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto pointer-events-auto">
             <motion.div 
