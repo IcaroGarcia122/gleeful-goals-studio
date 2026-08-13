@@ -97,30 +97,32 @@ function Index() {
           
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto pointer-events-auto">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="inline-block border border-warm-white/30 px-4 py-1 mb-8"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9 }}
+              className="inline-flex items-center gap-4 mb-10"
             >
-              <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warm-white font-sans font-light">
-                CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
+              <span className="hidden md:block w-10 rule-gold" />
+              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.45em] text-warm-white/85 font-sans font-light">
+                Chalé exclusivo em Florianópolis
               </span>
+              <span className="hidden md:block w-10 rule-gold" />
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight text-white"
+              className="text-5xl md:text-8xl font-serif font-light leading-[1.05] mb-8 tracking-tight text-warm-white [text-shadow:0_2px_30px_rgba(0,0,0,0.35)]"
             >
               Conecte-se com<br />o que realmente<br />
               <motion.span 
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8 }}
                 style={{ fontFamily: "'Alex Brush', cursive" }}
-                className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
+                className="text-gold-lux block mt-3 text-6xl md:text-9xl font-normal"
               >
                 importa.
               </motion.span>
@@ -130,21 +132,22 @@ function Index() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed text-white"
+              className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto text-warm-white/80 font-light leading-relaxed tracking-wide"
             >
               Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
             </motion.p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <motion.a
                 href={content.airbnb_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackClick.mutate({ source: 'hero_main' })}
-                whileHover={{ scale: 1.05, y: -5, boxShadow: "0 25px 50px -12px rgba(197, 154, 85, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gold text-white px-12 py-6 rounded-full font-sans font-bold tracking-[0.2em] hover:bg-[#d4a85f] transition-all shadow-[0_15px_35px_rgba(197, 154, 85, 0.4)] ring-4 ring-gold/10 text-center text-sm md:text-base"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                className="group relative overflow-hidden bg-gold text-warm-white px-12 py-5 rounded-full font-sans font-semibold tracking-[0.25em] text-[11px] md:text-xs shadow-lux ring-1 ring-warm-white/20"
               >
-                RESERVE NO AIRBNB
+                <span className="relative z-10">RESERVE NO AIRBNB</span>
+                <span className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-warm-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </motion.a>
 
               <motion.a
@@ -152,13 +155,23 @@ function Index() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="group relative px-8 py-4 overflow-hidden rounded-full border border-gold/30 text-white font-sans transition-all hover:border-gold"
+                className="group relative px-10 py-5 overflow-hidden rounded-full border border-warm-white/25 text-warm-white font-sans text-[11px] md:text-xs tracking-[0.25em] transition-colors hover:border-gold"
               >
                 <span className="relative z-10">CONHEÇA O CHALÉ ↓</span>
                 <div className="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0" />
               </motion.a>
 
             </div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0], opacity: [0.4, 0.9, 0.4] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+            >
+              <span className="text-[9px] uppercase tracking-[0.4em] text-warm-white/70">Role</span>
+              <span className="w-px h-10 bg-gradient-to-b from-gold to-transparent" />
+            </motion.div>
+
           </div>
         </div>
       </section>
