@@ -41,8 +41,27 @@ import img15Asset from "@/assets/image-15.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Chalé A-Frame em Florianópolis | Refúgio com Vista para o Mar" },
+      {
+        name: "description",
+        content:
+          "Chalé A-frame privativo em Florianópolis: vista para o mar, banheira interna, deck exclusivo e natureza. Hospedagem boutique 5 estrelas.",
+      },
+      { property: "og:title", content: "Chalé A-Frame em Florianópolis | Vista para o Mar" },
+      {
+        property: "og:description",
+        content:
+          "Refúgio boutique entre a natureza e o mar. Banheira interna, deck exclusivo e privacidade absoluta em Florianópolis.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
+
 
 function Index() {
   const { data: content } = useQuery({
@@ -69,34 +88,41 @@ function Index() {
             alt="Chalé A-frame"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-soft-black/40" />
+          {/* Camadas cinematográficas: escurecimento, vinheta e fade inferior */}
+          <div className="absolute inset-0 bg-gradient-to-b from-soft-black/70 via-soft-black/35 to-soft-black/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(23,19,15,0.65)_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#FBF9F4] to-transparent" />
+          <div className="absolute inset-0 grain" />
+
           
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto pointer-events-auto">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="inline-block border border-warm-white/30 px-4 py-1 mb-8"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9 }}
+              className="inline-flex items-center gap-4 mb-10"
             >
-              <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-warm-white font-sans font-light">
-                CHALÉ EXCLUSIVO EM FLORIANÓPOLIS - SC
+              <span className="hidden md:block w-10 rule-gold" />
+              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.45em] text-warm-white/85 font-sans font-light">
+                Chalé exclusivo em Florianópolis
               </span>
+              <span className="hidden md:block w-10 rule-gold" />
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-5xl md:text-8xl font-serif leading-[1.1] mb-8 tracking-tight text-white"
+              className="text-5xl md:text-8xl font-serif font-light leading-[1.05] mb-8 tracking-tight text-warm-white [text-shadow:0_2px_30px_rgba(0,0,0,0.35)]"
             >
               Conecte-se com<br />o que realmente<br />
               <motion.span 
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8 }}
                 style={{ fontFamily: "'Alex Brush', cursive" }}
-                className="bg-gradient-to-br from-[#C59A55] via-[#E6C994] to-[#A67C37] bg-clip-text text-transparent block mt-4 text-6xl md:text-9xl font-normal drop-shadow-sm"
+                className="bg-gradient-to-br from-[#E6C994] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-6xl md:text-9xl font-normal drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
               >
                 importa.
               </motion.span>
@@ -106,21 +132,22 @@ function Index() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto opacity-90 font-light leading-relaxed text-white"
+              className="text-sm md:text-base font-sans mb-12 max-w-xl mx-auto text-warm-white/80 font-light leading-relaxed tracking-wide"
             >
               Chalé privativo com vista para o mar, banheira interna e deck exclusivo para momentos inesquecíveis.
             </motion.p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <motion.a
                 href={content.airbnb_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackClick.mutate({ source: 'hero_main' })}
-                whileHover={{ scale: 1.05, y: -5, boxShadow: "0 25px 50px -12px rgba(197, 154, 85, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gold text-white px-12 py-6 rounded-full font-sans font-bold tracking-[0.2em] hover:bg-[#d4a85f] transition-all shadow-[0_15px_35px_rgba(197, 154, 85, 0.4)] ring-4 ring-gold/10 text-center text-sm md:text-base"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                className="group relative overflow-hidden bg-gold text-warm-white px-12 py-5 rounded-full font-sans font-semibold tracking-[0.25em] text-[11px] md:text-xs shadow-lux ring-1 ring-warm-white/20"
               >
-                RESERVE NO AIRBNB
+                <span className="relative z-10">RESERVE NO AIRBNB</span>
+                <span className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-warm-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </motion.a>
 
               <motion.a
@@ -128,19 +155,29 @@ function Index() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="group relative px-8 py-4 overflow-hidden rounded-full border border-gold/30 text-white font-sans transition-all hover:border-gold"
+                className="group relative px-10 py-5 overflow-hidden rounded-full border border-warm-white/25 text-warm-white font-sans text-[11px] md:text-xs tracking-[0.25em] transition-colors hover:border-gold"
               >
                 <span className="relative z-10">CONHEÇA O CHALÉ ↓</span>
                 <div className="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0" />
               </motion.a>
 
             </div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0], opacity: [0.4, 0.9, 0.4] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+            >
+              <span className="text-[9px] uppercase tracking-[0.4em] text-warm-white/70">Role</span>
+              <span className="w-px h-10 bg-gradient-to-b from-gold to-transparent" />
+            </motion.div>
+
           </div>
         </div>
       </section>
 
       {/* Sobre o Chalé - Versão Profissionalizada */}
-      <section id="sobre" className="relative py-32 bg-[#FBF9F4] z-20">
+      <section id="sobre" className="relative py-32 md:py-40 bg-[#FBF9F4] z-20 grain">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-24 items-center">
             <motion.div
@@ -155,7 +192,7 @@ function Index() {
                 <span className="text-xs uppercase tracking-[0.3em] font-bold">O Refúgio</span>
               </div>
               
-              <h2 className="text-5xl md:text-7xl font-serif text-dark-brown mb-10 leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-serif font-light text-dark-brown mb-10 leading-[1.05] tracking-tight">
                 {content.about_title.split("\n").map((line, i) => (
                   <span key={i} className="block">{line}</span>
                 ))}
@@ -204,7 +241,7 @@ function Index() {
               transition={{ duration: 1 }}
               className="lg:w-1/2 relative"
             >
-              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] aspect-[4/5]">
+              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-beige/40 aspect-[4/5]">
                 <img src={img14Asset.url} alt="Vista principal" className="w-full h-full object-cover" />
               </div>
               
@@ -212,7 +249,7 @@ function Index() {
               <motion.div 
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-12 -left-12 z-20 bg-white p-6 rounded-2xl shadow-xl max-w-[240px] hidden md:block"
+                className="absolute -bottom-12 -left-12 z-20 glass-warm p-6 rounded-2xl shadow-lux max-w-[240px] hidden md:block"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
@@ -250,7 +287,7 @@ function Index() {
               <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.4em] mb-6 block">
                 Galeria de Destaques
               </span>
-              <h2 className="text-5xl md:text-8xl font-serif text-warm-white leading-[0.95] tracking-tighter">
+              <h2 className="text-5xl md:text-8xl font-serif font-light text-warm-white leading-[0.95] tracking-tighter">
                 Onde o luxo encontra a <span className="italic text-gold block md:inline">natureza.</span>
               </h2>
             </motion.div>
@@ -356,7 +393,7 @@ function Index() {
 
 
       {/* Seção Concierge Virtual */}
-      <section className="relative py-24 bg-[#F7F3EA] z-20 overflow-hidden">
+      <section className="relative py-28 md:py-36 bg-[#F7F3EA] z-20 overflow-hidden grain">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -368,7 +405,7 @@ function Index() {
               <span className="text-gold font-sans font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
                 Seu guia durante a experiência
               </span>
-              <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-light text-dark-brown mb-6 leading-tight tracking-tight">
                 Tudo o que você precisar durante sua estadia, <span className="italic">a poucos toques.</span>
               </h2>
               <p className="text-xl text-muted-foreground font-sans mb-10 leading-relaxed max-w-xl font-light">
@@ -516,7 +553,7 @@ function Index() {
       </section>
 
       {/* Avaliações */}
-      <section className="relative py-24 px-4 bg-warm-white z-20">
+      <section className="relative py-28 md:py-36 px-4 bg-warm-white z-20">
         <div className="max-w-6xl mx-auto text-center mb-16">
         <div className="max-w-6xl mx-auto text-center mb-16 relative">
           <motion.div 
@@ -533,7 +570,7 @@ function Index() {
             <span className="text-3xl font-serif text-dark-brown">5,0 / 5,0</span>
             <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold">Avaliação Impecável</span>
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-serif text-dark-brown mb-6 tracking-tight">Preferido dos <span className="italic">Hóspedes</span></h2>
+          <h2 className="text-5xl md:text-7xl font-serif font-light text-dark-brown mb-6 tracking-tight">Preferido dos <span className="italic text-gold">Hóspedes</span></h2>
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground font-light">
             <span className="text-gold font-bold">100%</span> das experiências são avaliadas com nota máxima
           </p>
@@ -561,7 +598,7 @@ function Index() {
                 { author: "Higor Daniel", text: "O chalé superou as expectativas. A vista para o mar é simplesmente incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
                 { author: "Jakcson", text: "Lugar muito aconchegante, visual espetacular, meio da natureza, vista do mar indescritível.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
               ].map((rev, i) => (
-                <div key={`${idx}-${i}`} className="min-w-[400px] bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-beige/10 flex flex-col justify-between group hover:border-gold/30 transition-all duration-500">
+                <div key={`${idx}-${i}`} className="min-w-[400px] bg-card p-10 rounded-[2.5rem] shadow-lux border border-beige/30 flex flex-col justify-between group hover:border-gold/30 transition-all duration-500">
                   <div>
                     <div className="flex text-gold mb-6">
                       {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-gold" />)}
@@ -588,7 +625,7 @@ function Index() {
       </section>
 
       {/* Detalhes do Imóvel (Airbnb Info) */}
-      <section className="relative py-24 px-4 bg-background z-20">
+      <section className="relative py-28 md:py-36 px-4 bg-background z-20">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -596,7 +633,8 @@ function Index() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-dark-brown mb-4">O que preparamos para você.</h2>
+            <span className="text-[10px] uppercase tracking-[0.45em] text-gold font-sans font-semibold mb-5 block">Comodidades</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-light text-dark-brown mb-4 tracking-tight">O que preparamos para você.</h2>
             <div className="w-16 h-0.5 bg-gold mx-auto opacity-60" />
 
           </motion.div>
@@ -649,7 +687,7 @@ function Index() {
                   { label: "Smart TV", icon: Tv },
                   { label: "Ar-condicionado", icon: Snowflake }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 bg-white/50 rounded-xl border border-beige/10 hover:border-gold/30 transition-colors group">
+                  <div key={i} className="flex items-center gap-4 p-5 bg-card rounded-2xl border border-beige/30 hover:border-gold/50 hover:shadow-lux transition-all duration-500 group">
                     <item.icon className="w-6 h-6 text-gold group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-sans text-muted-foreground font-medium">{item.label}</span>
                   </div>
@@ -665,14 +703,15 @@ function Index() {
       </section>
 
       {/* CTA Final */}
-      <section className="relative py-24 px-4 flex flex-col items-center justify-center text-center text-warm-white z-20">
+      <section className="relative py-36 md:py-48 px-4 flex flex-col items-center justify-center text-center text-warm-white z-20 grain">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <img
             src={heroAsset.url}
             alt="Chalé ao pôr do sol"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-soft-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-soft-black/80 via-soft-black/65 to-soft-black/90" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(23,19,15,0.7)_100%)]" />
         </div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -680,7 +719,7 @@ function Index() {
           viewport={{ once: true }}
           className="relative z-10 max-w-2xl px-4"
         >
-          <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-serif font-light mb-6 leading-[1.08] tracking-tight">
             Viva momentos únicos neste paraíso em <span className="italic text-gold">Florianópolis.</span>
           </h2>
           <p className="text-base font-sans mb-8 opacity-80 max-w-lg mx-auto font-light leading-relaxed">
@@ -707,7 +746,8 @@ function Index() {
 
 
       {/* Footer */}
-      <footer className="relative bg-dark-brown pt-20 pb-12 px-4 text-warm-white z-20">
+      <footer className="relative bg-dark-brown pt-24 pb-12 px-4 text-warm-white z-20 grain">
+        <div className="absolute top-0 inset-x-0 rule-gold" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-serif mb-6">CHALÉ A-FRAME</h3>
