@@ -41,8 +41,27 @@ import img15Asset from "@/assets/image-15.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Chalé A-Frame em Florianópolis | Refúgio com Vista para o Mar" },
+      {
+        name: "description",
+        content:
+          "Chalé A-frame privativo em Florianópolis: vista para o mar, banheira interna, deck exclusivo e natureza. Hospedagem boutique 5 estrelas.",
+      },
+      { property: "og:title", content: "Chalé A-Frame em Florianópolis | Vista para o Mar" },
+      {
+        property: "og:description",
+        content:
+          "Refúgio boutique entre a natureza e o mar. Banheira interna, deck exclusivo e privacidade absoluta em Florianópolis.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
+
 
 function Index() {
   const { data: content } = useQuery({
