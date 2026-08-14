@@ -422,10 +422,10 @@ function Index() {
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.4)", boxShadow: "0 20px 40px -15px rgba(197, 154, 85, 0.15)" }}
-                    className="p-8 bg-white rounded-[2rem] shadow-sm border border-beige/10 group cursor-default transition-all"
+                    whileHover={{ y: -5, borderColor: "rgba(197, 154, 85, 0.5)" }}
+                    className="p-8 rounded-[2rem] glass-warm group cursor-default transition-all duration-500"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-[#F7F3EA] flex items-center justify-center mb-6 group-hover:bg-gold transition-all group-hover:rotate-6">
+                    <div className="w-12 h-12 rounded-2xl bg-warm-white/60 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:bg-gold transition-all group-hover:rotate-6 ring-1 ring-gold/10">
                       <item.icon className="w-6 h-6 text-gold group-hover:text-white transition-colors" />
                     </div>
                     <h4 className="font-serif text-dark-brown text-xl mb-3">{item.title}</h4>
@@ -575,8 +575,6 @@ function Index() {
             <span className="text-gold font-bold">100%</span> das experiências são avaliadas com nota máxima
           </p>
           
-          {/* Decorative line */}
-          <div className="w-px h-20 bg-gradient-to-b from-gold/40 to-transparent mx-auto mt-12" />
         </div>
 
         </div>
@@ -598,7 +596,7 @@ function Index() {
                 { author: "Higor Daniel", text: "O chalé superou as expectativas. A vista para o mar é simplesmente incrível.", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&auto=format&fit=crop" },
                 { author: "Jakcson", text: "Lugar muito aconchegante, visual espetacular, meio da natureza, vista do mar indescritível.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" }
               ].map((rev, i) => (
-                <div key={`${idx}-${i}`} className="min-w-[400px] bg-card p-10 rounded-[2.5rem] shadow-lux border border-beige/30 flex flex-col justify-between group hover:border-gold/30 transition-all duration-500">
+                <div key={`${idx}-${i}`} className="min-w-[400px] bg-card p-10 rounded-[2.5rem] border border-beige/20 flex flex-col justify-between group hover:border-gold/30 transition-all duration-500">
                   <div>
                     <div className="flex text-gold mb-6">
                       {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-gold" />)}
