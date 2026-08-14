@@ -299,16 +299,16 @@ function Index() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[250px] md:auto-rows-[300px]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[200px] md:auto-rows-[280px]">
             {[
-              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico", className: "md:col-span-2 md:row-span-2" },
-              { asset: banheiraAsset, title: "Imersão", desc: "Vista panorâmica", className: "md:col-span-2 md:row-span-1" },
-              { asset: salaAsset, title: "Living", desc: "Acolhedor", className: "md:col-span-2 md:row-span-1" },
-              { asset: cozinhaAsset, title: "Gourmet", desc: "Completa", className: "md:col-span-2 md:row-span-2" },
-              { asset: interiorAsset, title: "Refúgio", desc: "Sofisticação", className: "md:col-span-2 md:row-span-1" },
-              { asset: img13Asset, title: "Vista Mar", desc: "Horizonte", className: "md:col-span-2 md:row-span-1" },
-              { asset: img12Asset, title: "Deck", desc: "Exclusividade", className: "md:col-span-3 md:row-span-1" },
-              { asset: img15Asset, title: "A-Frame", desc: "Conforto", className: "md:col-span-3 md:row-span-1" }
+              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico", className: "md:col-span-8 md:row-span-2" },
+              { asset: banheiraAsset, title: "Imersão", desc: "Vista panorâmica", className: "md:col-span-4 md:row-span-1" },
+              { asset: salaAsset, title: "Living", desc: "Acolhedor", className: "md:col-span-4 md:row-span-1" },
+              { asset: cozinhaAsset, title: "Gourmet", desc: "Completa", className: "md:col-span-4 md:row-span-2" },
+              { asset: interiorAsset, title: "Refúgio", desc: "Sofisticação", className: "md:col-span-4 md:row-span-1" },
+              { asset: img13Asset, title: "Vista Mar", desc: "Horizonte", className: "md:col-span-4 md:row-span-1" },
+              { asset: img12Asset, title: "Deck", desc: "Exclusividade", className: "md:col-span-6 md:row-span-1" },
+              { asset: img15Asset, title: "A-Frame", desc: "Conforto", className: "md:col-span-6 md:row-span-1" }
             ].map((item, i) => (
               <motion.div
                 key={i}
