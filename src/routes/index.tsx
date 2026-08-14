@@ -90,7 +90,7 @@ function Index() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-[0.85]"
+            className="w-full h-full object-cover opacity-[0.65]"
           >
             <source src="https://imgur.com/mRQl2KT.mp4" type="video/mp4" />
           </video>
