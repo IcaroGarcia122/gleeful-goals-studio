@@ -90,9 +90,9 @@ function Index() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-[0.65]"
+            className="w-full h-full object-cover opacity-[0.85]"
           >
-            <source src="https://imgur.com/mRQl2KT.mp4" type="video/mp4" />
+            <source src="https://imgur.com/J34nkMe.mp4" type="video/mp4" />
           </video>
           {/* Camadas cinematográficas: filtro preto, escurecimento e vinheta */}
           <div className="absolute inset-0 bg-black/40" />
