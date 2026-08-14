@@ -184,3 +184,12 @@
   backdrop-filter: blur(14px) saturate(120%);
   border: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
 }
+187: 
+188: @keyframes float-slow {
+189:   0%, 100% { transform: translateY(0) scale(1.25); }
+190:   50% { transform: translateY(-8px) scale(1.28); }
+191: }
+192: 
+193: @utility animate-float-slow {
+194:   animation: float-slow 6s ease-in-out infinite;
+195: }

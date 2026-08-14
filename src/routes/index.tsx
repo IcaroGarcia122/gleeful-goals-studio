@@ -128,7 +128,7 @@ function Index() {
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8 }}
                 style={{ fontFamily: "'Alex Brush', cursive" }}
-                className="bg-gradient-to-br from-[#E6C994] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-7xl md:text-[10rem] font-normal drop-shadow-[0_8px_32px_rgba(197,154,85,0.45)] brightness-110"
+                className="bg-gradient-to-br from-[#F7F3EA] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-7xl md:text-[11rem] font-normal drop-shadow-[0_12px_48px_rgba(197,154,85,0.6)] brightness-125 animate-float-slow"
               >
                 importa.
               </motion.span>
@@ -299,24 +299,24 @@ function Index() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[250px] md:auto-rows-[300px]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[180px] md:auto-rows-[280px]">
             {[
-              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico", className: "md:col-span-2 md:row-span-2" },
-              { asset: banheiraAsset, title: "Imersão", desc: "Vista panorâmica", className: "md:col-span-2 md:row-span-1" },
-              { asset: salaAsset, title: "Living", desc: "Acolhedor", className: "md:col-span-2 md:row-span-1" },
-              { asset: cozinhaAsset, title: "Gourmet", desc: "Completa", className: "md:col-span-2 md:row-span-2" },
-              { asset: interiorAsset, title: "Refúgio", desc: "Sofisticação", className: "md:col-span-2 md:row-span-1" },
-              { asset: img13Asset, title: "Vista Mar", desc: "Horizonte", className: "md:col-span-2 md:row-span-1" },
-              { asset: img12Asset, title: "Deck", desc: "Exclusividade", className: "md:col-span-3 md:row-span-1" },
-              { asset: img15Asset, title: "A-Frame", desc: "Conforto", className: "md:col-span-3 md:row-span-1" }
+              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico", className: "md:col-span-8 md:row-span-2" },
+              { asset: banheiraAsset, title: "Imersão", desc: "Vista panorâmica", className: "md:col-span-4 md:row-span-1" },
+              { asset: salaAsset, title: "Living", desc: "Acolhedor", className: "md:col-span-4 md:row-span-1" },
+              { asset: cozinhaAsset, title: "Gourmet", desc: "Completa", className: "md:col-span-4 md:row-span-2" },
+              { asset: interiorAsset, title: "Refúgio", desc: "Sofisticação", className: "md:col-span-5 md:row-span-1" },
+              { asset: img13Asset, title: "Vista Mar", desc: "Horizonte", className: "md:col-span-3 md:row-span-1" },
+              { asset: img12Asset, title: "Deck", desc: "Exclusividade", className: "md:col-span-4 md:row-span-1" },
+              { asset: img15Asset, title: "A-Frame", desc: "Conforto", className: "md:col-span-8 md:row-span-1" }
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className={`group relative rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className}`}
+                transition={{ delay: i * 0.05, duration: 0.8 }}
+                className={`group relative rounded-[2.5rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className} ${i % 2 === 0 ? 'md:mt-8' : 'md:-mt-8'}`}
               >
                 <img src={item.asset.url} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
