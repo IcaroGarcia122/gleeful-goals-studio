@@ -99,9 +99,10 @@ export function ThreeDCarousel({ items }: ThreeDCarouselProps) {
                 exit={{ opacity: 0, scale: 0.5, z: -500 }}
                 transition={{
                   duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for cinematographic feel
+                  ease: [0.16, 1, 0.3, 1],
                 }}
-                className="absolute w-[85%] md:w-[700px] aspect-[16/9] rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] cursor-pointer ring-1 ring-white/10"
+                className="absolute w-[95%] md:w-[700px] aspect-[16/9] rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] cursor-pointer ring-1 ring-white/10"
+
                 style={{
                   transformStyle: "preserve-3d",
                   backfaceVisibility: "hidden",
