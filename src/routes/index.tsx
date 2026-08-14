@@ -169,14 +169,6 @@ function Index() {
 
             </div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0], opacity: [0.4, 0.9, 0.4] }}
-              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
-            >
-              <span className="text-[9px] uppercase tracking-[0.4em] text-warm-white/70">Role</span>
-              <span className="w-px h-10 bg-gradient-to-b from-gold to-transparent" />
-            </motion.div>
 
           </div>
         </div>
@@ -220,9 +212,6 @@ function Index() {
                   </div>
                 </div>
 
-                <p className="text-lg text-muted-foreground/80 font-sans leading-relaxed">
-                  {content.about_text_2}
-                </p>
               </div>
 
               <motion.a
@@ -310,20 +299,31 @@ function Index() {
             </motion.div>
           </div>
 
-          <div className="mt-12">
-            <ThreeDCarousel 
-              items={[
-                { url: heroAsset.url, title: "Arquitetura Signature" },
-                { url: quartoAsset.url, title: "Suíte Master" },
-                { url: banheiraAsset.url, title: "Self-Care moments" },
-                { url: salaAsset.url, title: "Living Integrado" },
-                { url: cozinhaAsset.url, title: "Cozinha Gourmet" },
-                { url: interiorAsset.url, title: "Vista Interior" },
-                { url: img12Asset.url, title: "Deck Exclusivo" },
-                { url: img13Asset.url, title: "Entardecer" },
-                { url: img15Asset.url, title: "Conforto A-Frame" }
-              ]}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico em madeira" },
+              { asset: banheiraAsset, title: "Imersão & Relaxamento", desc: "Banheira com vista panorâmica" },
+              { asset: salaAsset, title: "Conforto Integrado", desc: "Ambientes amplos e acolhedores" },
+              { asset: cozinhaAsset, title: "Espaço Gourmet", desc: "Cozinha completa e equipada" },
+              { asset: interiorAsset, title: "Refúgio Interno", desc: "Privacidade e sofisticação" },
+              { asset: img13Asset, title: "Vista Mar", desc: "O horizonte aos seus pés" }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-white/10"
+              >
+                <img src={item.asset.url} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                <div className="absolute bottom-0 left-0 p-8">
+                  <h3 className="text-2xl font-serif text-warm-white mb-2">{item.title}</h3>
+                  <p className="text-xs uppercase tracking-widest text-gold font-sans">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
         </div>
