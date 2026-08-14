@@ -299,7 +299,7 @@ function Index() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[180px] md:auto-rows-[280px]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[160px] md:auto-rows-[220px]">
             {[
               { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico", className: "md:col-span-8 md:row-span-2" },
               { asset: banheiraAsset, title: "Imersão", desc: "Vista panorâmica", className: "md:col-span-4 md:row-span-1" },
@@ -312,17 +312,17 @@ function Index() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.8 }}
-                className={`group relative rounded-[2.5rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className} ${i % 2 === 0 ? 'md:mt-8' : 'md:-mt-8'}`}
+                transition={{ delay: i * 0.05, duration: 0.6 }}
+                className={`group relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className}`}
               >
                 <img src={item.asset.url} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-serif text-warm-white mb-1">{item.title}</h3>
-                  <p className="text-[10px] uppercase tracking-widest text-gold font-sans">{item.desc}</p>
+                <div className="absolute bottom-0 left-0 p-4 md:p-6">
+                  <h3 className="text-lg md:text-xl font-serif text-warm-white mb-1">{item.title}</h3>
+                  <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-gold font-sans">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
