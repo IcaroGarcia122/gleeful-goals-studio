@@ -82,16 +82,19 @@ function Index() {
 
       {/* Hero Section */}
       <section className="relative h-[100vh] z-0">
-        <div className="fixed inset-0 w-full h-screen pointer-events-none">
-          <img
-            src={heroAsset.url}
-            alt="Chalé A-frame"
+        <div className="fixed inset-0 w-full h-screen pointer-events-none overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
-          {/* Camadas cinematográficas: escurecimento, vinheta e fade inferior */}
+          >
+            <source src="https://imgur.com/J34nkMe.mp4" type="video/mp4" />
+          </video>
+          {/* Camadas cinematográficas: escurecimento e vinheta */}
           <div className="absolute inset-0 bg-gradient-to-b from-soft-black/70 via-soft-black/35 to-soft-black/80" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(23,19,15,0.65)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#FBF9F4] to-transparent" />
           <div className="absolute inset-0 grain" />
 
           
