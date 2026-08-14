@@ -27,6 +27,8 @@ import {
   Star,
   ArrowRight
 } from "lucide-react";
+import { ThreeDCarousel } from "@/components/ThreeDCarousel";
+
 
 import heroAsset from "@/assets/hero-chale.png.asset.json";
 import banheiraAsset from "@/assets/banheira.png.asset.json";
