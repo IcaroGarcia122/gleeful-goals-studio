@@ -88,13 +88,13 @@ function Index() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-[0.85]"
           >
-            <source src="https://imgur.com/J34nkMe.mp4" type="video/mp4" />
+            <source src="https://imgur.com/mRQl2KT.mp4" type="video/mp4" />
           </video>
           {/* Camadas cinematográficas: escurecimento e vinheta */}
-          <div className="absolute inset-0 bg-gradient-to-b from-soft-black/70 via-soft-black/35 to-soft-black/80" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(23,19,15,0.65)_100%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-soft-black/60 via-soft-black/30 to-soft-black/70" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(23,19,15,0.55)_100%)]" />
           <div className="absolute inset-0 grain" />
 
           
