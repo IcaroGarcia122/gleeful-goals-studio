@@ -16,6 +16,14 @@ interface ThreeDCarouselProps {
 
 export function ThreeDCarousel({ items }: ThreeDCarouselProps) {
   const [index, setIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
 
   const handleNext = useCallback(() => {
     setIndex((prev) => (prev + 1) % items.length);
