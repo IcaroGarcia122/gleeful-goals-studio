@@ -312,11 +312,11 @@ function Index() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className={`group relative rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className}`}
+                transition={{ delay: i * 0.05, duration: 0.8 }}
+                className={`group relative rounded-[2.5rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className} ${i % 2 === 0 ? 'md:mt-8' : 'md:-mt-8'}`}
               >
                 <img src={item.asset.url} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
