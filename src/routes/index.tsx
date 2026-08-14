@@ -92,7 +92,8 @@ function Index() {
           >
             <source src="https://imgur.com/mRQl2KT.mp4" type="video/mp4" />
           </video>
-          {/* Camadas cinematográficas: escurecimento e vinheta */}
+          {/* Camadas cinematográficas: filtro preto, escurecimento e vinheta */}
+          <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 bg-gradient-to-b from-soft-black/60 via-soft-black/30 to-soft-black/70" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(23,19,15,0.55)_100%)]" />
           <div className="absolute inset-0 grain" />
