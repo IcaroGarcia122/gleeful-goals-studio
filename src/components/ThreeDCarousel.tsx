@@ -67,30 +67,31 @@ export function ThreeDCarousel({ items }: ThreeDCarouselProps) {
               opacity = 1;
               scale = 1.1;
             } else if (isLeft) {
-              x = typeof window !== 'undefined' && window.innerWidth < 768 ? -280 : -450;
+              x = windowWidth < 768 ? -220 : -450;
               rotateY = 45;
               z = -150;
               opacity = 0.6;
               scale = 0.8;
             } else if (isRight) {
-              x = typeof window !== 'undefined' && window.innerWidth < 768 ? 280 : 450;
+              x = windowWidth < 768 ? 220 : 450;
               rotateY = -45;
               z = -150;
               opacity = 0.6;
               scale = 0.8;
             } else if (isFarLeft) {
-              x = typeof window !== 'undefined' && window.innerWidth < 768 ? -450 : -750;
+              x = windowWidth < 768 ? -350 : -750;
               rotateY = 60;
               z = -400;
               opacity = 0.2;
               scale = 0.7;
             } else if (isFarRight) {
-              x = typeof window !== 'undefined' && window.innerWidth < 768 ? 450 : 750;
+              x = windowWidth < 768 ? 350 : 750;
               rotateY = -60;
               z = -400;
               opacity = 0.2;
               scale = 0.7;
             }
+
 
 
 
