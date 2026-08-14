@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 // Public function to fetch content
 export const getSiteContent = createServerFn({ method: "GET" })
@@ -28,7 +29,7 @@ export const getSiteContent = createServerFn({ method: "GET" })
 
 // Public function to track clicks
 export const trackAirbnbClick = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => z.object({ source: z.string() }).parse(data))
+  .validator((data: unknown) => z.object({ source: z.string() }).parse(data))
   .handler(async ({ data }) => {
     await supabase.from('airbnb_clicks').insert({ 
       source: data.source,
@@ -38,11 +39,9 @@ export const trackAirbnbClick = createServerFn({ method: "POST" })
   });
 
 // Protected Admin Functions
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-
 export const updateSiteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: unknown) => z.object({
+  .validator((data: unknown) => z.object({
     id: z.string(),
     hero_title: z.string(),
     hero_description: z.string(),
