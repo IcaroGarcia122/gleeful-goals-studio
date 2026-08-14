@@ -59,30 +59,31 @@ export function ThreeDCarousel({ items }: ThreeDCarouselProps) {
               opacity = 1;
               scale = 1.1;
             } else if (isLeft) {
-              x = "-70%";
+              x = -400; // Alterado de string para number
               rotateY = 45;
               z = -100;
               opacity = 0.6;
               scale = 0.85;
             } else if (isRight) {
-              x = "70%";
+              x = 400; // Alterado de string para number
               rotateY = -45;
               z = -100;
               opacity = 0.6;
               scale = 0.85;
             } else if (isFarLeft) {
-              x = "-110%";
+              x = -650; // Alterado de string para number
               rotateY = 60;
               z = -400;
               opacity = 0.2;
               scale = 0.7;
             } else if (isFarRight) {
-              x = "110%";
+              x = 650; // Alterado de string para number
               rotateY = -60;
               z = -400;
               opacity = 0.2;
               scale = 0.7;
             }
+
 
             return (
               <motion.div
