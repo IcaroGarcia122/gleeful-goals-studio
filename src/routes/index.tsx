@@ -128,7 +128,7 @@ function Index() {
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8 }}
                 style={{ fontFamily: "'Alex Brush', cursive" }}
-                className="bg-gradient-to-br from-[#E6C994] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-7xl md:text-[10rem] font-normal drop-shadow-[0_8px_32px_rgba(197,154,85,0.45)] brightness-110"
+                className="bg-gradient-to-br from-[#F7F3EA] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-7xl md:text-[11rem] font-normal drop-shadow-[0_12px_48px_rgba(197,154,85,0.6)] brightness-125 animate-float-slow"
               >
                 importa.
               </motion.span>
