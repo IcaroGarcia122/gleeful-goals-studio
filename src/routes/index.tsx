@@ -128,7 +128,7 @@ function Index() {
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: 0.8 }}
                 style={{ fontFamily: "'Alex Brush', cursive" }}
-                className="bg-gradient-to-br from-[#E6C994] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-6xl md:text-9xl font-normal drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
+                className="bg-gradient-to-br from-[#E6C994] via-[#C59A55] to-[#A67C37] bg-clip-text text-transparent block mt-3 text-7xl md:text-[10rem] font-normal drop-shadow-[0_8px_32px_rgba(197,154,85,0.45)] brightness-110"
               >
                 importa.
               </motion.span>
@@ -150,7 +150,7 @@ function Index() {
                 onClick={() => trackClick.mutate({ source: 'hero_main' })}
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.97 }}
-                className="group relative overflow-hidden bg-gold text-warm-white px-12 py-5 rounded-full font-sans font-semibold tracking-[0.25em] text-[11px] md:text-xs shadow-lux ring-1 ring-warm-white/20"
+                className="group relative overflow-hidden bg-gold text-warm-white px-16 py-6 rounded-full font-sans font-bold tracking-[0.3em] text-xs md:text-sm shadow-[0_20px_50px_-10px_rgba(197,154,85,0.6)] ring-1 ring-warm-white/30 transition-all hover:scale-105 hover:shadow-[0_25px_60px_-10px_rgba(197,154,85,0.8)]"
               >
                 <span className="relative z-10">RESERVE NO AIRBNB</span>
                 <span className="absolute inset-0 z-0 -translate-x-full bg-gradient-to-r from-transparent via-warm-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -299,28 +299,30 @@ function Index() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[250px] md:auto-rows-[300px]">
             {[
-              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico em madeira" },
-              { asset: banheiraAsset, title: "Imersão & Relaxamento", desc: "Banheira com vista panorâmica" },
-              { asset: salaAsset, title: "Conforto Integrado", desc: "Ambientes amplos e acolhedores" },
-              { asset: cozinhaAsset, title: "Espaço Gourmet", desc: "Cozinha completa e equipada" },
-              { asset: interiorAsset, title: "Refúgio Interno", desc: "Privacidade e sofisticação" },
-              { asset: img13Asset, title: "Vista Mar", desc: "O horizonte aos seus pés" }
+              { asset: heroAsset, title: "Arquitetura A-Frame", desc: "Design icônico", className: "md:col-span-2 md:row-span-2" },
+              { asset: banheiraAsset, title: "Imersão", desc: "Vista panorâmica", className: "md:col-span-2 md:row-span-1" },
+              { asset: salaAsset, title: "Living", desc: "Acolhedor", className: "md:col-span-2 md:row-span-1" },
+              { asset: cozinhaAsset, title: "Gourmet", desc: "Completa", className: "md:col-span-2 md:row-span-2" },
+              { asset: interiorAsset, title: "Refúgio", desc: "Sofisticação", className: "md:col-span-2 md:row-span-1" },
+              { asset: img13Asset, title: "Vista Mar", desc: "Horizonte", className: "md:col-span-2 md:row-span-1" },
+              { asset: img12Asset, title: "Deck", desc: "Exclusividade", className: "md:col-span-3 md:row-span-1" },
+              { asset: img15Asset, title: "A-Frame", desc: "Conforto", className: "md:col-span-3 md:row-span-1" }
             ].map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-white/10"
+                transition={{ delay: i * 0.05 }}
+                className={`group relative rounded-[2rem] overflow-hidden shadow-lux ring-1 ring-white/10 ${item.className}`}
               >
                 <img src={item.asset.url} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                <div className="absolute bottom-0 left-0 p-8">
-                  <h3 className="text-2xl font-serif text-warm-white mb-2">{item.title}</h3>
-                  <p className="text-xs uppercase tracking-widest text-gold font-sans">{item.desc}</p>
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="text-xl font-serif text-warm-white mb-1">{item.title}</h3>
+                  <p className="text-[10px] uppercase tracking-widest text-gold font-sans">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
